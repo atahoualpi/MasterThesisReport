@@ -1,0 +1,209 @@
+%==================================================================================================
+% LUKE PHD THESIS LAYOUT STYLE FILE
+% ---------------------------------
+% Based upon work by: Henrik Aalborg Nielsen, Thomas Fabricius, Jan Larsen and Finn Kuno
+% Christensen
+% Contact: Luke Herbert (lthhe@imm.dtu.dk)
+%==================================================================================================
+\typeout{----------------------------------------------------}
+\typeout{USING LUKE'S PHD THESIS TEMPLATE 1.2}
+\typeout{----------------------------------------------------}
+%
+%==================================================================================================
+% BASE PACKAGES
+%==================================================================================================
+\usepackage[utf8]{inputenc}                         %Allows input of tex files encoded in UTF8
+\usepackage[T1]{fontenc}                            %Set font encoding for output PDF
+% \usepackage[danish,english]{babel}                  %Allows langauge switching (English is default)
+% \usepackage[english]{babel}                  %Allows langauge switching (English is default)
+% 
+\usepackage{graphicx}                               %Support for including graphics
+\graphicspath{{figures/}{flowcharts/}{circles/}}
+
+\usepackage{xcolor}                                 %Support for using colours
+\usepackage[hang,normalsize,bf]{caption}            %Make pretty captions
+\usepackage{varioref}                               %Enhances references (\vref {label})
+\usepackage{fancyhdr}                               %Pretty headers/footers
+\usepackage[colorlinks=false]{hyperref}                               %References package
+\usepackage{amsmath,amssymb,latexsym}               %AMS and other symbols
+\usepackage{epic,eepic,epsfig,graphics,psfrag}      %Figure/picture packages
+\usepackage{theorem} 
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\usepackage{float}
+\usepackage[hide]{todo}
+\usepackage{longtable}
+\usepackage[acronym,nonumberlist]{glossaries}
+\usepackage{listings}
+\usepackage{etoolbox}
+\usepackage{array}
+\usepackage{pgfplots,siunitx}
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\newlength\fwidth
+\usepgfplotslibrary{units}
+\pgfplotsset{compat=newest,
+  unit markings=parenthesis,
+  unit code/.code 2 args={\si{#1#2}},
+  colorbar style/.code={},
+  every colorbar/.append style={
+        /pgf/number format/fixed
+    }
+  mlspectrogram/.style={
+    enlargelimits=false, axis on top, use units,
+    xlabel=Time, x unit=\second,
+    ylabel=Frequency, y unit=\kilo\hertz,
+    colormap/jet, colorbar,
+    colorbar style={ylabel=Power/Frequency, y unit=\decibel\per\hertz},
+  },
+}
+\sisetup{per-mode=symbol}
+
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth 
+
+
+%==================================================================================================
+% FONT
+%==================================================================================================
+\renewcommand*\rmdefault{lmr}
+%
+%==================================================================================================
+% PAGE GEOMETRY
+%==================================================================================================
+\addtolength{\parskip}{\baselineskip}
+\setlength{\parindent}{24pt}
+\pagestyle{myheadings}
+\setlength{\paperwidth}{210mm}  %a4: 210 ,b5:176
+\setlength{\paperheight}{297mm} %a4:297 ,b5:250
+\setlength{\textheight}{237.4mm} % 540pt = 7.5inch = 190.5mm
+\setlength{\topmargin}{-5.4mm}
+\setlength{\headheight}{8mm}
+\setlength{\headsep}{7mm}
+\setlength{\footskip}{10.0mm}
+\setlength{\textwidth}{155.36mm}  % 129.36 mm  % width and margins must add to 176 mm:  121.36mm
+\setlength{\oddsidemargin}{2.24mm} % 1 inch + 1.24 mm = 26.64 mm inside
+\setlength{\evensidemargin}{-2.24mm} % 1 inch - 5.4 mm = 20 mm outside
+%==================================================================================================
+% HEADINGS SETUP
+%==================================================================================================
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\normalfont\bfseries\thepage}]%
+      {\fancyplain{}{\normalfont\bfseries\rightmark}}
+\rhead[\fancyplain{}{\normalfont\bfseries\leftmark}]%
+      {\fancyplain{}{\normalfont\bfseries\thepage}}
+\cfoot{}
+%
+%==================================================================================================
+% GENERATE DERIVED THESIS PROPERTIES
+%==================================================================================================
+\newcommand{\derivethesisprops}{
+   \def\ttitle{{\textbf{\thesistitle}}}
+   \def\thesisdef{IMM-\thesisdegree-\thesisyear-\thesisnumber}
+   \def\printversion{print}
+   \ifx\thesisversion\printversion
+      \special{papersize=176mm,250mm}               %DTU-IMM special paper size
+      \hypersetup{pdftitle={\thesistitle},
+         pdfauthor={\thesisauthor},
+         pdfsubject={\thesisdef},
+         pdfkeywords={\thesiskeywords},
+         breaklinks,
+         bookmarksopen,
+         bookmarksnumbered,
+         plainpages=false}
+      \else
+      \hypersetup{pdftitle={\thesistitle},
+         pdfauthor={\thesisauthor},
+         pdfsubject={\thesisdef},
+         pdfkeywords={\thesiskeywords},
+         colorlinks,
+         linkcolor=blue,
+         breaklinks,
+         bookmarksopen,
+         bookmarksnumbered,
+         plainpages=false}
+   \fi
+}
+%
+%==================================================================================================
+% GENERATE PREFRONTMATTER
+%==================================================================================================
+\newcommand{\prefrontmatter}{
+   \pagenumbering{alph}                                %Set prefrontmatter numbering style
+   \thispagestyle{empty}                               %Front page (inside cover)
+   \vspace*{\fill}
+   \begin{center}
+      {\huge\ttitle}\\*[2cm]
+      \LARGE\thesisauthor\\*[1cm]
+      \Large Supervisor:\\
+      \Large Michael Rose\\*[2.5cm]
+      \includegraphics[scale=2]{figures/DTU-logo} \\*[1cm]
+      \large Kongens Lyngby \thesisyear\\
+%      \small\sf IMM-\thesisdegree-\thesisyear-\thesisnumber
+   \end{center}
+   \vspace*{\fill}
+%    \newpage                                            %Back of front page
+%    \thispagestyle{empty}
+%    \vspace*{11cm}
+%    {\sf Technical University of Denmark}\\
+%    {\sf Department of Applied Mathematics and Computer Science}\\
+%    {\sf Richard Petersens Plads, building 324,}\\ 
+%    {\sf 2800 Kongens Lyngby, Denmark}\\
+%    {\sf Phone +45 4525 3031}\\
+%    {\sf compute@compute.dtu.dk}\\
+%    {\sf www.compute.dtu.dk}
+%   \vspace*{2.5cm}
+%   \def\empty{}
+%   {\sf IMM-\thesisdegree-\thesisyear-\thesisnumber}
+}
+%
+%==================================================================================================
+% ENVIROMENTS SETUP
+%==================================================================================================
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}{\theorembodyfont{\rmfamily}
+\newtheorem{definition}[lemma]{Definition}}\theoremheaderfont{\scshape\bfseries}
+\newenvironment{proof}{{\scshape Proof.}}{}
+\newcommand{\qed}{\hfill $\square$ \vspace{5mm}}
+\newtheorem{example}{Example}[chapter]
+%
+%==================================================================================================
+% CHAPTER AND APPENDIX STYLING SETUP
+%==================================================================================================
+\renewcommand{\chaptername}{C h a p t e r }
+\renewcommand{\appendixname}{A p p e n d i x }
+%
+\def\@makechapterhead#1{%
+  \vspace*{30\p@}%
+  {\parindent \z@ \raggedright \normalfont
+   \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \large\scshape \@chapapp \space\space \Huge\upshape\thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \flushleft\parbox{\textwidth}{\raggedleft \normalfont\Huge\bfseries  #1}
+     \par\nobreak
+     \vskip 15pt
+     \hrule height 0.4pt
+    \vskip 60\p@
+  }}
+%
+\def\@makeschapterhead#1{%
+  \vspace*{30\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+     \normalfont\huge\bfseries  #1
+     \par\nobreak
+     \vskip 15pt
+     \hrule height 0.4pt
+    \vskip 60\p@
+  }}
+% % % EOF % % %

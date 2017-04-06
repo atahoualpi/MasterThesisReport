@@ -1,0 +1,142 @@
+%==================================================================================================
+% Abbreviations and Nomenclature
+%==================================================================================================
+% abbreviations:
+\newacronym{HOA}{HOA}{Higher Order Ambisonics}
+\newacronym{CS}{CS}{Compressive Sensing}
+\newacronym{AVIL}{AVIL}{Audio Visual Immersion Lab}
+\newacronym{HRTF}{HRTF}{Head-Related Transfer Function}
+\newacronym{WFS}{WFS}{Wave Field Synthesis}
+\newacronym{STFT}{STFT}{Short-Time Fourier Transform}
+\newacronym{ILD}{ILD}{Inter-Aural Level Difference}
+\newacronym{ITD}{ITD}{Inter-Aural Time Difference}
+\newacronym{IACC}{IACC}{Inter-Aural Cross Coherence}
+\newacronym{BRIR}{BRIR}{Binaural Room Impulse Response}
+\newacronym{HATS}{HATS}{Head And Torso Simulator}
+\newacronym{DOA}{DOA}{Direction of Arrival}
+\newacronym{ERB}{ERB}{Equivalent Rectangular Band}
+\newacronym{ASW}{ASW}{Apparent Source Width}
+% nomenclature:
+\newglossaryentry{epsilonCS}{
+  name = $\varepsilon$ ,
+  description = Noise parameter for Compressive Sensing Algorithm,
+}
+
+\newglossaryentry{method1}{
+  name = ``w/ Residual'',
+  description = Exploiting the residual pressure (full implementation of signal path in Figure \ref{fig:flowchartPerBin})
+  }
+  
+\newglossaryentry{method2}{
+  name = ``w/o Residual'',
+  description = Residual pressure is neglected (only upper path in Figure \ref{fig:flowchartPerBin})
+  }
+\newglossaryentry{alpha}{
+  name = $a$  ,
+  description = Radius of microphone array
+  }
+\newglossaryentry{legendre}{
+  name = $P^m_n$  ,
+  description = The associated Legendre polynomials of the first kind
+  }
+\newglossaryentry{angleDependency}{
+  name = $\Omega $  ,
+  description = Angular Dependency on both azimuth and inclination angle
+  }
+\newglossaryentry{sphHarm}{
+  name = $Y^m_n $  ,
+  description = Spherical harmonic Functions
+  }
+\newglossaryentry{trunc}{
+  name = $N$  ,
+  description = Truncation order for the spherical Harmonic Functions
+  }
+\newglossaryentry{normP}{
+  name = $ \ell_{p} $  ,
+  description = Norm-p
+  }
+\newglossaryentry{transfMatrix}{
+  name = $ \textbf{H}$  ,
+  description = Transfer Matrix for plane waves impinging on rigid sphere
+  }
+\newglossaryentry{measPressure}{
+  name = $ \textbf{p}$  ,
+  description = Measurement vector for the pressure on the spherical array 
+  }
+\newglossaryentry{ampVector}{
+  name = $ \textbf{x}$  ,
+  description = Amplitude vector for plane waves impinging on the sphere 
+  }
+\newglossaryentry{ampVectorMixed}{
+  name = $ \textbf{x}$  ,
+  description = Combined amplitude   
+  }
+\newglossaryentry{transfMatrixMixed}{
+  name = $ \breve{\textbf{H}}$  ,
+  description = Combined transfer matrix for mixed-norm problem
+  }
+\newglossaryentry{pressVectorMixed}{
+  name = $  \breve{\textbf{p}}$  ,
+  description = Combined measurement pressure vector for mixed-norm problem  
+  }
+\newglossaryentry{AmbiSig}{
+  name = $B^m_n$,
+  description = Ambisonics coefficients  
+  }
+\newglossaryentry{AmbiSigTrunc}{
+  name = $\textbf{B}_N$,
+  description = Ambisonics coefficients vector truncated at order N
+  }
+\newglossaryentry{SHtrunc}{
+  name = $\textbf{Y}_N(\boldsymbol{\Omega}_L)$,
+  description = Spherical harmonics vector truncated at order N for all measurement angles in vector $\boldsymbol{\Omega}_L$
+  }
+\newglossaryentry{radialFunc}{
+  name = $\textbf{W}$,
+  description = Vector containing radial functions $W_n$  
+  }
+\newglossaryentry{reguCoeff}{
+  name = $\lambda$,
+  description = Regularization factor for natural field HOA processing
+  }
+\newglossaryentry{LSsig}{
+  name = $\textbf{S}$,
+  description = Loudspeaker signals resulting from HOA decoding 
+  }
+\newglossaryentry{LSnum}{
+  name = $LS$,
+  description = Number of Loudspeakers in reproduction
+  }
+\newglossaryentry{LSdir}{
+  name = $ \boldsymbol{\Omega}_{LS}$,
+  description = Vector containing directions of Loudspeakers in reproduction 
+  }
+\newglossaryentry{Ldir}{
+  name = $ \boldsymbol{\Omega}_{L}$,
+  description = Grid of directions used for the CS algorithm
+  }
+\newglossaryentry{sparseDir}{
+  name = $ \boldsymbol{\Omega}_{s}$,
+  description = Subvector of $ \boldsymbol{\Omega}_{L}$ containing only the prominent directions after CS processing
+  }
+
+\newglossaryentry{recPress}{
+  name = $ \widetilde{\textbf{p}}$,
+  description = Pressure vector reconstructed from prominent plane waves 
+  }
+\newglossaryentry{residPress}{
+  name = $\textbf{p}'$,
+  description = Residual pressure
+  }
+\newglossaryentry{reprArea}{
+  name = $R_0$,
+  description = Radius of reproduction area
+  }
+\newglossaryentry{dirGrid}{
+  name = $L$,
+  description = Number of plane waves in a discrete grid of directions
+  }
+\newglossaryentry{dirMic}{
+  name = $Q$,
+  description = Number of sampling points on the spherical microphone array
+  }
