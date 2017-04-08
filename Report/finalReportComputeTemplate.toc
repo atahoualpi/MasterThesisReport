@@ -1,10 +1,11 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Theoretical Background}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Modal Analysis}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Features Extraction}{3}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Modal Synthesis}{3}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}John's way}{3}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Angeliki's way}{3}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.1}State-Of-The-Art}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Modal Analysis}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Features Extraction}{3}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Modal Synthesis}{3}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}John's way}{3}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Angeliki's way}{3}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Method}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Chuck language}{5}{section.3.1}
 \contentsline {paragraph}{Modal features extraction code}{5}{section*.8}
@@ -14,12 +15,11 @@
 \contentsline {section}{\numberline {3.5}Overview}{5}{section.3.5}
 \contentsline {chapter}{\numberline {4}Measurements}{7}{chapter.4}
 \contentsline {chapter}{\numberline {5}Implementation}{9}{chapter.5}
-\contentsline {section}{\numberline {5.1}John's implementation}{9}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}whatever}{9}{subsection.5.1.1}
-\contentsline {section}{\numberline {5.2}Angeliki's implementation}{9}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}impact}{9}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}rolling}{9}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}scratching}{9}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.1}Impact Sounds}{9}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Additive synthesis}{9}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Filter-based additive synthesis}{9}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Rolling Sounds}{9}{section.5.2}
+\contentsline {section}{\numberline {5.3}Scratching Sounds}{9}{section.5.3}
 \contentsline {chapter}{\numberline {6}Results \& Discussion}{11}{chapter.6}
 \contentsline {chapter}{\numberline {7}Conclusion}{13}{chapter.7}
 \contentsline {chapter}{\numberline {A}Results of tests to users}{15}{appendix.A}
