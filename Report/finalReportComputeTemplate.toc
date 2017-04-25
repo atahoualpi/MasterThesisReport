@@ -4,24 +4,29 @@
 \contentsline {section}{\numberline {2.2}Modal Analysis}{3}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Features Extraction}{3}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Modal Synthesis}{3}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}John's way}{3}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Angeliki's way}{3}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.1}Sinusoidal Additive Synthesis}{3}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Filter-based Modal Synthesis}{3}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Method}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Chuck language}{5}{section.3.1}
 \contentsline {paragraph}{Modal features extraction code}{5}{section*.8}
 \contentsline {section}{\numberline {3.2}PureData}{5}{section.3.2}
+\contentsline {paragraph}{Resynthesis patches}{5}{section*.9}
 \contentsline {section}{\numberline {3.3}Heavy Compiler}{5}{section.3.3}
 \contentsline {section}{\numberline {3.4}Unity}{5}{section.3.4}
 \contentsline {section}{\numberline {3.5}Overview}{5}{section.3.5}
 \contentsline {chapter}{\numberline {4}Measurements}{7}{chapter.4}
 \contentsline {chapter}{\numberline {5}Implementation}{9}{chapter.5}
 \contentsline {section}{\numberline {5.1}Impact Sounds}{9}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Additive synthesis}{9}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Filter-based additive synthesis}{9}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.1}Sinusoidal Additive Synthesis}{9}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Filter-based Modal Synthesis}{9}{subsection.5.1.2}
 \contentsline {section}{\numberline {5.2}Rolling Sounds}{9}{section.5.2}
 \contentsline {section}{\numberline {5.3}Scratching Sounds}{9}{section.5.3}
+\contentsline {section}{\numberline {5.4}User Interface}{9}{section.5.4}
 \contentsline {chapter}{\numberline {6}Results \& Discussion}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Which Synthesis Method Is Better?}{11}{section.6.1}
+\contentsline {section}{\numberline {6.2}Did we manage to achieve what we wanted?}{11}{section.6.2}
+\contentsline {section}{\numberline {6.3}How can we improve our work?}{11}{section.6.3}
 \contentsline {chapter}{\numberline {7}Conclusion}{13}{chapter.7}
 \contentsline {chapter}{\numberline {A}Results of tests to users}{15}{appendix.A}
-\contentsline {chapter}{\numberline {B}Some other stuff in the appendix}{17}{appendix.B}
+\contentsline {chapter}{\numberline {B}User Guide to our product}{17}{appendix.B}
 \contentsline {chapter}{Bibliography}{19}{appendix.B}
