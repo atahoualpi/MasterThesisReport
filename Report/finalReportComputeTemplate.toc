@@ -1,16 +1,18 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {paragraph}{Immersion and all these stuff that makes our thing good. Why we are doing it and what do we want to give to the community?}{1}{section*.8}
+\contentsline {paragraph}{Why is our method better that others? (eg wavetable)? And why we think this is the future of the audio in video games?}{1}{section*.9}
 \contentsline {chapter}{\numberline {2}Theoretical Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}State-Of-The-Art}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Modal Analysis}{3}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Features Extraction}{3}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Modal Synthesis}{3}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Sinusoidal Additive Synthesis}{3}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Filter-based Modal Synthesis}{3}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.3}Modal Synthesis}{4}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Sinusoidal Additive Synthesis}{4}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Filter-based Modal Synthesis}{4}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Method}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Chuck language}{5}{section.3.1}
-\contentsline {paragraph}{Modal features extraction code}{5}{section*.8}
+\contentsline {paragraph}{Modal features extraction code}{5}{section*.10}
 \contentsline {section}{\numberline {3.2}PureData}{5}{section.3.2}
-\contentsline {paragraph}{Resynthesis patches}{5}{section*.9}
+\contentsline {paragraph}{Resynthesis patches}{5}{section*.11}
 \contentsline {section}{\numberline {3.3}Heavy Compiler}{5}{section.3.3}
 \contentsline {section}{\numberline {3.4}Unity}{5}{section.3.4}
 \contentsline {section}{\numberline {3.5}Overview}{5}{section.3.5}
