@@ -1,9 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{bib:bpf}
+Inc. AspenCore.
+\newblock Passive band pass filter.
+\newblock \url{http://www.electronics-tutorials.ws/filter/filter_4.html},
+  Accessed: April 28,2017.
+
 \bibitem{Cook:2002:RSS:515316}
 Perry~R. Cook.
 \newblock {\em Real Sound Synthesis for Interactive Applications}.
 \newblock A. K. Peters, Ltd., Natick, MA, USA, 2002.
+
+\bibitem{lloyd2011sound}
+D~Brandon Lloyd, Nikunj Raghuvanshi, and Naga~K Govindaraju.
+\newblock Sound synthesis for impact sounds in video games.
+\newblock In {\em Symposium on Interactive 3D Graphics and Games}, pages
+  PAGE--7. ACM, 2011.
 
 \bibitem{van2001foleyautomatic}
 Kees Van Den~Doel, Paul~G Kry, and Dinesh~K Pai.

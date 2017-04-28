@@ -1,30 +1,30 @@
-\glossaryentry{$\varepsilon $?\glossentry{epsilonCS}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{``w/ Residual''?\glossentry{method1}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{``w/o Residual''?\glossentry{method2}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$a$?\glossentry{alpha}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$P^m_n$?\glossentry{legendre}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\Omega $?\glossentry{angleDependency}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$Y^m_n $?\glossentry{sphHarm}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$N$?\glossentry{trunc}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \ell _{p} $?\glossentry{normP}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \textbf {H}$?\glossentry{transfMatrix}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \textbf {p}$?\glossentry{measPressure}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \textbf {x}$?\glossentry{ampVector}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \textbf {x}$?\glossentry{ampVectorMixed}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \breve {\textbf {H}}$?\glossentry{transfMatrixMixed}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \breve {\textbf {p}}$?\glossentry{pressVectorMixed}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$B^m_n$?\glossentry{AmbiSig}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\textbf {B}_N$?\glossentry{AmbiSigTrunc}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\textbf {Y}_N(\boldsymbol {\Omega }_L)$?\glossentry{SHtrunc}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\textbf {W}$?\glossentry{radialFunc}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\lambda $?\glossentry{reguCoeff}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\textbf {S}$?\glossentry{LSsig}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$LS$?\glossentry{LSnum}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \boldsymbol {\Omega }_{LS}$?\glossentry{LSdir}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \boldsymbol {\Omega }_{L}$?\glossentry{Ldir}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \boldsymbol {\Omega }_{s}$?\glossentry{sparseDir}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$ \widetilde {\textbf {p}}$?\glossentry{recPress}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$\textbf {p}'$?\glossentry{residPress}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$R_0$?\glossentry{reprArea}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$L$?\glossentry{dirGrid}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{$Q$?\glossentry{dirMic}|setentrycounter[]{page}\glsnumberformat}{viii}
+\glossaryentry{$\varepsilon $?\glossentry{epsilonCS}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{``w/ Residual''?\glossentry{method1}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{``w/o Residual''?\glossentry{method2}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$a$?\glossentry{alpha}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$P^m_n$?\glossentry{legendre}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\Omega $?\glossentry{angleDependency}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$Y^m_n $?\glossentry{sphHarm}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$N$?\glossentry{trunc}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \ell _{p} $?\glossentry{normP}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \textbf {H}$?\glossentry{transfMatrix}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \textbf {p}$?\glossentry{measPressure}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \textbf {x}$?\glossentry{ampVector}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \textbf {x}$?\glossentry{ampVectorMixed}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \breve {\textbf {H}}$?\glossentry{transfMatrixMixed}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \breve {\textbf {p}}$?\glossentry{pressVectorMixed}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$B^m_n$?\glossentry{AmbiSig}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\textbf {B}_N$?\glossentry{AmbiSigTrunc}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\textbf {Y}_N(\boldsymbol {\Omega }_L)$?\glossentry{SHtrunc}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\textbf {W}$?\glossentry{radialFunc}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\lambda $?\glossentry{reguCoeff}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\textbf {S}$?\glossentry{LSsig}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$LS$?\glossentry{LSnum}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \boldsymbol {\Omega }_{LS}$?\glossentry{LSdir}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \boldsymbol {\Omega }_{L}$?\glossentry{Ldir}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \boldsymbol {\Omega }_{s}$?\glossentry{sparseDir}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$ \widetilde {\textbf {p}}$?\glossentry{recPress}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$\textbf {p}'$?\glossentry{residPress}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$R_0$?\glossentry{reprArea}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$L$?\glossentry{dirGrid}|setentrycounter[]{page}\glsnumberformat}{xii}
+\glossaryentry{$Q$?\glossentry{dirMic}|setentrycounter[]{page}\glsnumberformat}{xii}
