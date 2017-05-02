@@ -1,21 +1,27 @@
 \chapter{Method}\label{ch:method}
-\mbox{}\par
-A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present
-study.
+
+A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present study.
 
 
 \section{Chuck language}
-\mbox{}\par
+\textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
 
-\paragraph{Modal features extraction code}
-\mbox{}\par
+\paragraph{Modal features extraction code\\}
+We used the ChucK language at the starting point of our thesis to identify and extract the peaks of the recorded ``wav'' files. The algorithm used in this part of the thesis is made by Perry Cook for the course \textbf{``Physics-Based Sound Synthesis for Games and Interactive Systems''} held by \textit{Perry Cook} and \textit{Julius O. Smith} at \textbf{Kadenze Academy} \cite{bib:physicsbasedcourse}.
+
+First, we define \textit{ten} to be the total number of peaks identified. After some trials, we found out that \textit{five} peaks are already enough. However, the authors recommend to use twice the sufficient number, hence \textit{ten} for our case. Afterwards, the algorithm having taken a recording as input, computes its histogram and identifies its peaks. The frequencies where peaks occur are the modal frequencies. Finally, the algorithm finds the maximum value of the signal on each peak, calculating the corresponding amplitude of each mode.
 
 \section{PureData}
-\paragraph{Resynthesis patches}
-\mbox{}\par
+\textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}.
+
+\paragraph{Re-synthesis patch\\}
+For reasons that will be explained below, we had to attach only one pd patch to every 3D object in the demo. Therefore, all synthesized sounds (impact, rolling and scratching) are being synthesized under one main pd patch. 
+
+The main part of the re-synthesis patch is the resonator. Using band-pass filters it gives the impulse response of an object struck at a specified point. It also clips the signal to give more brightness and harmonics. \Todo{develop more}
 
 \section{Heavy Compiler}
+\textbf{Heavy} is a compiler that generates audio plugins from pd patches in interactive soudn and music applications \cite{bib:heavy}. In this thesis we used it to compile pd patches into Unity audio plugins. Heavy's interface is their website where users upload patches and then are able to download the corresponding plugins and put them into their applications. The plugins we used consist of DLL files and a C\# (Unity code) script that allows communication of the plugins with the rest of the script and also enables the sound card to play sounds.
 
-\section{Unity}
+\section{Unity\textregistered}
 
 \section{Overview}

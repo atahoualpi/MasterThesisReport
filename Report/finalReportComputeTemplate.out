@@ -11,21 +11,23 @@
 \BOOKMARK [1][]{section.3.1}{3.1 Chuck language}{chapter.3}% 11
 \BOOKMARK [1][]{section.3.2}{3.2 PureData}{chapter.3}% 12
 \BOOKMARK [1][]{section.3.3}{3.3 Heavy Compiler}{chapter.3}% 13
-\BOOKMARK [1][]{section.3.4}{3.4 Unity}{chapter.3}% 14
+\BOOKMARK [1][]{section.3.4}{3.4 Unity\256}{chapter.3}% 14
 \BOOKMARK [1][]{section.3.5}{3.5 Overview}{chapter.3}% 15
 \BOOKMARK [0][]{chapter.4}{4 Measurements}{}% 16
-\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 17
-\BOOKMARK [1][]{section.5.1}{5.1 Impact Sounds}{chapter.5}% 18
-\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Sinusoidal Additive Synthesis}{section.5.1}% 19
-\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Filter-based Modal Synthesis}{section.5.1}% 20
-\BOOKMARK [1][]{section.5.2}{5.2 Rolling Sounds}{chapter.5}% 21
-\BOOKMARK [1][]{section.5.3}{5.3 Scratching Sounds}{chapter.5}% 22
-\BOOKMARK [1][]{section.5.4}{5.4 User Interface}{chapter.5}% 23
-\BOOKMARK [0][]{chapter.6}{6 Results \046 Discussion}{}% 24
-\BOOKMARK [1][]{section.6.1}{6.1 Which Synthesis Method Is Better?}{chapter.6}% 25
-\BOOKMARK [1][]{section.6.2}{6.2 Did we manage to achieve what we wanted?}{chapter.6}% 26
-\BOOKMARK [1][]{section.6.3}{6.3 How can we improve our work?}{chapter.6}% 27
-\BOOKMARK [0][]{chapter.7}{7 Conclusion}{}% 28
-\BOOKMARK [0][]{appendix.A}{A Results of tests to users}{}% 29
-\BOOKMARK [0][]{appendix.B}{B User Guide to our product}{}% 30
-\BOOKMARK [0][]{appendix.B}{Bibliography}{}% 31
+\BOOKMARK [1][]{section.4.1}{4.1 Recordings}{chapter.4}% 17
+\BOOKMARK [1][]{section.4.2}{4.2 User tests}{chapter.4}% 18
+\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 19
+\BOOKMARK [1][]{section.5.1}{5.1 Impact Sounds}{chapter.5}% 20
+\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Sinusoidal Additive Synthesis}{section.5.1}% 21
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Filter-based Modal Synthesis}{section.5.1}% 22
+\BOOKMARK [1][]{section.5.2}{5.2 Rolling Sounds}{chapter.5}% 23
+\BOOKMARK [1][]{section.5.3}{5.3 Scratching Sounds}{chapter.5}% 24
+\BOOKMARK [1][]{section.5.4}{5.4 User Interface}{chapter.5}% 25
+\BOOKMARK [0][]{chapter.6}{6 Results \046 Discussion}{}% 26
+\BOOKMARK [1][]{section.6.1}{6.1 Which Synthesis Method Is Better?}{chapter.6}% 27
+\BOOKMARK [1][]{section.6.2}{6.2 Did we manage to achieve what we wanted?}{chapter.6}% 28
+\BOOKMARK [1][]{section.6.3}{6.3 How can we improve our work?}{chapter.6}% 29
+\BOOKMARK [0][]{chapter.7}{7 Conclusion}{}% 30
+\BOOKMARK [0][]{appendix.A}{A Results of tests to users}{}% 31
+\BOOKMARK [0][]{appendix.B}{B User Guide to our product}{}% 32
+\BOOKMARK [0][]{appendix.B}{Bibliography}{}% 33

@@ -1,21 +1,65 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{bib:bpf}
-Inc. AspenCore.
+{AspenCore, Inc.}
 \newblock Passive band pass filter.
 \newblock \url{http://www.electronics-tutorials.ws/filter/filter_4.html},
-  Accessed: April 28,2017.
+  Accessed: April 28, 2017.
+
+\bibitem{bib:maya}
+{Autodesk, Inc.}
+\newblock Maya autodesk (version 2016).
+\newblock \url{https://www.autodesk.com/products/maya/overview}, Accessed:
+  April 20, 2017.
+
+\bibitem{bib:fbx}
+{Autodesk, Inc.}
+\newblock Fbx file format.
+\newblock \url{https://www.autodesk.com/products/fbx/overview}, Accessed: May
+  2, 2017.
 
 \bibitem{Cook:2002:RSS:515316}
 Perry~R. Cook.
 \newblock {\em Real Sound Synthesis for Interactive Applications}.
 \newblock A. K. Peters, Ltd., Natick, MA, USA, 2002.
 
+\bibitem{bib:heavy}
+{Enzier Audio, Ltd.}
+\newblock Heavy (version r2017.02).
+\newblock \url{https://enzienaudio.com/}, Accessed: May 2, 2017.
+
+\bibitem{bib:chuck}
+{Ge Wang}.
+\newblock Chuck programming language.
+\newblock \url{http://chuck.cs.princeton.edu/}, Accessed: May 2, 2017.
+
 \bibitem{lloyd2011sound}
 D~Brandon Lloyd, Nikunj Raghuvanshi, and Naga~K Govindaraju.
 \newblock Sound synthesis for impact sounds in video games.
 \newblock In {\em Symposium on Interactive 3D Graphics and Games}, pages
   PAGE--7. ACM, 2011.
+
+\bibitem{bib:pd}
+{Miller Puckette}.
+\newblock Pure data programming language.
+\newblock \url{http://puredata.info/ }, Accessed: May 2, 2017.
+
+\bibitem{bib:physicsbasedcourse}
+{P. Cook, J. Smith}.
+\newblock Physics-based sound synthesis for games and interactive systems.
+\newblock
+  \url{https://www.kadenze.com/courses/physics-based-sound-synthesis-for-games-and-interactive-systems-iv},
+  Accessed: May 2, 2017.
+
+\bibitem{ren2013example}
+Zhimin Ren, Hengchin Yeh, and Ming~C Lin.
+\newblock Example-guided physically based modal sound synthesis.
+\newblock {\em ACM Transactions on Graphics (TOG)}, 32(1):1, 2013.
+
+\bibitem{bib:unity}
+{Unity Technologies}.
+\newblock Unity\textregistered\ software (version 5.5.1f1 personal).
+\newblock \url{https://unity3d.com/}, Accessed: May 2, 2017.
 
 \bibitem{van2001foleyautomatic}
 Kees Van Den~Doel, Paul~G Kry, and Dinesh~K Pai.
