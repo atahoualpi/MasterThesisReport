@@ -29,9 +29,12 @@
 \contentsline {section}{\numberline {5.3}Scratching Sounds}{11}{section.5.3}
 \contentsline {section}{\numberline {5.4}User Interface}{11}{section.5.4}
 \contentsline {chapter}{\numberline {6}Results \& Discussion}{13}{chapter.6}
-\contentsline {section}{\numberline {6.1}Which Synthesis Method Is Better?}{13}{section.6.1}
-\contentsline {section}{\numberline {6.2}Did we manage to achieve what we wanted?}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}How can we improve our work?}{13}{section.6.3}
+\contentsline {section}{\numberline {6.1}Results}{13}{section.6.1}
+\contentsline {section}{\numberline {6.2}Discussion}{13}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Bugs - to make better}{13}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Which Synthesis Method Is Better?}{13}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Did we manage to achieve what we wanted?}{13}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}How can we improve our work?}{13}{subsection.6.2.4}
 \contentsline {chapter}{\numberline {7}Conclusion}{15}{chapter.7}
 \contentsline {chapter}{\numberline {A}Results of tests to users}{17}{appendix.A}
 \contentsline {chapter}{\numberline {B}User Guide to our product}{19}{appendix.B}
