@@ -1,10 +1,14 @@
 \chapter{Implementation}\label{ch:implementation}
 
-Here we can put pictures and codes snippets
+\Todo{Here we can put pictures and codes snippets}\\
+
+
+Instead of having a huge amount of different pre-recorded sound files, which need a lot of space, we eliminate the problem to a \colorbox{pink}{2D look up}, where the algorithm matches the object first and then the exact point of the object that collided with some other object.
 
 
 \section{Impact Sounds}
-
+\Todo{decribe the patch, describe the sound (starts low, goes to max ampl and then decays etc)}\\
+\Todo{Put spectrogram pictures of the sounds to describe them}
 
 \subsection{Sinusoidal Additive Synthesis}
 
@@ -13,5 +17,13 @@ Here we can put pictures and codes snippets
 \section{Rolling Sounds}
 
 \section{Scratching Sounds}
+
+\section{Assignment of Different Materials}
+Different materials can be assigned to the objects made for this thesis. The designer is able to choose between \textit{plastic, wooden, ceramic, glass and metal} by adjusting a slider on the interface. 
+
+Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \textbf{Q-factor} of the \textbf{band-pass filters} used in the pd patch. Q-factor indicated the power loss in the filter. The higher the Q the less power is lost, so the resonator vibrates longer \cite{bib:Q}.
+
+\section{Changing the Size}
+In an application, the same object can appear in different sizes, so this thesis takes this into account. It is known that under the same excitation, the smaller the size of an object, the more high pitched sounds it will produce, because the sound waves travel a smaller distance. Hence, we implemented a slider for the designer to choose the best sound that corresponds to the size of her object. 
 
 \section{User Interface}

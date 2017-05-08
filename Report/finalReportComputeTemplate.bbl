@@ -33,6 +33,13 @@ Perry~R. Cook.
 \newblock Chuck programming language.
 \newblock \url{http://chuck.cs.princeton.edu/}, Accessed: May 2, 2017.
 
+\bibitem{giordano2006material}
+Bruno~L Giordano and Stephen McAdams.
+\newblock Material identification of real impact sounds: Effects of size
+  variation in steel, glass, wood, and plexiglass plates.
+\newblock {\em The Journal of the Acoustical Society of America},
+  119(2):1171--1181, 2006.
+
 \bibitem{lloyd2011sound}
 D~Brandon Lloyd, Nikunj Raghuvanshi, and Naga~K Govindaraju.
 \newblock Sound synthesis for impact sounds in video games.
@@ -67,5 +74,10 @@ Kees Van Den~Doel, Paul~G Kry, and Dinesh~K Pai.
   simulation and animation.
 \newblock In {\em Proceedings of the 28th annual conference on Computer
   graphics and interactive techniques}, pages 537--544. ACM, 2001.
+
+\bibitem{bib:Q}
+{Wikipedia}.
+\newblock Q factor.
+\newblock \url{https://en.wikipedia.org/wiki/Q_factor}, Accessed: May 8, 2017.
 
 \end{thebibliography}

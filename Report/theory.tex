@@ -8,7 +8,11 @@ THis is smth done:
 \done\Todo{this is done}
 
 \section{State-Of-The-Art}\label{sec:state_art}
-
+\textit{Wildes and Richards (1988)} defined the angle of internal friction ($\phi$), a shape-invariant acoustical parameter that heuristically categorizes sounds into material categories, as
+\begin{equation}
+\tan(\phi) = \alpha / \pi f,
+\end{equation}
+where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time for the vibration amplitude to decay to $1/e$ of its original value after the object is struck  and $f$ is the vibration frequency\cite{giordano2006material}.
 
 \section{Modal Analysis}\label{sec:modal_analysis}
 In this thesis we are using solid objects that are struck in different ways to produce sound. These ways could be falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
@@ -73,7 +77,7 @@ BW = f_{c_{\textsc{higher}}}-f_{c_{\textsc{lower}}}
 
 \paragraph{Synthesis\\}\label{par:synth}
 
-This method is also additive, since we are adding the outputs of a number of band-pass filters. To synthesize a sound using this method, we use as many filters as the modal frequencies. The filter takes as input an impulse, the center frequency which is the modal frequency and a \textbf{Quality factor (Q-factor)} which specifies the bandwidth of the filter. The Q-factor is calculated heuristically, depending on the material of the sound and is inversely proportional to the bandwidth, so the lower the Q-factor, the wider the bandwidth and vice-versa. Hence, more and less frequencies respectively will be included in the \colorbox{pink}{audible} range. We call the above structure a \textit{resonator}, which also includes a multiplication with the corresponding amplitude, taken from the $A$ matrix.
+This method is also additive, since we are adding the outputs of a number of band-pass filters. To synthesize a sound using this method, we use as many filters as the modal frequencies. The filter takes as input an impulse, the center frequency which is the modal frequency and a \textbf{Quality factor (Q-factor)} which specifies the bandwidth of the filter. The Q-factor is calculated heuristically, depending on the material of the sound and is inversely proportional to the bandwidth ($Q=f_c/BW$), so the lower the Q-factor, the wider the bandwidth and vice-versa. Hence, more and less frequencies respectively will be included in the \colorbox{pink}{audible} range. We call the above structure a \textit{resonator}, which also includes a multiplication with the corresponding amplitude, taken from the $A$ matrix.
 
 \begin{figure}[H]
   \centering

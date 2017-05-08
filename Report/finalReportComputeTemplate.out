@@ -16,21 +16,27 @@
 \BOOKMARK [0][]{chapter.4}{4 Measurements}{}% 16
 \BOOKMARK [1][]{section.4.1}{4.1 Recordings}{chapter.4}% 17
 \BOOKMARK [1][]{section.4.2}{4.2 User tests}{chapter.4}% 18
-\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 19
-\BOOKMARK [1][]{section.5.1}{5.1 Impact Sounds}{chapter.5}% 20
-\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Sinusoidal Additive Synthesis}{section.5.1}% 21
-\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Filter-based Modal Synthesis}{section.5.1}% 22
-\BOOKMARK [1][]{section.5.2}{5.2 Rolling Sounds}{chapter.5}% 23
-\BOOKMARK [1][]{section.5.3}{5.3 Scratching Sounds}{chapter.5}% 24
-\BOOKMARK [1][]{section.5.4}{5.4 User Interface}{chapter.5}% 25
-\BOOKMARK [0][]{chapter.6}{6 Results \046 Discussion}{}% 26
-\BOOKMARK [1][]{section.6.1}{6.1 Results}{chapter.6}% 27
-\BOOKMARK [1][]{section.6.2}{6.2 Discussion}{chapter.6}% 28
-\BOOKMARK [2][]{subsection.6.2.1}{6.2.1 Bugs - to make better}{section.6.2}% 29
-\BOOKMARK [2][]{subsection.6.2.2}{6.2.2 Which Synthesis Method Is Better?}{section.6.2}% 30
-\BOOKMARK [2][]{subsection.6.2.3}{6.2.3 Did we manage to achieve what we wanted?}{section.6.2}% 31
-\BOOKMARK [2][]{subsection.6.2.4}{6.2.4 How can we improve our work?}{section.6.2}% 32
-\BOOKMARK [0][]{chapter.7}{7 Conclusion}{}% 33
-\BOOKMARK [0][]{appendix.A}{A Results of tests to users}{}% 34
-\BOOKMARK [0][]{appendix.B}{B User Guide to our product}{}% 35
-\BOOKMARK [0][]{appendix.B}{Bibliography}{}% 36
+\BOOKMARK [2][]{subsection.4.2.1}{4.2.1 Stimuli}{section.4.2}% 19
+\BOOKMARK [2][]{subsection.4.2.2}{4.2.2 Procedure}{section.4.2}% 20
+\BOOKMARK [2][]{subsection.4.2.3}{4.2.3 Participants}{section.4.2}% 21
+\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 22
+\BOOKMARK [1][]{section.5.1}{5.1 Impact Sounds}{chapter.5}% 23
+\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Sinusoidal Additive Synthesis}{section.5.1}% 24
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Filter-based Modal Synthesis}{section.5.1}% 25
+\BOOKMARK [1][]{section.5.2}{5.2 Rolling Sounds}{chapter.5}% 26
+\BOOKMARK [1][]{section.5.3}{5.3 Scratching Sounds}{chapter.5}% 27
+\BOOKMARK [1][]{section.5.4}{5.4 Assignment of Different Materials}{chapter.5}% 28
+\BOOKMARK [1][]{section.5.5}{5.5 Changing the Size}{chapter.5}% 29
+\BOOKMARK [1][]{section.5.6}{5.6 User Interface}{chapter.5}% 30
+\BOOKMARK [0][]{chapter.6}{6 Results \046 Discussion}{}% 31
+\BOOKMARK [1][]{section.6.1}{6.1 Results}{chapter.6}% 32
+\BOOKMARK [1][]{section.6.2}{6.2 Discussion}{chapter.6}% 33
+\BOOKMARK [2][]{subsection.6.2.1}{6.2.1 Bugs}{section.6.2}% 34
+\BOOKMARK [2][]{subsection.6.2.2}{6.2.2 Which Synthesis Method Is Better?}{section.6.2}% 35
+\BOOKMARK [2][]{subsection.6.2.3}{6.2.3 Why our work can be used in VR/AR?}{section.6.2}% 36
+\BOOKMARK [2][]{subsection.6.2.4}{6.2.4 Did we manage to achieve what we wanted?}{section.6.2}% 37
+\BOOKMARK [2][]{subsection.6.2.5}{6.2.5 How can we improve our work?}{section.6.2}% 38
+\BOOKMARK [0][]{chapter.7}{7 Conclusion}{}% 39
+\BOOKMARK [0][]{appendix.A}{A Results of tests to users}{}% 40
+\BOOKMARK [0][]{appendix.B}{B User Guide to our product}{}% 41
+\BOOKMARK [0][]{appendix.B}{Bibliography}{}% 42
