@@ -14,6 +14,45 @@ THis is smth done:
 \end{equation}
 where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time for the vibration amplitude to decay to $1/e$ of its original value after the object is struck  and $f$ is the vibration frequency\cite{giordano2006material}.
 
+\section{How physical attributes affect sound}
+\colorbox{pink}{\Todo{Note smwhere that we're using only vibrating solid objects (not liquids).Gaver\cite{gaver1993world} pg10 has info}}
+
+Impact sounds consist of an excitation that dampens over time. Hence, the amplitude of the oscillation depends only on the damping. On the other hand, scraping sounds consist of continuous supply of energy that adds to the amplitude value on top of the damping of the oscillation throughout the object interaction. In addition, the force of the interaction plays the most significant role for the amplitude of the oscillation. The stronger the force, the biggest it imposes the amplitude value to be - and the louder the sound \cite{gaver1993world}.
+
+Furthermore, the material of the interacting objects affects their vibrating oscillation. \colorbox{pink}{Damping factor is a material-specific attribute and the bigger it is, the faster the objects lose} \colorbox{pink}{energy and thus the oscillation lasts shorter. For example, wood has way bigger damping}\\ \colorbox{pink}{factor than metal and this is why they produce a ``thud'' and a ``ringy'' sound respectively. }
+
+Moreover, the configuration of the object also affect its vibration. The size of it determines how high or low pitched sound it will produce. More specifically, the smaller the object the more high pitched will be the sound.  
+
+Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information} affected by each physical attribute. 
+
+\begin{table}[H]
+	\centering
+    \begin{tabular}{ | l | l | p{5cm} |}
+    \hline
+    \textbf{Source} & \textbf{Effects on the Sound Wave} \\ \hline
+    \emph{Interaction} &  \\ 
+    \hspace{8pt} Type & Amplitude, spectrum \\ 
+    \hspace{8pt} Force & Amplitude, bandwidth \\
+    \hline
+    \emph{Material} &  \\ 
+    \hspace{8pt} Restoring force & Frequency \\ 
+    \hspace{8pt} Density & Frequency \\
+    \hspace{8pt} Damping & Amplitude, frequency \\
+    \hspace{8pt} Homogeneity & Amplitude, frequency \\
+    \hline
+    \emph{Configuration} &  \\ 
+    \hspace{8pt} Shape & Frequency, spectral pattern \\ 
+    \hspace{8pt} Size & Frequency, bandwidth \\
+    \hspace{8pt} Resonating cavities & Spectral pattern \\
+    \hspace{8pt} Support & Amplitude, frequency, spectrum \\
+    \hline
+    \end{tabular}
+    \caption{Acoustic effects of source attributes \cite{gaver1993world}.}
+    \label{tab:acoustic_effects}
+\end{table}
+
+
+
 \section{Modal Analysis}\label{sec:modal_analysis}
 In this thesis we are using solid objects that are struck in different ways to produce sound. These ways could be falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
 
@@ -22,9 +61,9 @@ Modal analysis studies the response of models under excitation. It uses the 3D m
 Another method for modal analysis is the ``Exampled-guided'', where data get extracted using example recordings of the objects being struck. Using a suitable algorithm it is easy to extract features from the recordings such as the fundamental frequency and its harmonics and the frequency peaks of the signal.
 
 \subsection{Data Extraction}\label{sec:data_extract}
-Modal analysis is performed before modal synthesis, to extract the necessary data. Modal synthesis is the sum of damped oscillators each corresponding to a modal frequency, as it will be discussed further below. The data needed for synthesis are shown in the table \ref{tab:extracted_data}.
+Modal analysis is performed before modal synthesis, to extract the necessary data. Modal synthesis is the sum of damped oscillators each corresponding to a modal frequency, as it will be discussed further below. The data needed for synthesis and their \colorbox{pink}{origin} are shown in the table \ref{tab:extracted_data}.
 
-\begin{table}
+\begin{table}[H]
 	\centering
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
@@ -34,7 +73,7 @@ Modal analysis is performed before modal synthesis, to extract the necessary dat
     $f_n$ & Modal frequency & Modal analysis \\
     \hline
     \end{tabular}
-    \caption{Data extracted in modal analysis.}
+    \caption{Derivation of data used in modal synthesis.}
     \label{tab:extracted_data}
 \end{table} 
 
@@ -85,4 +124,7 @@ This method is also additive, since we are adding the outputs of a number of ban
       \caption{Filter-based Modal Synthesis Algorithm \cite{Cook:2002:RSS:515316}.}
       \label{fig:filter_synth}
 \end{figure}
+
+\section{3D Audio}
+In VR/AR applications, the location of the incoming sound plays as significant role as the sound itself. 
 
