@@ -15,38 +15,39 @@
 \contentsline {paragraph}{Synthesis\\}{7}{section*.19}
 \contentsline {section}{\numberline {2.5}3D Audio}{8}{section.2.5}
 \contentsline {chapter}{\numberline {3}Method}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Chuck language}{9}{section.3.1}
-\contentsline {paragraph}{Modal features extraction code\\}{9}{section*.21}
-\contentsline {section}{\numberline {3.2}PureData}{9}{section.3.2}
-\contentsline {paragraph}{Re-synthesis patch\\}{9}{section*.22}
-\contentsline {section}{\numberline {3.3}Heavy Compiler}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Unity\textregistered }{10}{section.3.4}
-\contentsline {section}{\numberline {3.5}Microsoft Hololens Emulator}{10}{section.3.5}
-\contentsline {section}{\numberline {3.6}Overview of our tool}{10}{section.3.6}
-\contentsline {chapter}{\numberline {4}Measurements}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Recordings}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}User tests}{12}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Stimuli}{12}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Procedure}{13}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Participants}{13}{subsection.4.2.3}
-\contentsline {chapter}{\numberline {5}Implementation}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}Impact Sounds}{15}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Sinusoidal Additive Synthesis}{15}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Filter-based Modal Synthesis}{15}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Rolling Sounds}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}Scratching Sounds}{15}{section.5.3}
-\contentsline {section}{\numberline {5.4}Assignment of Different Materials}{15}{section.5.4}
-\contentsline {section}{\numberline {5.5}Changing the Size}{15}{section.5.5}
-\contentsline {section}{\numberline {5.6}User Interface}{16}{section.5.6}
-\contentsline {chapter}{\numberline {6}Results \& Discussion}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Results}{17}{section.6.1}
-\contentsline {section}{\numberline {6.2}Discussion}{17}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Bugs}{17}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Which Synthesis Method Is Better?}{17}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Why our work can be used in VR/AR?}{17}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Did we manage to achieve what we wanted?}{17}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}How can we improve our work?}{17}{subsection.6.2.5}
-\contentsline {chapter}{\numberline {7}Conclusion}{19}{chapter.7}
-\contentsline {chapter}{\numberline {A}Results of tests to users}{21}{appendix.A}
-\contentsline {chapter}{\numberline {B}User Guide to our product}{23}{appendix.B}
-\contentsline {chapter}{Bibliography}{25}{appendix.B}
+\contentsline {section}{\numberline {3.1}Overview of our tool}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Recordings}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Chuck language}{10}{section.3.3}
+\contentsline {paragraph}{Modal features extraction code\\}{10}{section*.23}
+\contentsline {section}{\numberline {3.4}PureData}{10}{section.3.4}
+\contentsline {paragraph}{Re-synthesis patch\\}{10}{section*.24}
+\contentsline {section}{\numberline {3.5}Heavy Compiler}{11}{section.3.5}
+\contentsline {section}{\numberline {3.6}Unity\textregistered }{11}{section.3.6}
+\contentsline {section}{\numberline {3.7}Microsoft Hololens Emulator}{11}{section.3.7}
+\contentsline {chapter}{\numberline {4}Measurements}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Recordings}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}User tests}{14}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Stimuli}{14}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Procedure}{15}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Participants}{15}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Implementation}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}Impact Sounds}{17}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Sinusoidal Additive Synthesis}{17}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Filter-based Modal Synthesis}{17}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Rolling Sounds}{17}{section.5.2}
+\contentsline {section}{\numberline {5.3}Scratching Sounds}{17}{section.5.3}
+\contentsline {section}{\numberline {5.4}Assignment of Different Materials}{17}{section.5.4}
+\contentsline {section}{\numberline {5.5}Changing the Size}{17}{section.5.5}
+\contentsline {section}{\numberline {5.6}User Interface}{18}{section.5.6}
+\contentsline {chapter}{\numberline {6}Results \& Discussion}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Results}{19}{section.6.1}
+\contentsline {section}{\numberline {6.2}Discussion}{19}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Bugs}{19}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Which Synthesis Method Is Better?}{19}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Why our work can be used in VR/AR?}{19}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Did we manage to achieve what we wanted?}{19}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}How can we improve our work?}{19}{subsection.6.2.5}
+\contentsline {chapter}{\numberline {7}Conclusion}{21}{chapter.7}
+\contentsline {chapter}{\numberline {A}Results of tests to users}{23}{appendix.A}
+\contentsline {chapter}{\numberline {B}User Guide to our product}{25}{appendix.B}
+\contentsline {chapter}{Bibliography}{27}{appendix.B}

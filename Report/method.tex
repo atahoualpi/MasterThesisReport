@@ -3,6 +3,27 @@
 
 A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present study.
 
+\section{Overview of our tool}
+\Todo{replace figure  with a better one}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.5\textwidth]{synthesisChart.png}
+      \caption{Sound Synthesis Procedure.}
+      \label{fig:synth_proc}
+\end{figure}
+
+\section{Recordings}
+To obtain the necessary data we performed recordings of the sound produced of the object when being hit. 
+
+Since we only used simple shape everyday objects, we could easily assume that nearby points produce almost the same sound and thus separate the object into ``modal areas'' instead of calculating different modal matrices for each point. Tests in users proved that this accuracy-computational complexity trade-off was acceptable. A sample object and its division in areas is shown in figure \ref{fig:pot_sep}.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{potseparated.png}
+      \caption{Division of an object into areas with similar sound.}
+      \label{fig:pot_sep}
+\end{figure} 
+
 
 \section{Chuck language}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
@@ -27,15 +48,7 @@ The main part of the re-synthesis patch is the resonator. Using band-pass filter
 \section{Unity\textregistered}
 \textbf{Unity\textregistered} is a game engine software. This is where all previous work is combined together and gives the final product. For the purpose of this thesis, a sample scene is made inside unity where objects are struck in several points and produce different sounds. 
 
-The first part of the Unity implementation is the assignment of modal data to every different area of the object. This is done in $O(n)$ time for $n$ modes. Since we only used simple shape everyday objects, we could easily assume that nearby points produce almost the same sound and thus separate the object into ``modal areas'' instead of calculating different modal matrices for each point. Tests in users proved that this accuracy-computational complexity trade-off was acceptable.  
+The first part of the Unity implementation is the assignment of modal data to every different area of the object. This is done in $O(n)$ time for $n$ modes. 
 
 \section{Microsoft Hololens Emulator}
 
-\section{Overview of our tool}
-\Todo{replace figure  with a better one}
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.5\textwidth]{synthesisChart.png}
-      \caption{Sound Synthesis Procedure.}
-      \label{fig:synth_proc}
-\end{figure}
