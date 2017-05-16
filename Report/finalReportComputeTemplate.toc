@@ -21,7 +21,8 @@
 \contentsline {paragraph}{Re-synthesis patch\\}{9}{section*.22}
 \contentsline {section}{\numberline {3.3}Heavy Compiler}{10}{section.3.3}
 \contentsline {section}{\numberline {3.4}Unity\textregistered }{10}{section.3.4}
-\contentsline {section}{\numberline {3.5}Overview of our tool}{10}{section.3.5}
+\contentsline {section}{\numberline {3.5}Microsoft Hololens Emulator}{10}{section.3.5}
+\contentsline {section}{\numberline {3.6}Overview of our tool}{10}{section.3.6}
 \contentsline {chapter}{\numberline {4}Measurements}{11}{chapter.4}
 \contentsline {section}{\numberline {4.1}Recordings}{11}{section.4.1}
 \contentsline {section}{\numberline {4.2}User tests}{12}{section.4.2}
