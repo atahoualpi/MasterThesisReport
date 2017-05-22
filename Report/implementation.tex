@@ -15,35 +15,57 @@ We have created our own script that assigns to every one of the objects  the mod
 %
 \subsection{Sinusoidal Additive Synthesis}
 
-In this section we describe in depth how the Pd patch corresponding to the sinusoidal additive synthesis of impact sounds works. The patch attempts to translate equation \ref{eq:modal_response} into the programming language of Pd. Some of its terms will be referenced in the following explanation.
+In this section we describe in depth how the Pd patch corresponding to the sinusoidal additive synthesis of impact sounds works. The patch attempts to translate equation \ref{eq:modal_response} into the programming language of Pd. Some of its terms are referenced in the following explanation.
 
 First of all the frequencies and amplitudes matching the ten modes of the object are initialized. We can therefore feed these frequencies, which we identified as $f_n$ in the equation \ref{eq:modal_response}, into the different oscillators. In Pd, oscillators output a cosine wave which is equivalent to $cos(2 \pi f_nt)$ from the equation which suits our purpose perfectly.
 
-We would also like to translate into Pd the expression $e^{-d_n t}$ which corresponds to the damping of every mode $n$. Gaver \cite{gaver1993we} states that for each partial the decay rates $d_n$ are controllable through a parameter $D$ which corresponds to a material and that a useful heuristic, that we use, is to have $d_n = 2 \pi f_nD$. By experimenting we established that values of $D$ range from approximately 0.0002 for metal to about 0.05 for plastic sounds, with glass, ceramic and wood sounds in between. The higher the damping the higher the values. Then we multiply the damping by the partial's initial amplitude $A_n$ to obtain an amplitude envelope that varies over time and which we multiply by the oscillator's signal. The output is what we call a partial. 
+We also translate into Pd the expression $e^{-d_n t}$ which corresponds to the damping of every mode $n$. Gaver \cite{gaver1993we} states that for each partial the decay rates $d_n$ are controllable through a parameter $D$ which corresponds to a material and that a useful heuristic, that we use in our patch, is to have $d_n = 2 \pi f_nD$. By experimenting we established that values of $D$ range from approximately 0.0002 for metal to about 0.05 for plastic sounds, with glass, ceramic and wood sounds in between. The higher the damping the higher the values. Then we multiply the damping by the partial's initial amplitude $A_n$ to obtain an amplitude envelope that varies over time and which we multiply by the oscillator's signal. The output is what we call a partial which is illustrated in figure \ref{fig:dampedsignal}. 
 
-The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. \colorbox{pink}{For this we calculate the kinetic energy with Unity's physics components}. As described in \cite{farnell2010designing} before sending the signal to the DAC we pass it through a clipper that gives richer harmonics and produces brighter sounds the stronger the impact is.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{dampedsignal.png}
+      \caption{Diagram showing how the output partial is created from a 5000 Hz cosine wave and a decay rate curve with D = 0.005.}
+      \label{fig:dampedsignal}
+\end{figure}
+
+The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. \colorbox{pink}{For this we calculate the kinetic energy with Unity's physics components}. As described in \cite{farnell2010designing}, before sending the signal to the DAC we pass it through a clipper that gives richer harmonics and produces brighter sounds the stronger the impact is.
 
 The patch produces an impact sound whenever the OnCollisionEnter() method from Unity is called. This is done when the collider that has the script attached to it touches another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in \ref{eq:modal_response} to zero which increases over time making the sound decay.
 
 \subsection{Filter-based Modal Synthesis}
 
-For this synthesis method we will excite a bank of ten bandpass filters with an impulse signal to approximate a resonator.
+This synthesis method is based on the utilization of a bank of ten bandpass filters. Pd's bandpass filters have three control inputs as seen in figure \ref{fig:pdbandpass}. The left inlet is the incoming audio signal, the middle one sets the center frequency and the right input sets the Q factor value. The characteristics of these filters define the virtual object.
 
-The same way we did in the previous method, we initialize all ten frequencies and amplitudes of the object. Every frequency $f_n$ is sent into a bandpass filter as the center frequency. 
-
-Every filter is characterized by its Q factor which is directly related to the damping. The value of Q will then determine the material of the impacted object.
-
-To hit the object we use an impulse signal to excite the filter.
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.5\textwidth]{bandpassfilter.png}
-      \caption{Pd's bandpass filter with its three inlets, audio signal on the left, central frequency n the middle and Q factor on the right.}
-      \label{fig:pot_sep}
+      \caption{Pd's bandpass filter with its three inlets}
+      \label{fig:pdbandpass}
 \end{figure} 
 
-\section{Rolling Sounds}
+The same way we did in the previous method, we initialize all ten frequencies and amplitudes of the object. Every frequency $f_n$ is sent into a bandpass filter as the center frequency. 
+
+Every filter is characterized by its Q factor which is directly related to the damping. The higher the value of Q, the narrower the bandwidth and the less the resonator becomes damped. Thus, Q determines the material of the impacted object \cite{gaver1993we}. By manipulating Q we can obtain different material sounds. Through experimentation we have found values of Q that range from about 20 for plastic to 5000 for metal. 
+
+To cause the object to sound we use a short impulse signal that excites the filter. The amplitude of the signal goes from 1 to 0 in 2 milliseconds as represented in figure \ref{fig:impulse}. This impulse is multiplied by the value of the kinetic energy when the object impacts with another. 
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.5\textwidth]{impulse.png}
+      \caption{Impulse signal used to excite the bandpass filter.}
+      \label{fig:impulse}
+\end{figure} 
+
+The output signal of each of the ten filters is multiplied by the corresponding amplitude $A_n$ of the mode. All ten resulting signals are added together. The signal is sent through a clipper as we did in the previous synthesis method.
 
 \section{Scratching Sounds}
+
+The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. This paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. To model these modes we use the filter-based synthesis method.
+
+In \cite{gaver1993we} and \cite{van2001foleyautomatic} the authors state that the center frequencies of the filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. 
+
+We implement this by exciting the filters with a noise signal
+\section{Rolling Sounds}
 
 \section{Assignment of Different Materials}
 Different materials can be assigned to the objects made for this thesis. The designer is able to choose between \textit{plastic, wooden, ceramic, glass and metal} by adjusting a slider on the interface. 
