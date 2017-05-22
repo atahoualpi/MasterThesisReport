@@ -1,89 +1,85 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{}
 
-\bibitem{bib:bpf}
-{AspenCore, Inc.}
+\bibitem[{AspenCore, Inc.}, 2017]{bib:bpf}
+{AspenCore, Inc.} (Accessed: April 28, 2017).
 \newblock Passive band pass filter.
-\newblock \url{http://www.electronics-tutorials.ws/filter/filter_4.html},
-  Accessed: April 28, 2017.
+\newblock \url{http://www.electronics-tutorials.ws/filter/filter_4.html}.
 
-\bibitem{bib:maya}
-{Autodesk, Inc.}
+\bibitem[{Autodesk, Inc.}, 2017b]{bib:maya}
+{Autodesk, Inc.} (Accessed: April 20, 2017b).
 \newblock Maya autodesk (version 2016).
-\newblock \url{https://www.autodesk.com/products/maya/overview}, Accessed:
-  April 20, 2017.
+\newblock \url{https://www.autodesk.com/products/maya/overview}.
 
-\bibitem{bib:fbx}
-{Autodesk, Inc.}
+\bibitem[{Autodesk, Inc.}, 2017a]{bib:fbx}
+{Autodesk, Inc.} (Accessed: May 2, 2017a).
 \newblock Fbx file format.
-\newblock \url{https://www.autodesk.com/products/fbx/overview}, Accessed: May
-  2, 2017.
+\newblock \url{https://www.autodesk.com/products/fbx/overview}.
 
-\bibitem{Cook:2002:RSS:515316}
-Perry~R. Cook.
+\bibitem[Cook, 2002]{Cook:2002:RSS:515316}
+Cook, P.~R. (2002).
 \newblock {\em Real Sound Synthesis for Interactive Applications}.
-\newblock A. K. Peters, Ltd., Natick, MA, USA, 2002.
+\newblock A. K. Peters, Ltd., Natick, MA, USA.
 
-\bibitem{bib:heavy}
-{Enzier Audio, Ltd.}
+\bibitem[{Enzier Audio, Ltd.}, 2017]{bib:heavy}
+{Enzier Audio, Ltd.} (Accessed: May 2, 2017).
 \newblock Heavy (version r2017.02).
-\newblock \url{https://enzienaudio.com/}, Accessed: May 2, 2017.
+\newblock \url{https://enzienaudio.com/}.
 
-\bibitem{gaver1993world}
-William~W Gaver.
+\bibitem[Gaver, 1993]{gaver1993world}
+Gaver, W.~W. (1993).
 \newblock What in the world do we hear?: An ecological approach to auditory
   event perception.
-\newblock {\em Ecological psychology}, 5(1):1--29, 1993.
+\newblock {\em Ecological psychology}, 5(1):1--29.
 
-\bibitem{bib:chuck}
-{Ge Wang}.
+\bibitem[{Ge Wang}, 2017]{bib:chuck}
+{Ge Wang} (Accessed: May 2, 2017).
 \newblock Chuck programming language.
-\newblock \url{http://chuck.cs.princeton.edu/}, Accessed: May 2, 2017.
+\newblock \url{http://chuck.cs.princeton.edu/}.
 
-\bibitem{giordano2006material}
-Bruno~L Giordano and Stephen McAdams.
+\bibitem[Giordano and McAdams, 2006]{giordano2006material}
+Giordano, B.~L. and McAdams, S. (2006).
 \newblock Material identification of real impact sounds: Effects of size
   variation in steel, glass, wood, and plexiglass plates.
 \newblock {\em The Journal of the Acoustical Society of America},
-  119(2):1171--1181, 2006.
+  119(2):1171--1181.
 
-\bibitem{lloyd2011sound}
-D~Brandon Lloyd, Nikunj Raghuvanshi, and Naga~K Govindaraju.
+\bibitem[Lloyd et~al., 2011]{lloyd2011sound}
+Lloyd, D.~B., Raghuvanshi, N., and Govindaraju, N.~K. (2011).
 \newblock Sound synthesis for impact sounds in video games.
 \newblock In {\em Symposium on Interactive 3D Graphics and Games}, pages
-  PAGE--7. ACM, 2011.
+  PAGE--7. ACM.
 
-\bibitem{bib:pd}
-{Miller Puckette}.
+\bibitem[{Miller Puckette}, 2017]{bib:pd}
+{Miller Puckette} (Accessed: May 2, 2017).
 \newblock Pure data programming language.
-\newblock \url{http://puredata.info/ }, Accessed: May 2, 2017.
+\newblock \url{http://puredata.info/ }.
 
-\bibitem{bib:physicsbasedcourse}
-{P. Cook, J. Smith}.
+\bibitem[{P. Cook, J. Smith}, 2017]{bib:physicsbasedcourse}
+{P. Cook, J. Smith} (Accessed: May 2, 2017).
 \newblock Physics-based sound synthesis for games and interactive systems.
 \newblock
-  \url{https://www.kadenze.com/courses/physics-based-sound-synthesis-for-games-and-interactive-systems-iv},
-  Accessed: May 2, 2017.
+  \url{https://www.kadenze.com/courses/physics-based-sound-synthesis-for-games-and-interactive-systems-iv}.
 
-\bibitem{ren2013example}
-Zhimin Ren, Hengchin Yeh, and Ming~C Lin.
+\bibitem[Ren et~al., 2013]{ren2013example}
+Ren, Z., Yeh, H., and Lin, M.~C. (2013).
 \newblock Example-guided physically based modal sound synthesis.
-\newblock {\em ACM Transactions on Graphics (TOG)}, 32(1):1, 2013.
+\newblock {\em ACM Transactions on Graphics (TOG)}, 32(1):1.
 
-\bibitem{bib:unity}
-{Unity Technologies}.
+\bibitem[{Unity Technologies}, 2017]{bib:unity}
+{Unity Technologies} (Accessed: May 2, 2017).
 \newblock Unity\textregistered\ software (version 5.5.1f1 personal).
-\newblock \url{https://unity3d.com/}, Accessed: May 2, 2017.
+\newblock \url{https://unity3d.com/}.
 
-\bibitem{van2001foleyautomatic}
-Kees Van Den~Doel, Paul~G Kry, and Dinesh~K Pai.
+\bibitem[Van Den~Doel et~al., 2001]{van2001foleyautomatic}
+Van Den~Doel, K., Kry, P.~G., and Pai, D.~K. (2001).
 \newblock Foleyautomatic: physically-based sound effects for interactive
   simulation and animation.
 \newblock In {\em Proceedings of the 28th annual conference on Computer
-  graphics and interactive techniques}, pages 537--544. ACM, 2001.
+  graphics and interactive techniques}, pages 537--544. ACM.
 
-\bibitem{bib:Q}
-{Wikipedia}.
+\bibitem[{Wikipedia}, 2017]{bib:Q}
+{Wikipedia} (Accessed: May 8, 2017).
 \newblock Q factor.
-\newblock \url{https://en.wikipedia.org/wiki/Q_factor}, Accessed: May 8, 2017.
+\newblock \url{https://en.wikipedia.org/wiki/Q_factor}.
 
 \end{thebibliography}
