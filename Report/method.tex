@@ -4,6 +4,8 @@
 A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present study.
 
 \section{Overview of our tool}
+The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio.
+
 \Todo{replace figure  with a better one}
 \begin{figure}[H]
   \centering
@@ -11,6 +13,10 @@ A combination of the methods described in Chapter \ref{ch:theory} is proposed in
       \caption{Sound Synthesis Procedure.}
       \label{fig:synth_proc}
 \end{figure}
+
+To obtain this tool, we followed the procedure described in figure \ref{fig:synth_proc}. More specifically, the first step we carried out was to find several everyday objects, separate them into different areas that sound similar when struck and record impact sounds for each area. Afterwards, we used those recordings to extract data needed for sound synthesis. At the same time, we made a 3d model of every object we used. Next, we generated two different PureData patches, introducing two different synthesis methods. 
+
+Then, we combined the 3d models with their corresponding data and the synthesis patches inside Unity\textregistered software. This is where depending on the point where an object is struck, the corresponding frequencies and amplitudes are assigned to the patch and a sound is sent to the audio DSP chain.
 
 \section{Recordings}
 To obtain the necessary data we performed recordings of the sound produced of the object when being hit. 
@@ -24,6 +30,8 @@ Since we only used simple shape everyday objects, we could easily assume that ne
       \label{fig:pot_sep}
 \end{figure} 
 
+\section{3D models}
+To create the 3D models we used Maya Autodesk software \cite{bib:maya} and exported them as FBX\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textregistered\ software \cite{bib:unity}.
 
 \section{Chuck language}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
@@ -49,6 +57,8 @@ The main part of the re-synthesis patch is the resonator. Using band-pass filter
 \textbf{Unity\textregistered} is a game engine software. This is where all previous work is combined together and gives the final product. For the purpose of this thesis, a sample scene is made inside unity where objects are struck in several points and produce different sounds. 
 
 The first part of the Unity implementation is the assignment of modal data to every different area of the object. This is done in $O(n)$ time for $n$ modes. 
+
+\Todo{describe onaudiofilterread()}
 
 \section{Microsoft Hololens Emulator}
 
