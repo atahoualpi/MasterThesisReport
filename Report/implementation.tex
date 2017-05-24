@@ -110,7 +110,11 @@ Since every sound is produced from a corresponding real world object, the tool i
 \subsection{Assignment of Different Materials}
 Different materials can be assigned to the objects made for this thesis. The designer is able to choose between \textit{plastic, wood, ceramic, glass and metal} by adjusting the corresponding slider on the interface (see figure \ref{fig:custom_insp}). 
 
-Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \textbf{Q-factor} of the \textbf{band-pass filters} used in the pd patch. Q-factor indicates the power loss in the filter. The higher the Q the less power is lost, so the resonator vibrates longer \cite{bib:Q}.
+Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \textbf{Q-factor} of the \textbf{band-pass filters} used in the pd patch. Q-factor indicates the power loss in the filter. The higher the Q the less power is lost, so the resonator vibrates longer.
+
+\begin{equation}\label{eq:Qfactor}
+Q=2\pi \frac{\mbox{maximum energy stored}}{\mbox{total energy lost per cycle at resonance}}
+\end{equation}\cite{bib:Q}
 
 Using trial and error method, we came out with an average value of the Q-factor for each material and we use it as the default value on the tool. Those values are shown in the table \ref{tab:default_Q}.
 
@@ -188,7 +192,6 @@ else
 This is were the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene.
 
 The first thing that happens when a collision takes place, is to identify what kind of object is the one that collided with something. Hence, a function is called
->>>>>>> 1a362c02b3b7ae0cd6d213f231f01e3ebe707d52
 
 
 
