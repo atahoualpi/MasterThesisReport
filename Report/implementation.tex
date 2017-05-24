@@ -60,11 +60,13 @@ The output signal of each of the ten filters is multiplied by the corresponding 
 
 \section{Scratching Sounds}
 
-The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. This paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. To model these modes we use the filter-based synthesis method.
+The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. Additionally, the aforementioned paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. We can then use the same modal parameters as in the impact methods described here above.
 
-In \cite{gaver1993we} and \cite{van2001foleyautomatic} the authors state that the center frequencies of the filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. 
+\cite{gaver1993we} and \cite{van2001foleyautomatic} propose the use of filters to produce scraping sounds. We therefore choose the filter-based modal synthesis method to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. We implement this by generating a noise impulse waveform that passes through the bandpass filters (put figure and explain how this signal is created, depends on velocity and Q). 
 
-We implement this by exciting the filters with a noise signal
+The authors state that the center frequencies of the filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. 
+
+
 \section{Rolling Sounds}
 
 \section{User Interface}
