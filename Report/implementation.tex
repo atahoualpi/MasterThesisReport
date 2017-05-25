@@ -30,7 +30,7 @@ We also translate into Pd the expression $e^{-d_n t}$ which corresponds to the d
 
 The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. \colorbox{pink}{For this we calculate the kinetic energy with Unity's physics components}. As described in \cite{farnell2010designing}, before sending the signal to the DAC we pass it through a clipper that gives richer harmonics and produces brighter sounds the stronger the impact is.
 
-The patch produces an impact sound whenever the OnCollisionEnter() method from Unity is called. This is done when the collider that has the script attached to it touches another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in \ref{eq:modal_response} to zero which increases over time making the sound decay.
+The patch produces an impact sound whenever the OnCollisionEnter method from Unity is called. This is done when the collider that has the script attached to it has begun to touch another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in \ref{eq:modal_response} to zero which increases over time making the sound decay.
 
 \subsection{Filter-based Modal Synthesis}
 
@@ -62,12 +62,37 @@ The output signal of each of the ten filters is multiplied by the corresponding 
 
 The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. Additionally, the aforementioned paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. We can then use the same modal parameters as in the impact methods described here above.
 
-\cite{gaver1993we} and \cite{van2001foleyautomatic} propose the use of filters to produce scraping sounds. We therefore choose the filter-based modal synthesis method to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. We implement this by generating a noise impulse waveform that passes through the bandpass filters (put figure and explain how this signal is created, depends on velocity and Q). 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.5\textwidth]{microcollisions.png}
+      \caption{Scrapping involves a multitude of micro-collisions against a contact area. Picture from \cite{gaver1993we}}
+      \label{fig:microcollisions}
+\end{figure}
 
-The authors state that the center frequencies of the filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. 
+To produce scratching sounds we follow a similar technique to \cite{gaver1993we} and \cite{van2001foleyautomatic} who propose the use of filters. We therefore choose the filter-based modal synthesis method to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. We implement this by generating a noise impulse waveform, as in \ref{fig:scratchingimpulse}, that passes through the bandpass filters. We create this waveform by having a simple impulse signal that is scaled relative to the velocity and material of the object and then multiplied by a white noise signal. From a heuristic approach we deduced that the higher the velocity and the Q factor, the higher the gain of the scratching sound. The length of the excitation signal depends on the time it took Unity to complete the last frame. The scraping sound is triggered in Unity's OnCollisionStay method when the object's collider is touching another one and with the condition that the angular velocity of the object is beneath a threshold. \colorbox{pink}{The angular velocity} specifies the speed at which a body is rotating. We therefore add this condition to differentiate between sliding and rolling.
 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\textwidth]{scratchingexcitation.png}
+      \caption{Diagram showing the process to get the excitation signal of the resonator to produce scratching sounds.}
+      \label{fig:scratchingimpulse}
+\end{figure} 
+
+The authors who's approach we are following state that the center frequencies of the bandpass filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. To recreate this effect we scale the incoming filter frequencies depending on the velocity of the sliding object.
 
 \section{Rolling Sounds}
+
+As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. As described in \cite{farnell2010designing}, we divide our rolling model into four parts: an excitation, a series of repetitive impulses that correspond to the contour around the circumference of the rolling object, a model for the uneven ground texture and another for the resonator. 
+
+-Excitation part-
+
+-Repetitive impulses-
+For simplification we take a regular octagon that has received an impulsive force and therefore rolls along a plane. Every time one of the vertices impacts the ground, energy is lost to heat and sound. Thus, as the octagon rolls, a pattern of eight impulses is created for every rotation.
+
+-Ground irregularity-
+Rath+Farnell
+
+-Resonator-
 
 \section{User Interface}
 Here we will describe the \textit{user interface (UI)} of the tool, where sound designers are able to choose the sound they prefer for every object.
