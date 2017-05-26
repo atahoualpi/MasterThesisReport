@@ -82,12 +82,17 @@ The authors who's approach we are following state that the center frequencies of
 
 \section{Rolling Sounds}
 
-As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. As described in \cite{farnell2010designing}, we divide our rolling model into four parts: an excitation, a series of repetitive impulses that correspond to the contour around the circumference of the rolling object, a model for the uneven ground texture and another for the resonator. 
+As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. We therefore focus our study onto two models inspired by \cite{farnell2010designing}: a series of repetitive impulses that correspond to the contour around the circumference of the rolling object and the irregular bumping sounds due to the uneven ground.
 
--Excitation part-
+First we aim our attention at the sounds produced by the object's surface irregularities. For simplification we take a regular octagon that has received an impulsive force and therefore rolls along a plane. Every time one of the vertices impacts the ground, energy is lost to heat and sound. Thus, as the octagon rolls, a pattern of eight impulses is created for every rotation as seen on figure \ref{fig:rolling}. To create these impact sounds we use the filter-based synthesis method. The filters are excited by a succession of eight impulses of different amplitudes as no real object has a perfect geometry. The outcome results in a pattern of quasi-periodic audio cues distributed differently over time depending on the speed of the rolling object. See figure \ref{fig:rolling}. \cite{houben1999auditory} suggests that this periodicity  enables listeners to distinguish between sliding and rolling sounds.
 
--Repetitive impulses-
-For simplification we take a regular octagon that has received an impulsive force and therefore rolls along a plane. Every time one of the vertices impacts the ground, energy is lost to heat and sound. Thus, as the octagon rolls, a pattern of eight impulses is created for every rotation.
+Let us dive into the actual implementation of the latterly described model. We mentioned that the amplitude of the impulse signals used to excite the resonator are different. With a heuristic approach, we choose a sequence of eight multipliers that correspond to the prominence of the bumps along the object's surface contour. Additionally, we have incorporated a parameter that determines the object's surface roughness. This parameter scales the values of the eight multipliers. The lower the value of the parameter the smoother the object's surface. In other terms, the smoother the object's surface, the smaller the amplitude of the impulses ( and the less difference  between them----> explain this better)
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\textwidth]{rolling.png}
+      \caption{An octagon and a real spherical object pressure levels over time as they roll.}
+      \label{fig:rolling}
+\end{figure} 
 
 -Ground irregularity-
 Rath+Farnell
