@@ -69,7 +69,7 @@ The sound produced by an object that is scraped across a rough surface can be as
       \label{fig:microcollisions}
 \end{figure}
 
-To produce scratching sounds we follow a similar technique to \cite{gaver1993we} and \cite{van2001foleyautomatic} who propose the use of filters. We therefore choose the filter-based modal synthesis method to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. We implement this by generating a noise impulse waveform, as in \ref{fig:scratchingimpulse}, that passes through the bandpass filters. We create this waveform by having a simple impulse signal that is scaled relative to the velocity and material of the object and then multiplied by a white noise signal. From a heuristic approach we deduced that the higher the velocity and the Q factor, the higher the gain of the scratching sound. The length of the excitation signal depends on the time it took Unity to complete the last frame. The scraping sound is triggered in Unity's OnCollisionStay method when the object's collider is touching another one and with the condition that the angular velocity of the object is beneath a threshold. \colorbox{pink}{The angular velocity} specifies the speed at which a body is rotating. We therefore add this condition to differentiate between sliding and rolling.
+To produce scratching sounds we follow a similar technique to \cite{gaver1993we} and \cite{van2001foleyautomatic} who propose the use of filters. We therefore choose the filter-based modal synthesis method to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. We implement this by generating a noise impulse waveform, as in \ref{fig:scratchingimpulse}, that passes through the bandpass filters. We create this waveform by having a simple impulse signal that is scaled relative to the velocity and material of the object and then multiplied by a white noise signal. From a heuristic approach we deduced that the higher the velocity and the Q factor, the higher the gain of the scratching sound. The length of the excitation signal depends on the time it took Unity to complete the last frame. The scraping sound is triggered in Unity's OnCollisionStay method when the object's collider is touching another one and with the condition that the angular velocity of the object is beneath a threshold. The angular velocity specifies the rotational motion of a rigid body \cite{sears1964university}. We therefore add this condition to differentiate between sliding and rolling.
 
 \begin{figure}[H]
   \centering
@@ -82,22 +82,36 @@ The authors who's approach we are following state that the center frequencies of
 
 \section{Rolling Sounds}
 
-As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. We therefore focus our study onto two models inspired by \cite{farnell2010designing}: a series of repetitive impulses that correspond to the contour around the circumference of the rolling object and the irregular bumping sounds due to the uneven ground.
+As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. We therefore focus our study on two models inspired by \cite{farnell2010designing}: a series of repetitive impulses that correspond to the surface profile of the rolling object and the irregular bumping sounds due to the uneven ground.
 
-First we aim our attention at the sounds produced by the object's surface irregularities. For simplification we take a regular octagon that has received an impulsive force and therefore rolls along a plane. Every time one of the vertices impacts the ground, energy is lost to heat and sound. Thus, as the octagon rolls, a pattern of eight impulses is created for every rotation as seen on figure \ref{fig:rolling}. To create these impact sounds we use the filter-based synthesis method. The filters are excited by a succession of eight impulses of different amplitudes as no real object has a perfect geometry. The outcome results in a pattern of quasi-periodic audio cues distributed differently over time depending on the speed of the rolling object. See figure \ref{fig:rolling}. \cite{houben1999auditory} suggests that this periodicity  enables listeners to distinguish between sliding and rolling sounds.
+First we aim our attention to the sounds produced by the object's surface irregularities. For simplification we take a regular octagon that has received an impulsive force and therefore rolls along a plane. Every time one of the vertices impacts the ground, energy is lost to heat and sound. Thus, as the octagon rolls, a pattern of eight impulses is created for every rotation as seen on figure \ref{fig:rolling}. To create these impact sounds we use the filter-based synthesis method. The filters are excited by a succession of eight impulses of different amplitudes as no real object has a perfect geometry. The outcome results in a pattern of quasi-periodic audio cues distributed differently over time depending on the speed of the rolling object. See figure \ref{fig:rolling}. \cite{houben1999auditory} and \cite{rath2003expressive} suggest that this periodicity which originates from the asymmetry of the object, enables listeners to distinguish between sliding and rolling sounds.
 
-Let us dive into the actual implementation of the latterly described model. We mentioned that the amplitude of the impulse signals used to excite the resonator are different. With a heuristic approach, we choose a sequence of eight multipliers that correspond to the prominence of the bumps along the object's surface contour. Additionally, we have incorporated a parameter that determines the object's surface roughness. This parameter scales the values of the eight multipliers. The lower the value of the parameter the smoother the object's surface. In other terms, the smoother the object's surface, the smaller the amplitude of the impulses ( and the less difference  between them----> explain this better)
+\colorbox{pink}{Explain script somewhere}
+
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.8\textwidth]{rolling.png}
+    \includegraphics[width=0.7\textwidth]{rolling.png}
       \caption{An octagon and a real spherical object pressure levels over time as they roll.}
       \label{fig:rolling}
 \end{figure} 
 
--Ground irregularity-
-Rath+Farnell
+Let us dive into the actual implementation of the latterly described model. We mentioned that the amplitude of the impulse signals used to excite the resonator are different. With a heuristic approach, we choose a sequence of eight multipliers that correspond to the prominence of the bumps along the object's surface contour. Additionally, we have incorporated a parameter that determines the object's surface roughness. This parameter, which can be adjusted by the user, scales the values of the eight multipliers. The lower the value of the parameter the smoother the object's surface. In other terms, the smoother the object's surface, the smaller and more homogeneous the amplitude of the impulses are. We can compare the amplitudes of the impulses for different roughness degrees in figure  \ref{fig:roughnessgraph}.
 
--Resonator-
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\textwidth]{roughnessgraph.png}
+      \caption{Graph showing the amplitude of the impulses for every bump on the object's surface for three values of the roughness parameter.}
+      \label{fig:roughnessgraph}
+\end{figure} 
+
+We now look into the sounds produced due to the irregularity of the ground. As pointed out in \cite{van2001foleyautomatic}, even a smooth ball rolling on a rough surface produces sound. This paper and \cite{rath2003expressive} indicate that this is due to the small constant collisions of the ball with the surface's asperities. The bigger the ball, the less the surface details are "felt". In our implementation we consider the surface's irregularities to be very small compared to the radius of the rolling object. See figure \ref{fig:rollingdoel}. This suggests that our model for uneven ground is similar to our previously explained scratching model as \cite{van2001foleyautomatic} proposes. The difference is that the gain of the output signal is lower for the rolling as we consider that rolling friction forces are smaller in comparison with scratching friction \cite{mehtas}.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{rollingdoel.png}
+      \caption{A smooth ball rolling over an small ground irregularities.}
+      \label{fig:rollingdoel}
+\end{figure} 
 
 \section{User Interface}
 Here we will describe the \textit{user interface (UI)} of the tool, where sound designers are able to choose the sound they prefer for every object.
