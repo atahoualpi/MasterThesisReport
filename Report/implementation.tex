@@ -156,11 +156,11 @@ Since every sound is produced from a corresponding real world object, the tool i
 \subsection{Assignment of Different Materials}
 Different materials can be assigned to the objects made for this thesis. The designer is able to choose between \textit{plastic, wood, ceramic, glass and metal} by adjusting the corresponding slider on the interface (see figure \ref{fig:custom_insp}). 
 
-Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \textbf{Q-factor} of the \textbf{band-pass filters} used in the pd patch. Q-factor indicates the power loss in the filter. The higher the Q the less power is lost, so the resonator vibrates longer.
+Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \textbf{Q-factor} of the \textbf{band-pass filters} used in the pd patch. Q-factor indicates the power loss in the filter. The higher the Q the less power is lost, so the resonator vibrates longer as explained in equation \ref{eq:Qfactor} \cite{bib:Q}.
 
 \begin{equation}\label{eq:Qfactor}
 Q=2\pi \frac{\mbox{maximum energy stored}}{\mbox{total energy lost per cycle at resonance}}
-\end{equation}\cite{bib:Q}
+\end{equation}
 
 Using trial and error method, we came out with an average value of the Q-factor for each material and we use it as the default value on the tool. Those values are shown in the table \ref{tab:default_Q}.
 
@@ -226,25 +226,38 @@ END IF
 
 
 
-\subsection{OnCollisionEnter}
-This is were the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene.
+\subsection{Excitation of Impact Sounds}
+This is were the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene and it is identified by the program when two collider Unity\textregistered components attached to two different objects touch each other. Below we will describe what is done inside the Unity's build-in function \textit{OnCollisionEnter} \cite{bib:unity_doc}, when an object enter a collision.
 
 The first thing that happens when a collision takes place, is to identify what kind of object is the one that collided with something, and which part of the object collided. Hence, a function is called which detects the type of the object using the tag manager. Tag manager holds all available tags. Tags are used to group similar game objects and make them retrievable from scripts. After type of object is identified, the variable used for object perimeter (used for rolling sound) is assigned to its equivalent value and then the modal data (frequencies and amplitudes) that correspond to this type of objects are assigned to the variable used from the algorithm.
 
-Moreover, the algorithm calculates the kinetic energy of the whole collision, using the equation \ref{eq:kinetic_energy}: 
+Moreover, the algorithm calculates the kinetic energy of the whole collision, using the equation \ref{eq:kinetic_energy} \cite{crowell2003conservation}: 
 
 \begin{equation}\label{eq:kinetic_energy}
 K = \frac{1}{2} m u^2,
-\end{equation}\cite{crowell2003conservation}
+\end{equation}
 
-\noindent where $m$ is the mass of the object under test and $u$ the magnitude of the relative velocity between the two colliding objects. In Unity\textregistered we can calculate the latter using the command: \textit{Collision.relativeVelocity.magnitude}.The kinetic energy corresponds to the collision force magnitude and we use it to turn the volume of the sound up or down depending if the collision was strong or wear respectively.
+\noindent where $m$ is the mass of the object under test and $u$ the magnitude of the relative velocity between the two colliding objects. In Unity\textregistered we can calculate the latter using the command: \textit{Collision.relativeVelocity.magnitude} \cite{bib:unity_doc}.The kinetic energy corresponds to the collision force magnitude and we use it to turn the volume of the sound up or down depending if the collision was strong or wear respectively.
 
 Another parameter that the algorithm takes into account is whether an object collides with another modal object or not. By modal object we mean the object that our tool provides that come with modal synthesis sounds. In case we have a collision with a modal object, we enhance the collision force magnitude adding more force that depends on the materials of both of the participant objects. Namely, we calculate an average between the two quality factor normalized values, we multiply it by the collision force magnitude and add this to the initial collision force magnitude. We do this because from our experience with the objects, we found out that when two high-pitched materials like glass or metal collide to each other, they produce a much more intense sound than when a high-pitched material collides with a low pitched like plastic or wood.  
 
 \begin{equation}
-new\ CFM = CFM + CFM*\left( \frac{\frac{Qfactor_1}{5000} + \frac{Qfactor_2}{5000}}{2000} \right)
+new\ CFM = CFM + CFM*\left( \frac{\frac{Qfactor_1}{5000} + \frac{Qfactor_2}{5000}}{2} \right)
 \end{equation} 
 \noindent where $CFM:$ the Collision Force Magnitude.
+
+\Todo{see if it is necessary to describe the 3 different DACs here or just in the patch }
+
+\subsection{Excitation of Rolling and Scratching Sounds}
+Unity's build-in function \textit{OnCollisionStay} \cite{bib:unity_doc} is called once per frame for as long as a collision keeps happening. Inside this function the program decides whether rolling or scratching takes place and calculates the corresponding velocity which stops the sound when it goes down to zero. The magnitude of this velocity is computed using the velocity vector of the object's \textit{Rigidbody} (\textit{rigibody.velocity.magnitude}). Unity's rigidbody is ``the way of controlling an object's position through physics simulation'' as noted in Unity's documentation API \cite{bib:unity_doc}.
+
+The decision whether an object is rolling or sliding on a surface is made using the \textbf{angular velocity} ($\omega = \frac{angular\ displacement}{time}$). Unity's rigidbody variable for angular velocity is a 3 dimensional vector, measured in radians per second \cite{bib:unity_doc}. The magnitude of it is calculated from the equation \ref{eq:angVelMagn}
+\begin{equation}\label{eq:angVelMagn}
+\omega_{magnitude} = \sqrt{\omega_x^2+\omega_y^2+\omega_z^2}
+\end{equation}
+where $\omega_x = \frac{\theta_x}{t}, \omega_y = \frac{\theta_y}{t}, \omega_z = \frac{\theta_z}{t}$ and $\theta_x, \theta_y, \theta_z$ the angular displacement of the $x, y, z$ axis respectively and $t$ the amount of time this displacement lasted. In Unity it is referred to as (\textit{rigidbody.angularVelocity.magnitude}) \cite{bib:unity_doc}. More specifically, when angular velocity magnitude is over $1$, means that the object is rolling, otherwise it is not and providing that linear velocity is non-zero, means that the object is sliding on the surface. \Todo{why 1 is the border? maybe because (0.0,0.0,0.0) angular velocity gives 0.smth in magnitude}
+
+
 
 
 
