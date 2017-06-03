@@ -1,12 +1,17 @@
 \glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
 \begin{theglossary}\glossaryheader
 \glsgroupheading{A}\relax \glsresetentrylist %
+\glossentry{AI}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{AR}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
 \glsgroupheading{B}\relax \glsresetentrylist %
 \glossentry{BPF}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{BW}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossentry{CPU}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossentry{DAC}{\glossaryentrynumbers{\relax 
@@ -22,6 +27,8 @@
 \glossentry{FEM}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{FFT}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
+\glossentry{fps}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
 \glsgroupheading{G}\relax \glsresetentrylist %
 \glossentry{GUI}{\glossaryentrynumbers{\relax 

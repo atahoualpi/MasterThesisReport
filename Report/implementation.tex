@@ -113,6 +113,15 @@ We now look into the sounds produced due to the irregularity of the ground. As p
       \label{fig:rollingdoel}
 \end{figure} 
 
+\section{Sound Variations}
+The best approach to get the amplitude matrix is through FEM. However, the computational power needed to access all these data exceeds the limitations which audio in games undergoes. Hence, other methods should be developed to achieve spatial variation of sounds. 
+
+One method is to have only one amplitude matrix (corresponding to only one point of the object) and randomize the values every time a collision occurs. During the development of this thesis we tried this method, but we abandoned it rather quickly due to undesirable sounding results. In other words, every other sound, when an object was for example bouncing on a surface, was exceptionally different from the previous one even though the two collision locations were very close.
+
+Although the last method described in section \ref{sec:sound_variation} of chapter \ref{ch:theory} appears to be the best solution, we did not implement it in this thesis due to the inability of Unity\textregistered to give us data about the exact point of the object that participated in the collision.
+
+Hence, we decided to carry on with another method where we separated each object into similar ``sound areas'' and simplified the calculations by assuming that each area produces the exact same sound when struck. Therefore, during measurements, we conducted one recording for each one of these areas, ending up with 4-5 different amplitude matrices for each object instead of thousands.
+
 \section{User Interface}
 Here we will describe the \textit{user interface (UI)} of the tool, where sound designers are able to choose the sound they prefer for every object.
 
@@ -191,11 +200,11 @@ Another setting that sound designer is able to tweak is the object roughness. Ev
 We used the Heavy \cite{bib:heavy} compiler to convert the Pd patches described above into Unity compatible C\# code. However, we needed to implement several more scripts for actions like 
 \begin{inparaenum}[1)]
 \item Identify the type of the object and assign the corresponding modal data
+\item Calculate the scale of the object if any
 \item Detect which point of the object collided and assign the corresponding modal data
 \item Calculate the impact force
 \item Calculate distance traveled when rolling
 \item Start an impact, rolling or scratching sound 
-\item Calculate the average scale of an object
 \end{inparaenum}.   
 
 \subsection{Scaling}
@@ -227,7 +236,7 @@ END IF
 
 
 \subsection{Excitation of Impact Sounds}
-This is were the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene and it is identified by the program when two collider Unity\textregistered components attached to two different objects touch each other. Below we will describe what is done inside the Unity's build-in function \textit{OnCollisionEnter} \cite{bib:unity_doc}, when an object enter a collision.
+This is were the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene and it is identified by the program when two collider Unity\textregistered components attached to two different objects touch each other. Below we will describe what is done inside the Unity's build-in function \textit{OnCollisionEnter} \cite{bib:unity_doc}, when an object enters a collision.
 
 The first thing that happens when a collision takes place, is to identify what kind of object is the one that collided with something, and which part of the object collided. Hence, a function is called which detects the type of the object using the tag manager. Tag manager holds all available tags. Tags are used to group similar game objects and make them retrievable from scripts. After type of object is identified, the variable used for object perimeter (used for rolling sound) is assigned to its equivalent value and then the modal data (frequencies and amplitudes) that correspond to this type of objects are assigned to the variable used from the algorithm.
 
@@ -256,6 +265,8 @@ The decision whether an object is rolling or sliding on a surface is made using 
 \omega_{magnitude} = \sqrt{\omega_x^2+\omega_y^2+\omega_z^2}
 \end{equation}
 where $\omega_x = \frac{\theta_x}{t}, \omega_y = \frac{\theta_y}{t}, \omega_z = \frac{\theta_z}{t}$ and $\theta_x, \theta_y, \theta_z$ the angular displacement of the $x, y, z$ axis respectively and $t$ the amount of time this displacement lasted. In Unity it is referred to as (\textit{rigidbody.angularVelocity.magnitude}) \cite{bib:unity_doc}. More specifically, when angular velocity magnitude is over $1$, means that the object is rolling, otherwise it is not and providing that linear velocity is non-zero, means that the object is sliding on the surface. \Todo{why 1 is the border? maybe because (0.0,0.0,0.0) angular velocity gives 0.smth in magnitude}
+
+\Todo{add an Optimization section maybe?}
 
 
 
