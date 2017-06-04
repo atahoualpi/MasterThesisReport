@@ -7,7 +7,7 @@
 
 All synthetic sounds have been created in Pd patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity. This C\# script is attached to the GameObject in the scene so that the sound is processed within the game world.
 
-We have created our own script that assigns to every one of the objects  the modal parameters we extracted in the analysis part with the ChucK code. This is done independently of synthesis methods used here below.
+We have created our own script that assigns to every one of the objects  the modal parameters we extracted in the analysis part with the ChucK code. This is done independently of the synthesis methods used here below.
 
 \section{Impact Sounds}
 %\Todo{decribe the patch, describe the sound (starts low, goes to max ampl and then decays etc)}\\
@@ -28,7 +28,7 @@ We also translate into Pd the expression $e^{-d_n t}$ which corresponds to the d
       \label{fig:dampedsignal}
 \end{figure}
 
-The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. \colorbox{pink}{For this we calculate the kinetic energy with Unity's physics components}. As described in \cite{farnell2010designing}, before sending the signal to the DAC we pass it through a clipper that gives richer harmonics and produces brighter sounds the stronger the impact is.
+The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. \colorbox{pink}{For this we calculate the kinetic energy with Unity's physics components}. As described in \cite{farnell2010designing}, before sending the signal to the DAC we pass it through a clipper. This gives richer harmonics and produces brighter sounds the harder the impact is \cite{aramaki2009thinking}.
 
 The patch produces an impact sound whenever the OnCollisionEnter method from Unity is called. This is done when the collider that has the script attached to it has begun to touch another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in \ref{eq:modal_response} to zero which increases over time making the sound decay.
 
