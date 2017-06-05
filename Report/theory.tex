@@ -15,10 +15,10 @@ THis is smth done:
 \end{equation}
 where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time for the vibration amplitude to decay to $1/e$ of its original value after the object is struck  and $f$ is the vibration frequency\cite{giordano2006material}.
 
-\paragraph{Modal parameter extraction\\}
 \begin{itemize}
+\item  Florens and Cadoz (The physical model: modeling and simulating the instrumental universe): the first to introduce modeling of surface vibrations with physical models
 \item Van den Doel (Scanning physical interaction behavior of 3D objects): robotic device to measure impulse response of an object being struck in different points
-\item  O`Brien et al (Synthesizig sounds from rigid-body simulation): FEM
+\item  O`Brien et al (Synthesizig sounds from Physically Based Motion): FEM (very accurate cause its based on physically measured data but very complicated to extract and require too much processing power)
 \item Raghuvanshi and Lin (Interactive sound synthesis for large-scale environments.): spring-mass system approximation
 \item Ren,Yeh,Lin (Example-Guided Physically Based Modal Sound Synthesis): one simple recording
 \item PHYSIS project: PHYsically informed and Semantically controllable
@@ -97,7 +97,7 @@ Modal analysis is performed before modal synthesis, to extract the necessary dat
 Since every different point being struck produces different deformations on the object, we need matrices of size $N$ ($N$ being the number of struck points of the object). More specifically, we need a vector $\textbf{f}$ of size $\textbf{N}$ corresponding to the modal frequencies of every point, a vector $\textbf{d}$ of size $\textbf{N}$ corresponding to the \colorbox{pink}{damping ratios} and a matrix $\textbf{A}$ of size $\textbf{NxK}$, where $K$ is the number of modal frequencies calculated in one point, which corresponds to the amplitudes of each mode in every point of the object. All the above gives the modal model which can be symbolized as $\textbf{\textit{M = \{f, d, A\}}}$ \cite{van2001foleyautomatic}.
  
 \section{Modal Synthesis}\label{sec:modal_synth}
-In the modal synthesis part, using the data extracted above, we synthesize the struck sound corresponding to the object. There are different ways to synthesize impact sounds, two of them being ``Sinusoidal Additive Synthesis'' and ``Filter-based Modal Synthesis''. The former uses exponential damping and the latter band-pass filters where the damping is the Q-factor of the filter. 
+In the modal synthesis part, using the data extracted above, we synthesize the struck sound corresponding to the object. When an object is struck, a sound envelope (\textbf{ADSR}) is produced. Starting with the \textit{attack} which is the characteristic sound of the object, often named as ``timbre'', a number of high frequencies is produced which \textit{decay} rather quickly, leaving space for the low frequencies which \textit{sustain} for some time depending on the material of the object. At the end we have the \textit{release} when sound stops producing. There are different ways to synthesize impact sounds, two of them being ``Sinusoidal Additive Synthesis'' and ``Filter-based Modal Synthesis''. The former uses exponential damping and the latter band-pass filters where the damping is the Q-factor of the filter. 
 
 \subsection{Sinusoidal Additive Synthesis}\label{sec:sin_synth}
 

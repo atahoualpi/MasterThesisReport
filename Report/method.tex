@@ -4,12 +4,12 @@
 A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present study.
 
 \section{Overview of our tool}
-The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio.
+The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio. The challenge we want to outrun is to offer realistic real-time and event affected audio, without consume more CPU cycles than the limited offered for audio in games.
 
 \Todo{replace figure  with a better one}
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.5\textwidth]{synthesisChart.png}
+    \includegraphics[width=\textwidth]{synthesisChart.png}
       \caption{Sound Synthesis Procedure.}
       \label{fig:synth_proc}
 \end{figure}
@@ -52,6 +52,8 @@ We chose ChucK language at this point of the thesis, because of its build-in fun
 For reasons that will be explained below, we had to attach only one pd patch to every 3D object in the demo. Therefore, all synthesized sounds (impact, rolling and scratching) are being synthesized under one main pd patch. 
 
 The main part of the re-synthesis patch is the resonator. Using band-pass filters it gives the impulse response of an object struck at a specified point. It also clips the signal to give more brightness and harmonics. \Todo{develop more}
+
+For optimization reasons, we lowered the number of modes down to 10 instead of 20 that we initially had, since the extra 10 did not add any useful information to the output sound. In addition, we clipped the range of frequencies to the human audible range of 20Hz to 20KHz. 
 
 \section{Heavy Compiler}
 \textbf{Heavy} is a compiler that generates audio plugins from pd patches in interactive soudn and music applications \cite{bib:heavy}. In this thesis we used it to compile pd patches into Unity audio plugins. Heavy's interface is their website where users upload patches and then are able to download the corresponding plugins and put them into their applications. The plugins we used consist of DLL files and a C\# (Unity code) script that allows communication of the plugins with the rest of the script and also enables the sound card to play sounds.
