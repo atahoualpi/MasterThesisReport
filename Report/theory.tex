@@ -16,6 +16,7 @@ THis is smth done:
 where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time for the vibration amplitude to decay to $1/e$ of its original value after the object is struck  and $f$ is the vibration frequency\cite{giordano2006material}.
 
 \begin{itemize}
+\item (Precomputed Acoustic Transfer: Output-sensitive, accurate sound generation for geometrically complex vibration sources) has a good related work chapter
 \item  Florens and Cadoz (The physical model: modeling and simulating the instrumental universe): the first to introduce modeling of surface vibrations with physical models
 \item Van den Doel (Scanning physical interaction behavior of 3D objects): robotic device to measure impulse response of an object being struck in different points
 \item  O`Brien et al (Synthesizig sounds from Physically Based Motion): FEM (very accurate cause its based on physically measured data but very complicated to extract and require too much processing power)
@@ -25,15 +26,17 @@ where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time
 Interactive Sound synthesis
 \item Van del Doel (FoleyAutomatic: physically-based sound effects for interactive simulation and animation): modal models derived from sound samples
 \item Brandon Lloyd et al. (Sound Synthesis for Impact Sounds in Video Games): short-time Fourier Transform
-\item Perry Coook (Real Sound Synthesis for Interactive Applications): a review of the work done on this field.
+\item Perry Coook (Real Sound Synthesis for Interactive Applications): a review of the work done on this field (physically-based synthesis in computer music).
 \end{itemize}
 \Todo{turn the bullets into text}
 
 
 This thesis adopted the parameter extraction from recordings. We used everyday objects, making it easy for us to record sounds and model them on the computer. We also chose this method to make it easy for users of our product to extend the repository of physically-based impact sounds of objects.
 
-\section{How physical attributes affect sound}
-\colorbox{pink}{\Todo{Note smwhere that we're using only vibrating solid objects (not liquids).Gaver\cite{gaver1993world} pg10 has info}}
+\section{Sound Production}
+In this thesis we focus on sound produced by solid objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces to vibrate and emit sound waves to the environment. Sound waves reverberate on and get absorbed from objects of the environment before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not environmental ones, below we explain in depth how each of these physical attributes affect sound.
+
+\subsection{How physical attributes affect sound}
 
 Impact sounds consist of an excitation that dampens over time. Hence, the amplitude of the oscillation depends only on the damping. On the other hand, scraping sounds consist of continuous supply of energy that adds to the amplitude value on top of the damping of the oscillation throughout the object interaction. In addition, the force of the interaction plays the most significant role for the amplitude of the oscillation. The stronger the force, the biggest it imposes the amplitude value to be - and the louder the sound \cite{gaver1993world}.
 
@@ -95,7 +98,7 @@ Modal analysis is performed before modal synthesis, to extract the necessary dat
     \label{tab:extracted_data}
 \end{table} 
 
-Since every different point being struck produces different deformations on the object, we need matrices of size $N$ ($N$ being the number of struck points of the object). More specifically, we need a vector $\textbf{f}$ of size $\textbf{N}$ corresponding to the modal frequencies of every point, a vector $\textbf{d}$ of size $\textbf{N}$ corresponding to the \colorbox{pink}{damping ratios} and a matrix $\textbf{A}$ of size $\textbf{NxK}$, where $K$ is the number of modal frequencies calculated in one point, which corresponds to the amplitudes of each mode in every point of the object. All the above gives the modal model which can be symbolized as $\textbf{\textit{M = \{f, d, A\}}}$ \cite{van2001foleyautomatic}.
+Since every different point being struck produces different deformations on the object, we need matrices of size $N$ ($N$ being the number of struck points of the object). More specifically, we need a vector $\textbf{f}$ of size $\textbf{N}$ corresponding to the modal frequencies of every point, a vector $\textbf{d}$ of size $\textbf{N}$ corresponding to the damping ratios and a matrix $\textbf{A}$ of size $\textbf{NxK}$, where $K$ is the number of modal frequencies calculated in one point, which corresponds to the amplitudes of each mode in every point of the object. All the above gives the modal model which can be symbolized as $\textbf{\textit{M = \{f, d, A\}}}$ \cite{van2001foleyautomatic}.
  
 \section{Modal Synthesis}\label{sec:modal_synth}
 In the modal synthesis part, using the data extracted above, we synthesize the struck sound corresponding to the object. When an object is struck, a sound envelope (\textbf{ADSR}) is produced. Starting with the \textit{attack} which is the characteristic sound of the object, often named as ``timbre'', a number of high frequencies is produced which \textit{decay} rather quickly, leaving space for the low frequencies which \textit{sustain} for some time depending on the material of the object. At the end we have the \textit{release} when sound stops producing. There are different ways to synthesize impact sounds, two of them being ``Sinusoidal Additive Synthesis'' and ``Filter-based Modal Synthesis''. The former uses exponential damping and the latter band-pass filters where the damping is the Q-factor of the filter. 
@@ -117,9 +120,9 @@ The frequencies used for sound synthesis are the ones at which an object vibrate
 
 Mathematically, at a struck point $k$ when vibrating in mode $n$, the impulse response of the model is:
 \begin{equation}\label{eq:modal_response}
-y_k = \sum\limits_{n=1}^{N} A_{nk}\ e^{-d_n t}\ \cos(2 \pi f_nt)
+y_k(t) = \sum\limits_{n=1}^{N} A_{nk}\ e^{-d_n t}\ \cos(2 \pi f_nt)
 \end{equation}
-if $t>=0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}.
+if $t>=0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}. The decay rate $d_n$ of each mode is object-dependent, determines the energy loss due to the vibration and is related to the material of the object, while the amplitudes $A_n$ and the frequencies $f_n$ are the resonant data extracted during the modal analysis.
 
 \subsection{Filter-based Modal Synthesis}\label{sec:add_synth}
 
