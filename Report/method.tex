@@ -14,9 +14,9 @@ The target of this thesis is to provide sound designers with an easy-to-use tool
       \label{fig:synth_proc}
 \end{figure}
 
-To obtain this tool, we followed the procedure described in figure \ref{fig:synth_proc}. More specifically, the first step we carried out was to find several everyday objects, separate them into different areas that sound similar when struck and record impact sounds for each area. Afterwards, we used those recordings to extract data needed for sound synthesis. At the same time, we made a 3d model of every object we used. Next, we generated two different PureData patches, introducing two different synthesis methods. 
+To obtain this tool, we followed the procedure described in figure \ref{fig:synth_proc}. More specifically, the first step we carried out was to find several everyday objects, separate them into different areas that sound similar when struck and record impact sounds for each area. Afterwards, we used those recordings to extract data needed for sound synthesis. At the same time, we made a 3D model of every object we used. Next, we generated two different PureData patches, introducing two different synthesis methods. 
 
-Then, we combined the 3d models with their corresponding data and the synthesis patches inside Unity\textregistered software. This is where depending on the point where an object is struck, the corresponding frequencies and amplitudes are assigned to the patch and a sound is sent to the audio DSP chain.
+Then, we combined the 3D models with their corresponding data and the synthesis patches inside Unity\textregistered software. This is where depending on the point where an object is struck, the corresponding frequencies and amplitudes are assigned to the patch and a sound is sent to the audio DSP chain.
 
 \section{Recordings}
 To obtain the necessary data we performed recordings of the sound produced of the object when being hit. 
@@ -36,7 +36,7 @@ To create the 3D models we used Maya Autodesk software \cite{bib:maya} and expor
 \section{Chuck language}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
 
-\paragraph{Modal features extraction code\\}
+\paragraph{Modal data extraction code\\}
 We used the ChucK language at the starting point of our thesis to identify and extract the peaks of the recorded ``wav'' files. The algorithm used in this part of the thesis is made by Perry Cook for the course \textbf{``Physics-Based Sound Synthesis for Games and Interactive Systems''} held by \textit{Perry Cook} and \textit{Julius O. Smith} at \textbf{Kadenze Academy} \cite{bib:physicsbasedcourse}.
 
 From a FEM analysis one can find out that each object vibrates in a very high number of modes. Although, most of them are inaudible and do not contribute to the sound model. Thus, we can easily define \textit{ten} to be the total number of peaks identified. After some trials, we found out that \textit{five} peaks are already enough. However, the authors recommend to use twice the sufficient number, hence \textit{ten} for our case. Afterwards, the algorithm having taken a recording as input, computes its histogram and identifies its peaks. The frequencies where peaks occur are the modal frequencies candidates. Depending on the numbers of peaks we chose, the algorithm outputs a normalization between high and low peaks. Finally, the algorithm finds the maximum value of the signal on each peak, calculating the corresponding amplitude of each mode.
@@ -44,6 +44,47 @@ From a FEM analysis one can find out that each object vibrates in a very high nu
 We chose ChucK language at this point of the thesis, because of its build-in functions to manipulate sound like \textit{Fast Fourier Transform (FFT)} of input audio samples and windows functions \cite{bib:chuck_doc}. Another option to extract the peaks of the sound waves was to use python programming language on audio files, but this would request to program a number of functions or include a number of libraries that perform actions like file input/output, FFT and more. 
 
 \Todo{should we explain why you used FFT?} 
+
+\paragraph{Modal data\\}
+Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each graph corresponds to one of the ``sound areas'' we have divide it.
+ 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{cup0cm.png}
+        \caption{Top}
+        \label{fig:cup_top}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{cup2c5cm.png}
+        \caption{Upper body}
+        \label{fig:cup_upper}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{cup4c5cm.png}
+        \caption{Lower body}
+        \label{fig:lower}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{cup6cm.png}
+        \caption{Bottom}
+        \label{fig:cup_bottom}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{cuphandle.png}
+        \caption{Handle}
+        \label{fig:cup_handle}
+    \end{subfigure}
+    \caption{The frequencies and their corresponding peaks for each part of the cup object.}\label{fig:cup_data}
+\end{figure}
  
 \section{PureData}
 \textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}.

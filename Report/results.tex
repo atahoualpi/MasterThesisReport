@@ -1,4 +1,4 @@
-\chapter{Results \& Discussion}\label{ch:results}
+\chapter{Analysis}\label{ch:analysis}
 
 \section{Results}
 
@@ -36,7 +36,14 @@ In our tool, however, when profiling a demonstration of a wine bottle rolling do
       \label{fig:profile}
 \end{figure} 
 
-\Todo{demo with a lot of objects and check if it needs to reduce quality}
+When testing the limits of the tool, we found out that in Filter-based method a total of 16 objects can be active at the same time before audio gets distorted. The corresponding number for the Sinusoidal method is 12, since more calculations take place. Those numbers were obtained on the laptop mentioned above and using the \textit{Unity Audio Profiler window} and represent the amount of \textbf{``Playing Audio Sources''} without the \textbf{``Total Audio CPU''} exceeding $100\%$ (see figure \ref{fig:audio_profile}).
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\textwidth]{audio_profile.PNG}
+      \caption{The audio profiler view of Unity Editor when a total of 16 objects are enabled in the scene using the filter-based method for audio synthesis.}
+      \label{fig:audio_profile}
+\end{figure}
 
 \subsection{Bugs}
 \begin{itemize}
