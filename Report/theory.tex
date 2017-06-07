@@ -20,6 +20,7 @@ where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time
 \item  Florens and Cadoz (The physical model: modeling and simulating the instrumental universe): the first to introduce modeling of surface vibrations with physical models
 \item Van den Doel (Scanning physical interaction behavior of 3D objects): robotic device to measure impulse response of an object being struck in different points
 \item  O`Brien et al (Synthesizig sounds from Physically Based Motion): FEM (very accurate cause its based on physically measured data but very complicated to extract and require too much processing power)
+\item D. L. James, J. Barbic, and D. K. Pai (Precomputed Acoustic Transfer: Output-sensitive, accurate sound generation for geometrically complex vibration sources): BEM
 \item Raghuvanshi and Lin (Interactive sound synthesis for large-scale environments.): spring-mass system approximation
 \item Ren,Yeh,Lin (Example-Guided Physically Based Modal Sound Synthesis): one simple recording
 \item PHYSIS project: PHYsically informed and Semantically controllable
@@ -34,7 +35,19 @@ Interactive Sound synthesis
 This thesis adopted the parameter extraction from recordings. We used everyday objects, making it easy for us to record sounds and model them on the computer. We also chose this method to make it easy for users of our product to extend the repository of physically-based impact sounds of objects.
 
 \section{Sound Production}
-In this thesis we focus on sound produced by solid objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces to vibrate and emit sound waves to the environment. Sound waves reverberate on and get absorbed from objects of the environment before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not environmental ones, below we explain in depth how each of these physical attributes affect sound.
+
+For computer sounds to be produced, force models are used as input to the sound synthesis algorithm. In other words physics is used as the excitation parameter to produce sound. \cite{van2003modal} refers to four different interaction models that produce the excitation force.
+
+\begin{enumerate}
+\item Impact force, produced during collisions,
+\item Continuous contact force, produced during rolling or scratching of an object,
+\item Combustion engine forces and
+\item Live data streams
+\end{enumerate}
+
+This thesis examines sounds produced by the first two models. Impact forces are applied when two objects collide. They last for a short period of time and depend on the physical attributes of the objects. Constant contact forces are produced while an object is rolling on a surface of scratching/sliding on it. They can be modeled as successive impact forces, where one adds on top of the other. The distinction between roll or scratch depends on the shape of the object and on the hardness of both surfaces.
+
+In this thesis we focus on sound produced by rigid-body objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces to vibrate and emit sound waves to the environment. Sound waves reverberate on and get absorbed from objects of the environment before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not environmental ones, below we explain in depth how each of these physical attributes affect sound.
 
 \subsection{How physical attributes affect sound}
 
@@ -42,7 +55,7 @@ Impact sounds consist of an excitation that dampens over time. Hence, the amplit
 
 Furthermore, the material of the interacting objects affects their vibrating oscillation. \colorbox{pink}{Damping factor is a material-specific attribute and the bigger it is, the faster the objects lose} \colorbox{pink}{energy and thus the oscillation lasts shorter. For example, wood has way bigger damping}\\ \colorbox{pink}{factor than metal and this is why they produce a ``thud'' and a ``ringy'' sound respectively. }
 
-Moreover, the configuration of the object also affect its vibration. The size of it determines how high or low pitched sound it will produce. More specifically, the smaller the object the more high pitched will be the sound.  
+Moreover, the configuration of the object also affects its vibration. The size of it determines how high or low pitched sound it will produce. More specifically, the smaller the object the more high pitched will be the sound. Elasticity, on the other hand, influences the impact force since the more elastic an object the steeper the increase of the size of colliding area.  
 
 Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information} affected by each physical attribute. 
 
@@ -71,8 +84,6 @@ Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information}
     \caption{Acoustic effects of source attributes \cite{gaver1993world}.}
     \label{tab:acoustic_effects}
 \end{table}
-
-
 
 \section{Modal Analysis}\label{sec:modal_analysis}
 In this thesis we are using solid objects that are struck in different ways to produce sound. These ways could be falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
@@ -122,7 +133,7 @@ Mathematically, at a struck point $k$ when vibrating in mode $n$, the impulse re
 \begin{equation}\label{eq:modal_response}
 y_k(t) = \sum\limits_{n=1}^{N} A_{nk}\ e^{-d_n t}\ \cos(2 \pi f_nt)
 \end{equation}
-if $t>=0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}. The decay rate $d_n$ of each mode is object-dependent, determines the energy loss due to the vibration and is related to the material of the object, while the amplitudes $A_n$ and the frequencies $f_n$ are the resonant data extracted during the modal analysis.
+if $t>=0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}. The decay rate $d_n$ of each mode is object-dependent, determines the energy loss due to the vibration and is related to the material of the object, while the amplitudes $A_n$ and the frequencies $f_n$ are the resonant data extracted during the modal analysis. Modal frequencies are a set of frequencies that determine the object and remain the same, while amplitudes are vertex-specific and change depending on the excitation point.
 
 \subsection{Filter-based Modal Synthesis}\label{sec:add_synth}
 
