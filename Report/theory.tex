@@ -171,7 +171,7 @@ There are several methods to achieve spatial variation on sound produced from th
 \begin{enumerate}
 \item The most accurate method is to perform FEM analysis on the object and distill as many amplitude matrices as the number of points consisting it. However, this method needs a lot of memory to store the data and computational power to access them.
 \item Another less precise method is to separate the object into areas and compromise that each point belonging in the same area sound exactly the same. Thus, the amount of stored data decreases in a great deal when at the same time the sounding result is almost the same.
-\item A third method is to store only one amplitude matrix and randomize the values for each impact sound, but this can lead to an unexpected behavior.
+\item A third method is to store only one amplitude matrix and randomize the values for each impact sound, but this can lead to sounds inconsistent with the collision location.
 \item Finally, a better approach to the previous method is to retain the same amplitude values for all points of the object, but apply a texture map on the object which indicates changes on the pitch of the sound all over the object. For instance, the near-edge points of an object produce a higher-pitched sound than the ones in the center of each faces \cite{lloyd2011sound}. 
 \end{enumerate}
 
