@@ -6,15 +6,30 @@
 
 \subsection{Did we manage to achieve what we wanted?}
 \begin{itemize}
-\item do we think we are successful?
-\item did we manage to do what we wanted?
-\item did we prove what we wanted to prove?
-\item is it really a useful tool?
-\item who is it targeting as a user?
+\item \colorbox{pink}{do we think we are successful?}
+\item \colorbox{pink}{did we manage to do what we wanted?}
+\item \colorbox{pink}{did we prove what we wanted to prove?}
+\item \colorbox{pink}{is it really a useful tool?}
+\item \colorbox{pink}{who is it targeting as a user?}
 \end{itemize} 
 
-\section{What did we do new?}
+Overall, the work on this thesis proved successful. We managed to replace pre-recorded sound effects with procedural audio. In addition, we made this audio physics-based and influenced by the context of the impact. One big challenge that was achieved is the ability to choose different material for every object, which extends our tool for imaginary game scenarios. \Todo{talk about why metals sound bad}
+
+An important drawback is the difficulty to extend the tool with new objects, but we include a detailed guide of how to do it in appendix \ref{ap:guide}. However, we managed to make it easy-to-use with the already existing objects, by implementing high level controllers that are easily understandable from a designer. We tried to keep the UI similar to the Unity's UI, so game developers can use the tool without further need of sound design knowledge. Therefore, with this tool we are not only targeting sound designers who desire more realistic sound effects, but also game developers with knowledge of the Unity Editor and no further sound design knowledge.
+
+\subsubsection{Bugs}
+\begin{itemize}
+\item you have to press apply on prefabs
+\item the procedure of putting the freq and ampl data in
+\item it is object specific (not a bug actually, more like a drowback)
+\item lack of acoustical richness that might characterize synthetic signals \cite{giordano2006material}
+\item some objects are not modal
+\end{itemize}
+
+\subsection{What did we do new?}
 Combined all three major sounds inside a game or an application (impact, rolling, scratching) and made them available and ready-to-use to developers.
+
+Bridged university with industry by implementing a tool inside the game engine.
 
 \section{Discussion}
 
@@ -22,6 +37,7 @@ Combined all three major sounds inside a game or an application (impact, rolling
 This tool can be used for development of all sorts of games that include object interaction. They can vary from indoor AR applications to open world environment games running in consoles. 
 
 \subsection{Why our work can be used in VR/AR?}
+Virtual and augmented reality are becoming more and more widespread technologies. There are multiple applications where they can prove to be very useful both in everyday life and entertainment. Focusing on AR, our thesis' goal is to develop a framework for sounds produced by object interactions. We designed the sounds to be realistic and event-based, so they can adapt into an AR environment where a big portion of the objects are indeed real.
 
 
 \subsection{CPU demands}
@@ -45,20 +61,12 @@ When testing the limits of the tool, we found out that in Filter-based method a 
       \label{fig:audio_profile}
 \end{figure}
 
-\subsection{Bugs}
-\begin{itemize}
-\item you have to press apply on prefabs
-\item the procedure of putting the freq and ampl data in
-\item it is object specific (not a bug actually, more like a drowback)
-\item lack of acoustical richness that might characterize synthetic signals \cite{giordano2006material}
-\item some objects are not modal
-\end{itemize}
-
 \subsection{How can we improve our work?}
 \begin{itemize}
 \item take into account the environment (reverberation etc)
 \item make objects destructible
 \item randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)
+\item spatialize at the same time with the synthesis
 \end{itemize}
 
 \subsection{Pros and Cons of Procedural Game Audio}
