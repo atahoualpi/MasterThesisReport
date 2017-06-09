@@ -87,7 +87,7 @@ Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each grap
 \end{figure}
  
 \section{PureData}
-\textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}.
+\textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}. We chose to use this software as our synthesis engine mainly because of the ability to compile the patches into C\# code, as explained below in section \ref{sec:heavy}. Another important reason for choosing it is the possibility of real-time parameter manipulation and easy testing during implementation period.
 
 \paragraph{Re-synthesis patch\\}
 For reasons that will be explained below, we had to attach only one pd patch to every 3D object in the demo. Therefore, all synthesized sounds (impact, rolling and scratching) are being synthesized under one main pd patch. 
@@ -96,8 +96,10 @@ The main part of the re-synthesis patch is the resonator. Using band-pass filter
 
 For optimization reasons, we lowered the number of modes down to 10 instead of 20 that we initially had, since the extra 10 did not add any useful information to the output sound. In addition, we clipped the range of frequencies to the human audible range of 20Hz to 20KHz. 
 
-\section{Heavy Compiler}
+\section{Heavy Compiler}\label{sec:heavy}
 \textbf{Heavy} is a compiler that generates audio plugins from pd patches in interactive soudn and music applications \cite{bib:heavy}. In this thesis we used it to compile pd patches into Unity audio plugins. Heavy's interface is their website where users upload patches and then are able to download the corresponding plugins and put them into their applications. The plugins we used consist of DLL files and a C\# (Unity code) script that allows communication of the plugins with the rest of the script and also enables the sound card to play sounds.
+
+\subsection{Why not OSC?}
 
 \section{Unity\textregistered}
 \textbf{Unity\textregistered} is a game engine software. This is where all previous work is combined together and gives the final product. For the purpose of this thesis, a sample scene is made inside unity where objects are struck in several points and produce different sounds. 

@@ -15,7 +15,7 @@
 
 Overall, the work on this thesis proved successful. We managed to replace pre-recorded sound effects with procedural audio. In addition, we made this audio physics-based and influenced by the context of the impact. One big challenge that was achieved is the ability to choose different material for every object, which extends our tool for imaginary game scenarios. \Todo{talk about why metals sound bad}
 
-An important drawback is the difficulty to extend the tool with new objects, but we include a detailed guide of how to do it in appendix \ref{ap:guide}. However, we managed to make it easy-to-use with the already existing objects, by implementing high level controllers that are easily understandable from a designer. We tried to keep the UI similar to the Unity's UI, so game developers can use the tool without further need of sound design knowledge. Therefore, with this tool we are not only targeting sound designers who desire more realistic sound effects, but also game developers with knowledge of the Unity Editor and no further sound design knowledge.
+An important drawback is the difficulty to extend the tool with new objects, but we include a detailed guide of how to do it in appendix \ref{ap:guide}. However, we managed to make it easy-to-use with the already existing objects, by implementing high level controllers that are easily understandable from a designer. We tried to keep the UI similar to the Unity's UI, so game developers can use the tool without further need of sound design knowledge. It is as easy to assing procedurally generated, physics based sound to objects as if you assign a texture to them. Therefore, with this tool we are not only targeting sound designers who desire more realistic sound effects, but also game developers with knowledge of the Unity Editor and no further sound design knowledge.
 
 \subsubsection{Bugs}
 \begin{itemize}
@@ -67,9 +67,22 @@ When testing the limits of the tool, we found out that in Filter-based method a 
 \item make objects destructible
 \item randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)
 \item spatialize at the same time with the synthesis
+\item radiation
 \end{itemize}
 
 \subsection{Pros and Cons of Procedural Game Audio}
-bad quality (not realistic) but more adaptive.\\
+pros\\
+more adaptive (flexible/dynamic).\\
+physics based.\\
 possibility of alternations without extra memory.\\
 less memory space.\\
+no need for time consuming sound library development.\\
+easy to create new sounds.\\
+better for mobile platforms.\\
+
+cons\\
+usually bad quality (not realistic - you can tell it's synthesized).\\
+more processing power.\\
+additional code requirements.\\
+not everyone is familiar with this sound design approach.\\
+not every sound is easy to be produce procedurally.\\
