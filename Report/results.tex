@@ -4,7 +4,7 @@
 
 \subsection{Which Synthesis Method Is Better?}
 
-\subsection{Did we manage to achieve what we wanted?}
+\subsection{Evaluation}
 \begin{itemize}
 \item \colorbox{pink}{do we think we are successful?}
 \item \colorbox{pink}{did we manage to do what we wanted?}
@@ -47,7 +47,7 @@ In our tool, however, when profiling a demonstration of a wine bottle rolling do
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.9\textwidth]{profiling1.PNG}
+    \includegraphics[width=0.9\textwidth]{profiling1_r.PNG}
       \caption{The profiler view of Unity Editor when a wine bottle rolls down a number of platforms.}
       \label{fig:profile}
 \end{figure} 
@@ -56,7 +56,7 @@ When testing the limits of the tool, we found out that in Filter-based method a 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.9\textwidth]{audio_profile.PNG}
+    \includegraphics[width=0.9\textwidth]{audio_profile_r.PNG}
       \caption{The audio profiler view of Unity Editor when a total of 16 objects are enabled in the scene using the filter-based method for audio synthesis.}
       \label{fig:audio_profile}
 \end{figure}
@@ -67,7 +67,8 @@ When testing the limits of the tool, we found out that in Filter-based method a 
 \item make objects destructible
 \item randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)
 \item spatialize at the same time with the synthesis
-\item radiation
+\item radiation and propagation (Interactive Acoustic Transfer Approximation for Modal Sound has a method)
+\item use only one recording and interpolate for all areas
 \end{itemize}
 
 \subsection{Pros and Cons of Procedural Game Audio}
