@@ -84,14 +84,16 @@ The same way we did in the previous method, we initialize all ten frequencies an
 
 Every filter is characterized by its Q factor which is directly related to the damping. The higher the value of Q, the narrower the bandwidth and the less the resonator becomes damped. Thus, Q determines the material of the impacted object \cite{gaver1993we}. By manipulating Q we can obtain different material sounds. Through experimentation we have found values of Q that range from about 20 for plastic to 5000 for metal. 
 
-To cause the object to sound we use a short impulse signal that excites the filter. The amplitude of the signal goes from 1 to 0 in 2 milliseconds as represented in figure \ref{fig:impulse}. This impulse is multiplied by the value of the kinetic energy when the object impacts with another. 
+To cause the object to sound we use an impulse signal that excites the filter. The amplitude of the signal is 1 at $t=0$ and 0 everywhere else, as represented in figure \ref{fig:impulse}. This impulse is multiplied by the value of the kinetic energy when the object impacts with another. 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.5\textwidth]{impulse.png}
+    \includegraphics[width=0.5\textwidth]{impulse2.png}
       \caption{Impulse signal used to excite the bandpass filter.}
       \label{fig:impulse}
 \end{figure} 
+
+Pd does not include a build-in impulse signal, thus we had to construct one. We created the array shown in figure \ref{fig:impulse} and read the values from it, as the input. Since the lowest amount of time calculated by Pd proved to be 2 milliseconds, it was not possible to read a small fragment of the input signal. Therefore, we made the impulse array to be of size 441, which is the number of samples per 10 milliseconds and we read the input array in a duration of the frame rate.
 
 The output signal of each of the ten filters is multiplied by the corresponding amplitude $A_n$ of the mode. All ten resulting signals are added together. The signal is sent through a clipper as we did in the previous synthesis method.
 
