@@ -4,7 +4,7 @@
 A combination of the methods described in Chapter \ref{ch:theory} is proposed in the present study.
 
 \section{Overview of our tool}
-The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio. The challenge we want to outrun is to offer realistic real-time and event affected audio, without consume more CPU cycles than the limited offered for audio in games.
+The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio. The challenge we want to outrun is to offer realistic real-time and event affected audio, without consuming more CPU cycles than the limited offered for audio in games.
 
 \Todo{replace figure  with a better one}
 \begin{figure}[H]
@@ -14,11 +14,9 @@ The target of this thesis is to provide sound designers with an easy-to-use tool
       \label{fig:synth_proc}
 \end{figure}
 
-To obtain this tool, we followed the procedure described in figure \ref{fig:synth_proc}. More specifically, the first step we carried out was to find several everyday objects, separate them into different areas that sound similar when struck and record impact sounds for each area. Afterwards, we used those recordings to extract data needed for sound synthesis. At the same time, we made a 3D model of every object we used. Next, we generated two different PureData patches, introducing two different synthesis methods. 
+To obtain this tool, we followed the procedure described in figure \ref{fig:synth_proc}. More specifically, the first step we carried out was to find several everyday objects, separate them into different areas that sound similar when struck and record impact sounds for each area. Afterwards, we used those recordings to extract data needed for sound synthesis. At the same time, we made a 3D model of every object we used. Next, we generated two different PureData patches, introducing two different synthesis methods. Then, we combined the 3D models with their corresponding data and the synthesis patches inside Unity\textregistered software. At this point, the frequencies and amplitudes corresponding to the  the point of collision are assigned to the patch. The sound is then sent to the audio DSP chain and is played back. 
 
-Then, we combined the 3D models with their corresponding data and the synthesis patches inside Unity\textregistered software. This is where depending on the point where an object is struck, the corresponding frequencies and amplitudes are assigned to the patch and a sound is sent to the audio DSP chain.
-
-\section{Recordings}
+\subsection{Recordings}
 To obtain the necessary data we performed recordings of the sound produced of the object when being hit. 
 
 Since we only used simple shape everyday objects, we could easily assume that nearby points produce almost the same sound and thus separate the object into ``modal areas'' instead of calculating different modal matrices for each point. Tests in users proved that this accuracy-computational complexity trade-off was acceptable. A sample object and its division in areas is shown in figure \ref{fig:pot_sep}.
@@ -30,23 +28,25 @@ Since we only used simple shape everyday objects, we could easily assume that ne
       \label{fig:pot_sep}
 \end{figure} 
 
-\section{3D models}
+\subsection{3D models}
 To create the 3D models we used Maya Autodesk software \cite{bib:maya} and exported them as FBX\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textregistered\ software \cite{bib:unity}.
 
-\section{Chuck language}
+\section{Tools used}
+
+\subsection{Chuck language}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
 
 \paragraph{Modal data extraction code\\}
 We used the ChucK language at the starting point of our thesis to identify and extract the peaks of the recorded ``wav'' files. The algorithm used in this part of the thesis is made by Perry Cook for the course \textbf{``Physics-Based Sound Synthesis for Games and Interactive Systems''} held by \textit{Perry Cook} and \textit{Julius O. Smith} at \textbf{Kadenze Academy} \cite{bib:physicsbasedcourse}.
 
-From a FEM analysis one can find out that each object vibrates in a very high number of modes. Although, most of them are inaudible and do not contribute to the sound model. Thus, we can easily define \textit{ten} to be the total number of peaks identified. After some trials, we found out that \textit{five} peaks are already enough. However, the authors recommend to use twice the sufficient number, hence \textit{ten} for our case. Afterwards, the algorithm having taken a recording as input, computes its histogram and identifies its peaks. The frequencies where peaks occur are the modal frequencies candidates. Depending on the numbers of peaks we chose, the algorithm outputs a normalization between high and low peaks. Finally, the algorithm finds the maximum value of the signal on each peak, calculating the corresponding amplitude of each mode.
+From a FEM analysis one can find out that each object vibrates in a very high number of modes. Although, most of them are inaudible and do not contribute to the sound model. Based on the recommendations of the author Perry Cook, we chose ten as the sufficient amount of modes for the analysis/synthesis.  Afterwards, the algorithm having taken a recording as input, computes its histogram and identifies its peaks. The frequencies where peaks occur are the modal frequencies candidates. Depending on the numbers of peaks we chose, the algorithm outputs the strongest peaks. Finally, the algorithm finds the maximum value of the signal on each peak, calculating the corresponding amplitude of each mode.
 
-We chose ChucK language at this point of the thesis, because of its build-in functions to manipulate sound like \textit{Fast Fourier Transform (FFT)} of input audio samples and windows functions \cite{bib:chuck_doc}. Another option to extract the peaks of the sound waves was to use python programming language on audio files, but this would request to program a number of functions or include a number of libraries that perform actions like file input/output, FFT and more. 
+ChucK language was chosen at this point of the thesis, because of its build-in functions to manipulate sound like \textit{Fast Fourier Transform (FFT)} of input audio samples and windows functions \cite{bib:chuck_doc}. Another option to extract the peaks of the sound waves was to use python programming language on audio files, but this would request to program a number of functions or include a number of libraries that perform actions like file input/output, FFT and more. 
 
 \Todo{should we explain why you used FFT?} 
 
 \paragraph{Modal data\\}
-Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each graph corresponds to one of the ``sound areas'' we have divide it.
+Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each graph corresponds to one of the ``sound areas'' we have divide it into.
  
 \begin{figure}[H]
     \centering
@@ -86,25 +86,25 @@ Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each grap
     \caption{The frequencies and their corresponding peaks for each part of the cup object.}\label{fig:cup_data}
 \end{figure}
  
-\section{PureData}
-\textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}.
+\subsection{PureData}
+\textbf{Pure Data (pd)} is another music programming language. It is open source and the main difference from ChucK language is that pd is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}. We chose to use this software as our synthesis engine mainly because of the ability to compile the patches into C\# code, as explained below in section \ref{sec:heavy}. Another important reason for choosing it is the possibility of real-time parameter manipulation and easy testing during implementation period.
 
 \paragraph{Re-synthesis patch\\}
-For reasons that will be explained below, we had to attach only one pd patch to every 3D object in the demo. Therefore, all synthesized sounds (impact, rolling and scratching) are being synthesized under one main pd patch. 
+All synthesized sounds (impact, rolling and scratching) are being synthesized under one main pd patch. The main part of the re-synthesis patch is the resonator. Using band-pass filters it gives the impulse response of an object struck at a specified point. It also clips the signal to give more brightness and harmonics. \Todo{develop more}
 
-The main part of the re-synthesis patch is the resonator. Using band-pass filters it gives the impulse response of an object struck at a specified point. It also clips the signal to give more brightness and harmonics. \Todo{develop more}
+%For optimization reasons, we lowered the number of modes down to 10 instead of 20 that we initially had, since the extra 10 did not add any useful information to the output sound. In addition, we clipped the range of frequencies to the human audible range of 20Hz to 20KHz. 
 
-For optimization reasons, we lowered the number of modes down to 10 instead of 20 that we initially had, since the extra 10 did not add any useful information to the output sound. In addition, we clipped the range of frequencies to the human audible range of 20Hz to 20KHz. 
-
-\section{Heavy Compiler}
+\subsection{Heavy Compiler}\label{sec:heavy}
 \textbf{Heavy} is a compiler that generates audio plugins from pd patches in interactive soudn and music applications \cite{bib:heavy}. In this thesis we used it to compile pd patches into Unity audio plugins. Heavy's interface is their website where users upload patches and then are able to download the corresponding plugins and put them into their applications. The plugins we used consist of DLL files and a C\# (Unity code) script that allows communication of the plugins with the rest of the script and also enables the sound card to play sounds.
 
-\section{Unity\textregistered}
+\subsubsection{Why not OSC?}
+
+\subsection{Unity\textregistered}
 \textbf{Unity\textregistered} is a game engine software. This is where all previous work is combined together and gives the final product. For the purpose of this thesis, a sample scene is made inside unity where objects are struck in several points and produce different sounds. 
 
 The first part of the Unity implementation is the assignment of modal data to every different area of the object. This is done in $O(n)$ time for $n$ modes. 
 
 \Todo{describe onaudiofilterread()}
 
-\section{Microsoft Hololens Emulator}
+\subsection{Microsoft Hololens Emulator}
 

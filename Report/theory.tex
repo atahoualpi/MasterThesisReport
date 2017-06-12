@@ -19,7 +19,7 @@ where $\alpha = \tau_e$ is the damping coefficient, with $\tau_e$ being the time
 \item (Precomputed Acoustic Transfer: Output-sensitive, accurate sound generation for geometrically complex vibration sources) has a good related work chapter
 \item  Florens and Cadoz (The physical model: modeling and simulating the instrumental universe): the first to introduce modeling of surface vibrations with physical models
 \item Van den Doel (Scanning physical interaction behavior of 3D objects): robotic device to measure impulse response of an object being struck in different points
-\item  O`Brien et al (Synthesizig sounds from Physically Based Motion): FEM (very accurate cause its based on physically measured data but very complicated to extract and require too much processing power)
+\item  O`Brien et al (Synthesizing Sounds from Rigid-Body Simulations): FEM (very accurate cause its based on physically measured data but very complicated to extract and require too much processing power)
 \item D. L. James, J. Barbic, and D. K. Pai (Precomputed Acoustic Transfer: Output-sensitive, accurate sound generation for geometrically complex vibration sources): BEM
 \item Raghuvanshi and Lin (Interactive sound synthesis for large-scale environments.): spring-mass system approximation
 \item Ren,Yeh,Lin (Example-Guided Physically Based Modal Sound Synthesis): one simple recording
@@ -47,13 +47,13 @@ For computer sounds to be produced, force models are used as input to the sound 
 
 This thesis examines sounds produced by the first two models. Impact forces are applied when two objects collide. They last for a short period of time and depend on the physical attributes of the objects. Constant contact forces are produced while an object is rolling on a surface of scratching/sliding on it. They can be modeled as successive impact forces, where one adds on top of the other. The distinction between roll or scratch depends on the shape of the object and on the hardness of both surfaces.
 
-In this thesis we focus on sound produced by rigid-body objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces to vibrate and emit sound waves to the environment. Sound waves reverberate on and get absorbed from objects of the environment before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not environmental ones, below we explain in depth how each of these physical attributes affect sound.
+In this thesis we focus on sound produced by rigid-body objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces vibrate and emit sound waves to the environment. Sound waves impact on other objects in the environment and get reflected and absorbed from them before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not environmental ones, below we explain in depth how each of these physical attributes affect sound.
 
 \subsection{How physical attributes affect sound}
 
 Impact sounds consist of an excitation that dampens over time. Hence, the amplitude of the oscillation depends only on the damping. On the other hand, scraping sounds consist of continuous supply of energy that adds to the amplitude value on top of the damping of the oscillation throughout the object interaction. In addition, the force of the interaction plays the most significant role for the amplitude of the oscillation. The stronger the force, the biggest it imposes the amplitude value to be - and the louder the sound \cite{gaver1993world}.
 
-Furthermore, the material of the interacting objects affects their vibrating oscillation. \colorbox{pink}{Damping factor is a material-specific attribute and the bigger it is, the faster the objects lose} \colorbox{pink}{energy and thus the oscillation lasts shorter. For example, wood has way bigger damping}\\ \colorbox{pink}{factor than metal and this is why they produce a ``thud'' and a ``ringy'' sound respectively. }
+Furthermore, the material of the interacting objects affects their vibrating oscillation. \colorbox{pink}{Damping factor is a material-specific attribute and the bigger it is, the faster the objects lose} \colorbox{pink}{energy and thus the oscillation lasts shorter. For example, wood has way bigger damping}\\ \colorbox{pink}{factor than metal and this is why they produce a ``thud'' and a ``ringy'' sound respectively. } Moreover, in \cite{klatzky2000perception} they have proven that material and spectral characteristics are correlated, for example glass is found to include in general higher frequencies than rubber. 
 
 Moreover, the configuration of the object also affects its vibration. The size of it determines how high or low pitched sound it will produce. More specifically, the smaller the object the more high pitched will be the sound. Elasticity, on the other hand, influences the impact force since the more elastic an object the steeper the increase of the size of colliding area.  
 
@@ -61,24 +61,22 @@ Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information}
 
 \begin{table}[H]
 	\centering
-    \begin{tabular}{ | l | l | p{5cm} |}
+    \begin{tabular}{ | l | l |}
     \hline
-    \textbf{Source} & \textbf{Effects on the Sound Wave} \\ \hline
-    \emph{Interaction} &  \\ 
+    \textbf{\textit{Attribute}} & \textbf{\textit{Effects on the Sound Wave}} \\ \hline
+    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Interaction}} \\ \hline 
     \hspace{8pt} Type & Amplitude, spectrum \\ 
     \hspace{8pt} Force & Amplitude, bandwidth \\
     \hline
-    \emph{Material} &  \\ 
-    \hspace{8pt} Restoring force & Frequency \\ 
+    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Material}} \\ \hline
     \hspace{8pt} Density & Frequency \\
     \hspace{8pt} Damping & Amplitude, frequency \\
     \hspace{8pt} Homogeneity & Amplitude, frequency \\
     \hline
-    \emph{Configuration} &  \\ 
+    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Configuration}} \\ \hline
     \hspace{8pt} Shape & Frequency, spectral pattern \\ 
     \hspace{8pt} Size & Frequency, bandwidth \\
-    \hspace{8pt} Resonating cavities & Spectral pattern \\
-    \hspace{8pt} Support & Amplitude, frequency, spectrum \\
+    \hspace{8pt} Elasticity & Amplitude, frequency \\
     \hline
     \end{tabular}
     \caption{Acoustic effects of source attributes \cite{gaver1993world}.}
@@ -86,14 +84,16 @@ Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information}
 \end{table}
 
 \section{Modal Analysis}\label{sec:modal_analysis}
-In this thesis we are using solid objects that are struck in different ways to produce sound. These ways could be falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
+In this thesis we are using solid objects that are struck in different ways to produce sound, namely falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
 
-Modal analysis studies the response of models under excitation. It uses the 3D model of an object to calculate its modal modes (vibration modes). There are multiple ways to do this, with the most accurate being FEM (Finite Element Method). The objective of FEM is to calculate the natural frequencies of a structure when it vibrates freely.
+Modal analysis studies the response of models under excitation. It uses the 3D model of an object to calculate its modal modes (vibration modes). There are multiple ways to do this, with the most accurate being \gls{FEM} (Finite Element Method). The objective of \gls{FEM} is to calculate the natural frequencies of a structure when it vibrates freely.
 
-Another method for modal analysis is the ``Exampled-guided'', where data get extracted using example recordings of the objects being struck. Using a suitable algorithm it is easy to extract features from the recordings such as the fundamental frequency and its harmonics and the frequency peaks of the signal.
+Another method for modal analysis is the ``Example-guided'', where data get extracted using example recordings of the objects being struck. Using a suitable algorithm it is easy to extract features from the recordings such as the fundamental frequency and its harmonics and the frequency peaks of the signal (amplitudes).
+
+Since it is a time consuming procedure, generally it takes place in the pre-computation phase. Its results are stored and used in real-time phase.
 
 \subsection{Data Extraction}\label{sec:data_extract}
-Modal analysis is performed before modal synthesis, to extract the necessary data. Modal synthesis is the sum of damped oscillators each corresponding to a modal frequency, as it will be discussed further below. The data needed for synthesis and their \colorbox{pink}{origin} are shown in the table \ref{tab:extracted_data}.
+Modal analysis is performed before modal synthesis, to extract the necessary data. Synthesis is a method of generating sound using the provided information, as it will be discussed further below. The data needed for synthesis and the ways we obtained each one of them are shown in the table \ref{tab:extracted_data}.
 
 \begin{table}[H]
 	\centering
@@ -109,14 +109,14 @@ Modal analysis is performed before modal synthesis, to extract the necessary dat
     \label{tab:extracted_data}
 \end{table} 
 
-Since every different point being struck produces different deformations on the object, we need matrices of size $N$ ($N$ being the number of struck points of the object). More specifically, we need a vector $\textbf{f}$ of size $\textbf{N}$ corresponding to the modal frequencies of every point, a vector $\textbf{d}$ of size $\textbf{N}$ corresponding to the damping ratios and a matrix $\textbf{A}$ of size $\textbf{NxK}$, where $K$ is the number of modal frequencies calculated in one point, which corresponds to the amplitudes of each mode in every point of the object. All the above gives the modal model which can be symbolized as $\textbf{\textit{M = \{f, d, A\}}}$ \cite{van2001foleyautomatic}.
+Since every different point being struck produces different deformations on the object, we need matrices to represent the data needed for each point. More specifically, we need a vector $\textbf{f}\sim (K \times 1)$  corresponding to the modal frequencies of every point, a vector $\textbf{d}\sim (K \times 1)$ corresponding to the damping ratios and a matrix $\textbf{A}\sim (K \times N)$, which corresponds to the amplitudes of each mode in every point of the object, where $K$ is the number of modal frequencies calculated in one point and $N$ the number of points. All the above gives the modal model which can be symbolized as $\textbf{M} = \{\textbf{f}, \textbf{d}, \textbf{A}\}$ \cite{van2001foleyautomatic}.
  
 \section{Modal Synthesis}\label{sec:modal_synth}
-In the modal synthesis part, using the data extracted above, we synthesize the struck sound corresponding to the object. When an object is struck, a sound envelope (\textbf{ADSR}) is produced. Starting with the \textit{attack} which is the characteristic sound of the object, often named as ``timbre'', a number of high frequencies is produced which \textit{decay} rather quickly, leaving space for the low frequencies which \textit{sustain} for some time depending on the material of the object. At the end we have the \textit{release} when sound stops producing. There are different ways to synthesize impact sounds, two of them being ``Sinusoidal Additive Synthesis'' and ``Filter-based Modal Synthesis''. The former uses exponential damping and the latter band-pass filters where the damping is the Q-factor of the filter. 
+Modal synthesis is the sum of damped oscillators each corresponding to a modal frequency. In this part, using the data extracted above, we synthesize the struck sound corresponding to the object. When an object is struck, a sound envelope (Attack Decay Sustain Release, \textbf{ADSR}) is produced. Attack is the onset of the signal and is the most influential to the characteristic sound of the object. Some of the frequencies exhibit a fast decay, while others are sustained more.  Finally at the release phase the sound stops. There are different ways to synthesize impact sounds, two of them being ``Sinusoidal Additive Synthesis'' and ``Filter-based Modal Synthesis''. The former uses exponential damping and the latter band-pass filters where the damping is the Q-factor of the filter. 
 
 \subsection{Sinusoidal Additive Synthesis}\label{sec:sin_synth}
 
-This method is based on Fourier theory which states that any sound can be expressed mathematically as a sum of sinusoids, scilicet a periodic curve of an oscillation. The term ``additive'' refers to sound that is generated by adding together the output of multiple sine wave generators which have been modulated by amplitude and frequency envelopes \cite{smith2011spectral}.
+This method is based on Fourier theory which states that any sound can be expressed mathematically as a sum of sinusoids. The term ``additive'' refers to sound that is generated by adding together the output of multiple sine wave generators which are modulated by amplitude and frequency envelopes \cite{smith2011spectral}.
 
 The frequencies used for sound synthesis are the ones at which an object vibrates when struck and are called \textit{resonant modes}. On excitation, the sine waves representing the mode vibrations peak to the designated amplitude and then start decaying over time. High frequency modes decay faster than low frequency ones \cite{lloyd2011sound}, leaving a low-pitched residue named \textit{``tail''}, especially when damping is low.
 
@@ -133,18 +133,19 @@ Mathematically, at a struck point $k$ when vibrating in mode $n$, the impulse re
 \begin{equation}\label{eq:modal_response}
 y_k(t) = \sum\limits_{n=1}^{N} A_{nk}\ e^{-d_n t}\ \cos(2 \pi f_nt)
 \end{equation}
-if $t>=0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}. The decay rate $d_n$ of each mode is object-dependent, determines the energy loss due to the vibration and is related to the material of the object, while the amplitudes $A_n$ and the frequencies $f_n$ are the resonant data extracted during the modal analysis. Modal frequencies are a set of frequencies that determine the object and remain the same, while amplitudes are vertex-specific and change depending on the excitation point.
+if $t\leqslant 0$ and $y_k = 0$ if $t<0$ \cite{van2001foleyautomatic}. The decay rate $d_n$ of each mode is object-dependent, it determines the energy loss due to the vibration and is related to the material of the object. The amplitudes $A_n$ and the frequencies $f_n$ are the resonant data extracted during the modal analysis. Modal frequencies are a set of frequencies that determine the object and remain the same, while amplitudes are vertex-specific and change depending on the excitation point.
 
 \subsection{Filter-based Modal Synthesis}\label{sec:add_synth}
 
 \paragraph{Band-pass Filters\\}\label{par:bpf}
 
-At this point we will give some basic description of the band-pass filter since it is widely used in this thesis. Band-pass filters (BPFs) take a signal as input and give only a range of it as output, attenuating the rest of the frequencies. This range depends on the central frequency $f_c$. A filter of this kind is a result of a cascading of a low-pass and a high-pass filter circuit.
+At this point we will give some basic description of the band-pass filter since it is widely used in this thesis. Band-pass filters (\gls{BPF}s) take a signal as input and let only a range of frequencies to pass while attenuating the rest. This range depends on the central frequency $f_c$ and the bandwidth. A filter of this kind is a result of a cascading of a low-pass and a high-pass filter circuit.
 
-The passing range or ``band'' of frequencies is called \textbf{Bandwidth (BW)}. Defining as 0db the resonant peak, we can find the two cut-off frequencies ($f_{c{_\textsc{lower}}}$ and $f_{c_{\textsc{higher}}}$) at -3dB. The range between them is the bandwidth (equation \ref{eq:bw}). In figure \ref{fig:resp_bpf} we can see the frequency response of a BPF. \cite{bib:bpf}. 
+\textbf{Bandwidth (BW)} is the passing range or ``band'' of frequencies. Defining as 0db the resonant peak, we can find the two cut-off frequencies ($f_{c,low}$ and $f_{c,high}$) at -3dB. The difference between those two is the bandwidth  
 \begin{equation}\label{eq:bw}
-BW = f_{c_{\textsc{higher}}}-f_{c_{\textsc{lower}}}
+BW = f_{c,high}-f_{c,low}.
 \end{equation}   
+In figure \ref{fig:resp_bpf} we can see the frequency response of a BPF \cite{bib:bpf}. 
 
 \begin{figure}[H]
   \centering
@@ -153,9 +154,9 @@ BW = f_{c_{\textsc{higher}}}-f_{c_{\textsc{lower}}}
       \label{fig:resp_bpf}
 \end{figure}
 
-\paragraph{Synthesis\\}\label{par:synth}
+\paragraph{Modal Synthesis\\}\label{par:synth}
 
-This method is also additive, since we are adding the outputs of a number of band-pass filters. To synthesize a sound using this method, we use as many filters as the modal frequencies. The filter takes as input an impulse, the center frequency which is the modal frequency and a \textbf{Quality factor (Q-factor)} which specifies the bandwidth of the filter. The Q-factor is calculated heuristically, depending on the material of the sound and is inversely proportional to the bandwidth ($Q=f_c/BW$), so the lower the Q-factor, the wider the bandwidth and vice-versa. Hence, more or less frequencies will be included in the \colorbox{pink}{audible} range. We call the above structure a \textit{resonator}, which also includes a multiplication with the corresponding amplitude, taken from the $A$ matrix.
+This method is also additive, since we are adding the outputs of a number of band-pass filters. To synthesize a sound using this method, we use as many filters as the modal frequencies. A filter is constructed using modal frequencies of the object as center frequencies and the damping of the material is used to control the \textbf{Quality factor (Q)} of the filter.  The Q-factor is calculated heuristically, depending on the material of the sound and is inversely proportional to the bandwidth ($Q=f_c/BW$), so the lower the Q-factor, the wider the bandwidth and vice-versa. Using amplitudes from matrix \textbf{A} (section \ref{sec:data_extract}), the level of the passing frequencies is controlled and resonators can be created through these filters. 
 
 \begin{figure}[H]
   \centering
@@ -165,15 +166,15 @@ This method is also additive, since we are adding the outputs of a number of ban
 \end{figure}
 
 \subsection{Sound Variations} \label{sec:sound_variation}
-Each point of an object produces a different sound when struck. This happens because of the different amount of excitation each resonant mode experiences. As mentioned above, during data extraction we get a matrix of amplitudes of size $NxK$ corresponding to $K$ different resonant modes of each of the $N$ points of the object. This means that even though resonant frequencies are the same for each location of the specified object, each frequency's peak differentiated depending on the location.
+Each point of an object produces a different sound when struck. This happens because of the different amount of excitation each resonant mode experiences. As mentioned above, during data extraction we get a matrix of amplitudes of size $K\times N$ corresponding to $K$ different resonant modes of each of the $N$ points of the object. This means that even though resonant frequencies are the same for each location of the specified object, each frequency's peak differentiated depending on the location.
 
 There are several methods to achieve spatial variation on sound produced from the same object. 
-\begin{enumerate}
-\item The most accurate method is to perform FEM analysis on the object and distill as many amplitude matrices as the number of points consisting it. However, this method needs a lot of memory to store the data and computational power to access them.
-\item Another less precise method is to separate the object into areas and compromise that each point belonging in the same area sound exactly the same. Thus, the amount of stored data decreases in a great deal when at the same time the sounding result is almost the same.
-\item A third method is to store only one amplitude matrix and randomize the values for each impact sound, but this can lead to an unexpected behavior.
-\item Finally, a better approach to the previous method is to retain the same amplitude values for all points of the object, but apply a texture map on the object which indicates changes on the pitch of the sound all over the object. For instance, the near-edge points of an object produce a higher-pitched sound than the ones in the center of each faces \cite{lloyd2011sound}. 
-\end{enumerate}
+\begin{itemize}
+\item The most accurate method is to perform FEM analysis on the object and distill as many amplitude matrices as the number of points consisting it. However, this method needs a lot of memory to store the data and computational power to access them. This method is used in \cite{o2002synthesizing}.
+\item Another less precise method is to separate the object into areas and assume that each point belonging in the same area will sound exactly the same. Thus, the amount of stored data decreases in a great deal while at the same time the sounding result is almost the same.
+\item A third method is to store only one amplitude matrix and randomize the values for each impact sound, but this can lead to sounds inconsistent with the collision location. 
+\item Finally, a better approach to the previous method is to retain the same amplitude values for all points of the object, but apply a texture map on the object which indicates changes on the pitch of the sound all over the object. For instance, the near-edge points of an object produce a higher-pitched sound than the ones in the center of each faces. This method is used in \cite{lloyd2011sound}. 
+\end{itemize}
 
 \section{3D Audio}
 In VR/AR applications, the location of the incoming sound plays as significant role as the sound itself. 
