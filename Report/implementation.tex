@@ -5,17 +5,52 @@
 %Instead of having a huge amount of different pre-recorded sound files, which need a lot of space, we eliminate the problem to a \colorbox{pink}{2D look up}, where the algorithm matches the object first and then the exact point of the object that collided with some other object.
 %
 
+\section{Recordings}\label{sec:recordings}
+
+The measurements were conducted in an anechoic chamber at DTU's Department of Electrical Engineering using a microphone placed one meter away from the struck object. To record the sounds we used Bruel \& Kjær's half inch pressure field microphone type 4192 and microphone preamplifier power supply type 5935L, as well as the 744T digital audio recorder from Sound Devices at 44100 Hz sampling frequency. The setup can be seen in figure \ref{fig:experiment}.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{experimentpic_r.png}
+      \caption{Picture of the setup for the measurements (left) and of a struck object (right).}\label{fig:experiment}
+\end{figure}
+
+To control the impact we hit the objects by hand with a wooden drumstick (figure \ref{fig:experiment}) while trying to use the same impulsive force. Prior to the recordings, every object was divided into different surface areas depending on its shape and the sound produced by these areas. Therefore, several impact locations were chosen and recorded for every objects.
+
+Eleven objects of everyday life made of five different materials (plastic, wood, ceramic, glass and metal) were used for the experiment. The idea of choosing these objects came firstly from the need of owning them (to perform the recording) and our ability to model them for the demo (as they should be simple enough). Secondly, since we wished to test the immersion of the synthesized sounds on users, we wanted to be sure that the sounds used are familiar to them. In figure \ref{fig:objects} both real and modeled objects are shown. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.7\textwidth}
+        \includegraphics[width=\textwidth]{realobjects_r.jpg}
+        \caption{Real objects.}
+        \label{fig:real}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.7\textwidth}
+        \includegraphics[width=\textwidth]{3dobjects_r.PNG}
+        \caption{3D models of the objects.}
+        \label{fig:models}
+    \end{subfigure}
+    \caption{The eleven objects used in the thesis.}\label{fig:objects}
+\end{figure}
+
+\section{Sound Synthesis}
+
 All synthetic sounds have been created in Pd patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity. This C\# script is attached to the GameObject in the scene so that the sound is processed within the game world.
 
 We have created our own C\# script that assigns to every one of the objects  the modal parameters we extracted in the analysis part with the ChucK code. This is done independently of the synthesis methods used here below.
 
 We consider two different types of force models as input to the synthesis patches. Impact forces that are used for sounds produced by a collision and constant contact forces, used for rolling and scratching sounds.
 
-\section{Impact Sounds}
+
+
+\subsection{Impact Sounds}
 %\Todo{decribe the patch, describe the sound (starts low, goes to max ampl and then decays etc)}\\
 %\Todo{Put spectrogram pictures of the sounds to describe them}
 %
-\subsection{Sinusoidal Additive Synthesis}
+\subsubsection{Sinusoidal Additive Synthesis}
 
 In this section we describe in depth how the Pd patch corresponding to the sinusoidal additive synthesis of impact sounds works. The patch attempts to translate equation \ref{eq:modal_response} into the programming language of Pd. Some of its terms are referenced in the following explanation.
 
@@ -34,7 +69,7 @@ The final sound is produced by adding together the ten partials. The resulting s
 
 The patch produces an impact sound whenever the OnCollisionEnter method from Unity is called. This is done when the collider that has the script attached to it has begun to touch another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in \ref{eq:modal_response} to zero which increases over time making the sound decay.
 
-\subsection{Filter-based Modal Synthesis}
+\subsubsection{Filter-based Modal Synthesis}
 
 This synthesis method is based on the utilization of a bank of ten bandpass filters. Pd's bandpass filters have three control inputs as seen in figure \ref{fig:pdbandpass}. The left inlet is the incoming audio signal, the middle one sets the center frequency and the right input sets the Q factor value. The characteristics of these filters define the virtual object.
 
@@ -60,7 +95,7 @@ To cause the object to sound we use a short impulse signal that excites the filt
 
 The output signal of each of the ten filters is multiplied by the corresponding amplitude $A_n$ of the mode. All ten resulting signals are added together. The signal is sent through a clipper as we did in the previous synthesis method.
 
-\section{Scratching Sounds}
+\subsection{Scratching Sounds}
 
 The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. Additionally, the aforementioned paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. We can then use the same modal parameters as in the impact methods described here above.
 
@@ -82,7 +117,7 @@ To produce scratching sounds we follow a similar technique to \cite{gaver1993we}
 
 The authors who's approach we are following state that the center frequencies of the bandpass filters are scaled with respect to the contact velocity. The higher the velocity, the more the proportion of high-frequency energy increases. To recreate this effect we scale the incoming filter frequencies depending on the velocity of the sliding object.
 
-\section{Rolling Sounds}
+\subsection{Rolling Sounds}
 
 As well as scratching sounds, rolling sounds are produced by the irregularities of the surfaces in contact \cite{van2001foleyautomatic}, namely the rolling object's surface and the ground. We therefore focus our study on two models inspired by \cite{farnell2010designing}: a series of repetitive impulses that correspond to the surface profile of the rolling object and the irregular bumping sounds due to the uneven ground.
 
@@ -115,7 +150,7 @@ We now look into the sounds produced due to the irregularity of the ground. As p
       \label{fig:rollingdoel}
 \end{figure} 
 
-\section{Sound Variations}
+\subsection{Sound Variations}
 The best approach to get the amplitude matrix is through FEM. However, the computational power needed to access all these data exceeds the limitations which audio in games undergoes. Hence, other methods should be developed to achieve spatial variation of sounds. 
 
 One method is to have only one amplitude matrix (corresponding to only one point of the object) and randomize the values every time a collision occurs. During the development of this thesis we tried this method, but we abandoned it rather quickly due to undesirable sounding results. In other words, every other sound, when an object was for example bouncing on a surface, was exceptionally different from the previous one even though the two collision locations were very close.
@@ -124,18 +159,20 @@ Although the last method described in section \ref{sec:sound_variation} of chapt
 
 Hence, we decided to carry on with another method where we separated each object into similar ``sound areas'' and simplified the calculations by assuming that each area produces the exact same sound when struck. Therefore, during measurements, we conducted one recording for each one of these areas, ending up with 4-5 different amplitude matrices for each object instead of thousands.
 
-\section{User Interface}
-Here we will describe the \textit{user interface (UI)} of the tool, where sound designers are able to choose the sound they prefer for every object.
+\section{User Interface}\label{sec:UI}
+This section describes the \textit{user interface (UI)} of the tool, where designers are able to tweak parameters and choose the sound they prefer for every object.
 
-The UI is made inside Unity\textregistered, by programming a custom inspector. \textit{Inspector} in Unity\textregistered is a window that shows up after selecting an object, a file etc inside the platform and it displays all information relevant to it.
+The UI is made inside Unity\textregistered, by programming a custom inspector. \textit{Inspector} in Unity\textregistered is a window that shows up after selecting an object, a file etc inside the platform and it displays all information relevant to it. We also used a custom \textit{GUISkin}, which is a set of settings about the Graphical User Interface (GUI). 
 
-We also used a custom \textit{GUISkin}, which is a set of settings about the Graphical User Interface (GUI). 
-%\begin{figure}[H]
-%  \centering
-%    \includegraphics[width=0.5\textwidth]{audio_managerF_inspector.PNG}
-%      \caption{The custom inspector inside Unity platform.}
-%      \label{fig:custom_insp}
-%\end{figure}
+When the designer wants to assign the procedural audio component on a Unity game object, he only has to select this game object and then from the Unity menu bar he can select one of the two available methods described above, as seen in figure \ref{fig:menu_item}.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.5\textwidth]{menuItem.png}
+      \caption{Designer can assign the audio manager from the menu bar.}
+      \label{fig:menu_item}
+\end{figure}
+
+Since each set of modal data is related to one specific object, the tool is restricted to the objects available up to this time. Therefore, the designer has to assign a \textbf{``tag''} of one of the eleven objects available on the tool (cooking pot, cup, cutting board, jug, mortar, bowl, plate, rolling pin, wine bottle, wine glass or wok). However, it is easy for everyone to contribute with new objects to the tool, by following the guide on appendix \ref{ap:guide}.
 
 \begin{figure}[H]
     \centering
@@ -154,15 +191,7 @@ We also used a custom \textit{GUISkin}, which is a set of settings about the Gra
     \caption{The custom inspector inside Unity platform.}\label{fig:custom_insp}
 \end{figure}
 
-When the designer wants to assign the procedural audio component on a Unity game object, he only has to select this game object and then from the Unity menu bar he can select one of the two available methods described above, as seen in figure \ref{fig:menu_item}.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.5\textwidth]{menuItem.png}
-      \caption{Designer can assign the audio manager from the menu bar.}
-      \label{fig:menu_item}
-\end{figure}
-
-Since every sound is produced from a corresponding real world object, the tool is restricted to the objects available up to this time. Therefore, the designer has to assign a \textbf{``tag''} of one of the eleven objects available on the tool (cooking pot, cup, cutting board, hug, mortar, bowl, plate, rolling pin, wine bottle, wine glass or wok). However, it is easy for her to contribute with new objects to the tool, by following the guide on appendix \ref{ap:guide}.
+Figure \ref{fig:custom_insp} shows the three parameter sliders which a designer can tweak. They are the same for both of the synthesis methods that were used in this thesis (figures \ref{fig:FB}, \ref{fig:sin}). The first slider is the material selection. Although each object used in this thesis has a distinct type of material, designers are able to assign to them another material of the five available choises (plastic, wood, ceramic, glass, metal), or even blend of two of them. The second slider, concerning the size of the object, can be used when the designer wants to introduce a smaller or bigger object that the default ones, or even when he prefers the sound to be more high or low pitched. The slider allows changes to size from half up to double of the original object. The last slider adjusts the roughness of the object's surfaces. By tweaking this, designers are able to chose surfaces of the objects to be smoother of rougher than the default ones. Below there is an extended description of the sliders.
 
 \subsection{Assignment of Different Materials}
 Different materials can be assigned to the objects made for this thesis. The designer is able to choose between \textit{plastic, wood, ceramic, glass and metal} by adjusting the corresponding slider on the interface (see figure \ref{fig:custom_insp}). 
