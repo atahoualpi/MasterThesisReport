@@ -9,7 +9,8 @@
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
 \glsgroupheading{B}\relax \glsresetentrylist %
 \glossentry{BPF}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
+		\setentrycounter[]{page}\glsnumberformat{xiii}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{9}}}%
 \glossentry{BW}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
 \glsgroupheading{C}\relax \glsresetentrylist %
@@ -18,8 +19,10 @@
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossentry{DAC}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{3}}}%
+		\setentrycounter[]{page}\glsnumberformat{5}}}%
 \glossentry{DLL}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
+\glossentry{DSP}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{DTU}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}\glsgroupskip
@@ -27,7 +30,8 @@
 \glossentry{FBX}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{FEM}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
+		\setentrycounter[]{page}\glsnumberformat{xiii}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{7}}}%
 \glossentry{FFT}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{xiii}}}%
 \glossentry{FPS}{\glossaryentrynumbers{\relax 
