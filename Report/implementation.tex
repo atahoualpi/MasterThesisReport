@@ -37,51 +37,57 @@ Eleven objects of everyday life made of five different materials (plastic, wood,
 \end{figure}
 
 \section{Modal data}
-Using the peak locator algorithm described in section \ref{sec:chuck}, we extracted the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:cup_data} shows the data extracted for the cup object. Each graph corresponds to one of the ``sound areas'' we have divide it into.
+Using the peak locator algorithm described in section \ref{sec:chuck}, we extracted the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:bottle_data} shows the data extracted for the wine bottle object. Each graph corresponds to one of the ``sound areas'' we have divide it into.
 
-Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data one for each different point area, we can see in figure \ref{fig:cup_data} that this does not happen in practice. However, the cause of the different resonant frequencies per area could be the environment noise, the difference in the action of hitting the object or the way it is hold when being hit.
+Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data one for each different point area, we can see in figure \ref{fig:bottle_data} that this does not happen in practice. However, the cause of the different resonant frequencies per area could be the environment noise, the difference in the action of hitting the object or the way it is hold when being hit.
  
+%\begin{figure}[H]
+%    \centering
+%    \begin{subfigure}[b]{0.75\textwidth}
+%        \includegraphics[width=\textwidth]{cup0cm.png}
+%        \caption{Top}
+%        \label{fig:cup_top}
+%    \end{subfigure}
+%    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+%      %(or a blank line to force the subfigure onto a new line)
+%    \begin{subfigure}[b]{0.75\textwidth}
+%        \includegraphics[width=\textwidth]{cup2c5cm.png}
+%        \caption{Upper body}
+%        \label{fig:cup_upper}
+%    \end{subfigure}
+%    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+%      %(or a blank line to force the subfigure onto a new line)
+%    \begin{subfigure}[b]{0.75\textwidth}
+%        \includegraphics[width=\textwidth]{cup4c5cm.png}
+%        \caption{Lower body}
+%        \label{fig:lower}
+%    \end{subfigure}
+%    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+%      %(or a blank line to force the subfigure onto a new line)
+%    \begin{subfigure}[b]{0.75\textwidth}
+%        \includegraphics[width=\textwidth]{cup6cm.png}
+%        \caption{Bottom}
+%        \label{fig:cup_bottom}
+%    \end{subfigure}
+%    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+%      %(or a blank line to force the subfigure onto a new line)
+%    \begin{subfigure}[b]{0.75\textwidth}
+%        \includegraphics[width=\textwidth]{cuphandle.png}
+%        \caption{Handle}
+%        \label{fig:cup_handle}
+%    \end{subfigure}
+%    \caption{The frequencies and their corresponding peaks for each part of the cup object.}\label{fig:cup_data}
+%\end{figure}
+
 \begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.75\textwidth}
-        \includegraphics[width=\textwidth]{cup0cm.png}
-        \caption{Top}
-        \label{fig:cup_top}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.75\textwidth}
-        \includegraphics[width=\textwidth]{cup2c5cm.png}
-        \caption{Upper body}
-        \label{fig:cup_upper}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.75\textwidth}
-        \includegraphics[width=\textwidth]{cup4c5cm.png}
-        \caption{Lower body}
-        \label{fig:lower}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.75\textwidth}
-        \includegraphics[width=\textwidth]{cup6cm.png}
-        \caption{Bottom}
-        \label{fig:cup_bottom}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.75\textwidth}
-        \includegraphics[width=\textwidth]{cuphandle.png}
-        \caption{Handle}
-        \label{fig:cup_handle}
-    \end{subfigure}
-    \caption{The frequencies and their corresponding peaks for each part of the cup object.}\label{fig:cup_data}
+  \centering
+    \includegraphics[width=0.9\textwidth]{winebottle.png}
+      \caption{The frequencies and their corresponding peaks for each part of the wine bottle object.}\label{fig:bottle_data}
 \end{figure}
 
-Nevertheless, it is obvious that the fundamental frequencies are similar for each graph and lay just below 3000Hz.
+Nevertheless, it is obvious that the fundamental frequencies are similar for each graph and lay just above 2000Hz.
 
-\section{Sound Synthesis}
+\section{Sound Synthesis}\label{sec:synthesis_implem}
 
 All synthetic sounds have been created in Pd patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity\textsuperscript{\textregistered}. This C\# script is attached to the GameObject in the scene so that the sound is processed within the game world.
 
