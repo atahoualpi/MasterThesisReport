@@ -1,14 +1,11 @@
 \chapter{Theoretical Background}\label{ch:theory}
-Short overview of the theory parts\\
-
-This is a way to link to explanations \gls{DAC} 
-
-THis is a todo: 
-\Todo{todo test}\\
-THis is smth done:
-\done\Todo{this is done}
 
 \section{State-Of-The-Art}\label{sec:state_art}
+
+\subsection{Sampled sounds vs Procedural audio}
+
+Nowadays, sampled sound is still the most typical technique for digital audio in the game industry since its sophistication in the late 1990s . But this method has limitations due to its static and repetitive nature which does not allow to model the sound of an object based on its physical interactions in a game scene. Despite the use of different processes such as filtering, pitch-shifting and time-scaling to name but three, sampled sounds can not compare to the versatility that procedural audio offers \cite{farnell2010designing}. With the increasing interest that the game industry has put into \gls{VR} and \gls{AR}, it is becoming essential to provide realistic and compelling sounds in these virtual environments to provide immersion and presence to the user. An obvious advantage of procedural audio over recordings is the large memory storage space that is necessary due to the huge amount of audio assets present in modern games. The ability of procedural audio to generate sounds automatically based on the interactions of the objects in a scene eases the asset management task for the audio team. Instead, the sound designer becomes more of a programmer by taking into account the object’s behaviour and physical properties to create sounds. This does not mean that the sound designer is replaced by procedural content as certain tasks need special attention to deliver high quality sounds \cite{farnell2007introduction}.
+
 \textit{Wildes and Richards (1988)} defined the angle of internal friction ($\phi$), a shape-invariant acoustical parameter that heuristically categorizes sounds into material categories, as
 \begin{equation}\label{eq:tanf}
 \tan(\phi) = \alpha / \pi f,
