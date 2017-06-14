@@ -47,12 +47,12 @@ Stimuli was presented to the participants through a pair of \textit{AKG K271} he
 
 \section{Participants}
 \Todo{number of participants, age, gender, normal hearing, job}
-The participants are two adult volunteers. Zero women and two men, aged 25 to 26. Their mean age is 25.5 with a standard deviation of 0.5. They stated normal hearing. They have different backgrounds, namely a Digital Signal Processing (DSP) engineer and a mathematician.
+The participants are three adult volunteers. Zero women and three men, aged $25$ to $30$. Their mean age is $27$ with a standard deviation of $2.16$. They stated normal hearing. They have different backgrounds, namely a Digital Signal Processing (DSP) engineer, a mathematician and a movie director.
 
 \section{Test Results}
-\Todo{check if it comes out that we cannot transform a given object's material just with damping (maybe we need to change the spectral content)}
 
 \subsection{1st Experiment}
+Results of the 1st experiment are shown in figure \ref{fig:test1}. We divided the results into smaller sub-graphs, one for each of the eleven objects, to examine the participants' preference in the synthesis methods per object. Particularly, their opinion on which of the two resembles more the original recording of the real-world object (used as reference).
 
 \begin{figure}[H]
   \centering
@@ -60,7 +60,60 @@ The participants are two adult volunteers. Zero women and two men, aged 25 to 26
       \caption{The mean values and standard deviations per location for all objects. Positive values give a preference to the filter-based method, while negative ones give preference to the sinusoidal method. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test1}
 \end{figure}
 
+Participants were asked to move a slider between the integer values $-3$ and $3$. Positive values correspond to a preference in the filter-based method, negative in the sinusoidal method and zero values means that both methods sound the same. Possible answers are displayed in table \ref{tab:test1_ans}. Every different tick of the x-axis corresponds to a different ``sound area'' of the object. From left to right the areas go from the top to the bottom.
+
+\begin{table}[H]
+	\centering
+    \begin{tabular}{ c  c  l  }
+    \toprule
+    \textbf{Slider value} & \textbf{Method} & \textbf{Amount of Preference} \\ \toprule
+    \addlinespace
+    $3$ & Filter-based & Much better  \\
+    $2$ & Filter-based & Better \\
+    $1$ & Filter-based & Slightly better \\ 
+    \addlinespace
+    $0$ & \multicolumn{2}{c}{Both sound the same} \\
+    \addlinespace
+    $-1$ & Sinusoidal & Slightly better \\ 
+    $-2$ & Sinusoidal & Better \\ 
+    $-3$ & Sinusoidal & Much better \\
+    \addlinespace
+    \bottomrule
+    \end{tabular}
+    \caption{Possible answers for the 1st experiment.}
+    \label{tab:test1_ans}
+\end{table}  
+
+With this test we wanted to answer the question of which of the two synthesis methods - filter based or sinusoidal additive synthesis - used in this thesis is better. From figure \ref{fig:test1} we can see that one universal answer for all objects does not exist. For example, we can see a tendency for the filter based method for the plastic (jug and plastic bowl) and the metal (cooking pot and wok) objects, but there is no distinct result for the rest of the objects.
+
+\Todo{check if those still are valid after adding more participants.}
+
 \subsection{2nd experiment}
+For the second experiment we also divided the results into sub-graphs per object. They are presented in figure \ref{fig:test2}. This experiment examines the participants' preference between a sound variation on impact sounds depending on the hit point and a single impact sound per object.
+
+Participants were asked to use a slider similar to the previous test, with possible answers shown in the table \ref{tab:test2_ans}. Positive values correspond to preference in sound variation, while negative ones correspond to preference in single sound per object. The three different ticks on the x-axis correspond to the actual recording, the filter-based and the sinusoidal method respectively. %
+
+\begin{table}[H]
+	\centering
+    \begin{tabular}{  c  c  l  }
+    \toprule
+    \textbf{Slider value} & \textbf{Sound Variation} & \textbf{Amount of Preference} \\ \toprule
+    \addlinespace
+    $3$ & Yes & Much better \\ 
+    $2$ & Yes & Better \\ 
+    $1$ & Yes & Slightly better \\ 
+    \addlinespace
+    $0$ & \multicolumn{2}{c}{Both sound the same} \\ 
+    \addlinespace
+    $-1$ & No & Slightly better \\ 
+    $-2$ & No & Better \\ 
+    $-3$ & No & Much better \\
+    \addlinespace
+    \bottomrule
+    \end{tabular}
+    \caption{Possible answers for the 2nd experiment.}
+    \label{tab:test2_ans}
+\end{table}
 
 \begin{figure}[H]
   \centering
@@ -68,10 +121,17 @@ The participants are two adult volunteers. Zero women and two men, aged 25 to 26
       \caption{The mean values and standard deviations per location for all objects. Positive values give a preference to the filter-based method, while negative ones give preference to the sinusoidal method. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test2}
 \end{figure}
 
+The aim of this experiment is to prove whether sound variation in game sound effects is desirable and makes a difference. By choosing the positive values, participants would prove that having spatial variation in impact sounds benefits the immersion of the player. \Todo{decribe the graph}
+
 \subsection{3rd experiment}
+\Todo{check if it comes out that we cannot transform a given object's material just with damping (maybe we need to change the spectral content)}
+
+Figure \ref{fig:test3} shows the results of the third experiment. This one was held to validate the chosen values of the Q-factor that correspond to each material. For the purpose of this thesis, we chose one value per object that sounded closer to the specified material, in our opinion. Those selected values are shown in table \ref{tab:default_Q}.   
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{test3.png}
       \caption{The chosen values of the quality factor that correspond to material change of the same object.}\label{fig:test3}
 \end{figure}
+
+By studying figure \ref{fig:test3}, we can see that the values chosen from the experiment participants do not vary a lot from ours.

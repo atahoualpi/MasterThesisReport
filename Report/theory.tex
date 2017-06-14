@@ -66,27 +66,32 @@ Table \ref{tab:acoustic_effects} shows the acoustic \colorbox{pink}{information}
 
 \begin{table}[H]
 	\centering
-    \begin{tabular}{ | l | l |}
-    \hline
-    \textbf{\textit{Attribute}} & \textbf{\textit{Effects on the Sound Wave}} \\ \hline
-    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Interaction}} \\ \hline 
-    \hspace{8pt} Type & Amplitude, spectrum \\ 
-    \hspace{8pt} Force & Amplitude, bandwidth \\
-    \hline
-    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Material}} \\ \hline
-    \hspace{8pt} Density & Frequency \\
-    \hspace{8pt} Damping & Amplitude, frequency \\
-    \hspace{8pt} Homogeneity & Amplitude, frequency \\
-    \hline
-    \multicolumn{2}{|l|}{\hspace{2.2cm} \textit{Configuration}} \\ \hline
-    \hspace{8pt} Shape & Frequency, spectral pattern \\ 
-    \hspace{8pt} Size & Frequency, bandwidth \\
-    \hspace{8pt} Elasticity & Amplitude, frequency \\
-    \hline
+    \begin{tabular}{  l  l }
+    \toprule
+     \addlinespace
+    \textbf{\textit{Attribute}} & \textbf{\textit{Changes on Sound Wave}} \\ \toprule
+    \addlinespace
+\cmidrule(l{0.8cm}r{4.7cm}){1-2}
+    \multicolumn{2}{l}{\hspace{0.8cm}\textit{Interaction}} \\ \cmidrule(l{0.8cm}r{4.7cm}){1-2}
+     Type & Amplitude, spectrum \\ 
+     Force & Amplitude, bandwidth \\
+     \addlinespace
+\cmidrule(l{0.8cm}r{4.7cm}){1-2}
+    \multicolumn{2}{l}{\hspace{1cm}\textit{Material}} \\ \cmidrule(l{0.8cm}r{4.7cm}){1-2}
+    Density & Frequency \\
+    Damping & Amplitude, frequency \\
+    Homogeneity & Amplitude, frequency \\
+     \addlinespace
+\cmidrule(l{0.8cm}r{4.7cm}){1-2}
+    \multicolumn{2}{l}{\hspace{0.6cm}\textit{Configuration}} \\ \cmidrule(l{0.8cm}r{4.7cm}){1-2}
+    Shape & Frequency, spectral pattern \\ 
+    Size & Frequency, bandwidth \\
+    Elasticity & Amplitude, frequency \\
+    \bottomrule
     \end{tabular}
     \caption{Acoustic effects of source attributes \cite{gaver1993world}.}
     \label{tab:acoustic_effects}
-\end{table}
+\end{table} 
 
 \section{Modal Analysis}\label{sec:modal_analysis}
 In this thesis we are using solid objects that are struck in different ways to produce sound, namely falling on the floor or colliding with another object. The sounds produced can be impact, rolling or scratching sounds. When an object is struck, the forces applied cause deformations to it, emitting sound waves through the vibration of its outer surfaces \cite{van2001foleyautomatic}.
@@ -102,13 +107,13 @@ Modal analysis is performed before modal synthesis, to extract the necessary dat
 
 \begin{table}[H]
 	\centering
-    \begin{tabular}{ | l | l | l | p{5cm} |}
-    \hline
-    \textbf{Symbol} & \textbf{Description} & \textbf{Derivation} \\ \hline
-    $A_n$ & Initial amplitude & Modal analysis \\ \hline
-    $d_n$ & Damping & Material properties \\ \hline
+    \begin{tabular}{ c l l }
+    \toprule
+    \textbf{Symbol} & \textbf{Description} & \textbf{Derivation} \\ \toprule
+    $A_n$ & Initial amplitude & Modal analysis \\ 
+    $d_n$ & Damping & Material properties \\ 
     $f_n$ & Modal frequency & Modal analysis \\
-    \hline
+    \bottomrule
     \end{tabular}
     \caption{Derivation of data used in modal synthesis.}
     \label{tab:extracted_data}
