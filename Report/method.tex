@@ -1,4 +1,4 @@
-\chapter{Overview and Tools}\label{ch:method}
+\chapter{Overview of Method and Tools Used}\label{ch:method}
 %\section{Overview of the tool}
 The target of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio. The challenge we want to outrun is to offer realistic real-time and event affected audio, without consuming more CPU cycles than the limited offered for audio in games.
 
@@ -31,6 +31,8 @@ The reason why we chose to extract the modal data from recordings instead of usi
 \section{3D models}
 To create the 3D models of the objects we used \textbf{Maya Autodesk} software \cite{bib:maya} and exported them as FBX\textsuperscript\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textsuperscript{\textregistered}.
 
+\Todo{add a list with the objects modeled}
+
 \section{Modal data extraction}\label{sec:chuck}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
 
@@ -38,7 +40,7 @@ We used the ChucK language at the starting point of our thesis to identify and e
 
 From a modal analysis one can find out that each object vibrates in a very high number of modes. Although, most of them are inaudible and do not contribute to the sound model. It is, therefore, desirable to preserve CPU cycles by reducing the number of calculated modes. Based on the recommendations of the author Perry Cook, we chose ten as the sufficient amount of modes for the analysis/synthesis.  Afterwards, the algorithm having taken a recording as input, computes its histogram and identifies its peaks. The frequencies where peaks occur are the modal frequencies candidates. Depending on the numbers of peaks we chose, the algorithm outputs the strongest peaks. Finally, the algorithm finds the maximum value of the signal on each peak, calculating the corresponding amplitude of each mode.
 
-ChucK language was chosen at this point of the thesis, because of its build-in functions to manipulate sound like \textit{Fast Fourier Transform (FFT)} of input audio samples and windows functions \cite{bib:chuck_doc}. Another option to extract the peaks of the sound waves could be to use python programming language on audio files, but this would request to program a number of functions or include a number of libraries that perform actions like file input/output, FFT and more. 
+ChucK language was chosen, because of its build-in functions to manipulate sound like \textit{Fast Fourier Transform (FFT)} of input audio samples and windows functions \cite{bib:chuck_doc}. Another option to extract the peaks of the sound waves could be to use python programming language on audio files, but this would request to program a number of functions or include a number of libraries that perform actions like file input/output, FFT and more. 
 
 \Todo{should we explain why we used FFT?} 
  
@@ -57,14 +59,14 @@ All synthesized sounds (impact, rolling and scratching) are being synthesized un
 Through the generated C\# script, we are able to send float values to the audio plugins - which are the compiled Pd patches - as inputs to generate the appropriate sound. Those floats are the frequencies and their corresponding amplitudes, the quality factor (Q-factor) of the band-pass filters, the impact force of the collision, the roughness of the object, the multiplier of the size of the object, the velocity of the object and the rolling and scratching duration times. A difficulty we encountered by using this compiler was the inability of sending a whole array or list of floats. Thus, we had to send every frequency and every amplitude individually, creating a float parameter for each.
  
 \subsection{Why not OSC?}
-The most popular way to communicate between Unity\textsuperscript{\textregistered} and Pure Data is the Open Sound Control (OSC) protocol. The reason why we did not use it in this thesis is because it requires establishing a connection between two software programs and send data between them. On the other hand, Heavy makes everything work inside Unity\textsuperscript{\textregistered} and it is as simple as passing floats between scripts. 
+The most popular way to communicate between Unity\textsuperscript{\textregistered} and Pure Data is the Open Sound Control (OSC) protocol. The reason why we did not use it is because it requires establishing a connection between two software programs and send data between them. On the other hand, Heavy makes everything work inside Unity\textsuperscript{\textregistered} and it is as simple as passing floats between scripts. 
 
 \section{Unity\textsuperscript{\textregistered}}
 \textbf{Unity\textsuperscript{\textregistered}} is a game engine software. This is where all previous work is combined together and outputs the final product. For the purpose of this thesis, several demonstration scenes are made inside Unity\textsuperscript{\textregistered} where objects are struck in several points and produce different sounds. 
 
 The first part of the Unity\textsuperscript{\textregistered} implementation is the assignment of modal data to every different area of the object. This is done in linear time ($O(n)$ for $n$ modes). The whole procedure of assigning the appropriate data includes the identification of the area of the object that collided, filling the arrays with the corresponding data and set the parameters of the plugins. Afterwards, the type of collision is identified and a number of other parameters are calculated and sent to the plugins, like the impact force and the duration of the collision.
 
-Audio in Unity\textsuperscript{\textregistered} is enabled using the \textit{OnAudioFilterRead()} function. This function is running in the audio thread, which is a different one from the main thread. It puts a filter on the DSP chain and is called every $\sim 20$ms, so it does not require a function call from the programmer \cite{bib:unity_doc}.
+Audio in Unity\textsuperscript{\textregistered} is enabled using the \textit{OnAudioFilterRead()} function. This function is running in the audio thread, which is a different one from the main thread. Its job is to send the audio buffer to the sound card and is called every $\sim 20$ms, so it does not require a function call from the programmer \cite{bib:unity_doc}.
 
 \section{Microsoft Hololens Emulator}
 \Todo{keep it or not?}
