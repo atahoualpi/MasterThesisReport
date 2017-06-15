@@ -10,30 +10,13 @@ Procedural audio, on the other hand, generates highly dynamic sounds that can be
 
 This thesis deals with real-time synthetic impact and continuous contact (rolling and scratching) sounds that are produced automatically from physical interactions of everyday objects in a 3D virtual world. Recordings of struck objects in different locations have been performed in the analysis stage to compute their corresponding modal model. Recent papers \cite{lloyd2011sound, bonneel2008fast} make use of modal synthesis to simulate high quality audio events in game engines but fail to make the controls of the synthesizer accessible to game developers. The aim of this work is to bridge the gap between advanced modal sound approaches and commercial game engines by designing a tool within Unity\textregistered that allows to control a synthesis model through high level parameters (object's size, roughness, material). The idea is to easily associate an audio texture to an object the same way  a colour or material are rendered on a mesh surface. In \cite{pruvost2015perception} the authors present a framework for interactive and real-time synthesis of solid sounds driven by a game engine that can be controlled during game play. A similar approach is developed in this paper with the addition of using two different techniques for impact sounds and comparing their outcome through user tests. 
 
-This thesis deals with real-time synthetic impact and continuous contact (rolling and scratching) sounds that are produced automatically from physical interactions of everyday objects in a 3D virtual world. Recordings of struck objects in different locations have been performed in the analysis stage to compute their corresponding modal model. Recent papers \cite{lloyd2011sound, bonneel2008fast} make use of modal synthesis to simulate high quality audio events in game engines but fail to make the controls of the synthesizer accessible to game developers. The aim of this work is to bridge the gap between advanced modal sound approaches and commercial game engines by designing a tool within Unity\textsuperscript{\textregistered} that allows to control a synthesis model through high level parameters (object's size, roughness, material). The idea is to easily associate an audio texture to an object the same way  a colour or material are rendered on a mesh surface. 
+The first part of this paper describes previous work that conforms the state-of-the-art for physics-based synthesized sounds in virtual environments as well as principles of contact sound production and synthesis techniques. The next section gives an overview of the tool and goes through the different instruments used for its development. In the \textit{Measurements} section the procedure used to record the struck objects is outlined as well as the user tests used to evaluate the synthetic sounds. Then the implementation of the different contact sounds, user interface and the scripting is discussed. Before the conclusion there will be a section in which the outcome of the work is analyzed and future work is listed. 
 
-The first part of this paper describes previous work that conforms the state-of-the-art for physics-based synthesized sounds in virtual environments as well as principles of contact sound production and synthesis techniques. The next section gives an overview of the tool and goes through the different instruments used for its development. In the \textit{Measurements} section the procedure used to record the struck objects is outlined as well as the user tests used to evaluate the synthetic sounds. Then the implementation of the different contact sounds, user interface and the scripting is discussed. Before the conclusion there will be a section in which the outcome of the work is analyzed and future work is listed.
+\colorbox{pink}{Stuff about 3d sound as well.Why is our method better that others? (eg wavetable)?}
 
-\paragraph{Immersion and all these stuff that makes our thing good. Why we are doing it and what do we want to give to the community?\\}
+\colorbox{pink}{ And why we think this is the future of the audio in video games? soundtrack music or voices can be recorded and played back}
 
-Audio in interactive projects like video games and VR/AR applications, plays a significant role for user immersion and realism. Visual and acoustic experiences are interconnected and lacking one of them spoils the whole experience. 
 
-The most difficult task is to produce realistic virtual sounds inside the application, difficult to distinguish them from the real ones. This can be achieved not only by playing back a realistic sound, but also by taking care of the environment effects and the context. For example, striking a nail on a board when it still vibrates from the previous struct, produces a different sound that gets added to the previous one \cite{Cook:2002:RSS:515316}.
-
-Although some sounds like the soundtrack music or voices can be recorded and played back, sound effects need physically-based methods to synthesize them real-time, so as to be realistic and accurate. All objects vibrate when struck, even solid ones. It is something non-noticeable from sight, but it is capable of generating sound.  
-
-\colorbox{pink}{Stuff about 3d sound as well.}
-
-\paragraph{Stuff about sound in general and description of the thesis\\}
-
-Sounds are strongly related to our everyday life and the ways we understand things. Through our experience, we can visualize an event by only hearing the sound it produces (e.g. a car approaching). The vibration caused by the collision of two objects produces sound that depends on the collision force, the duration of the interaction  and the changes over time of it, but also on the size, shape, material and texture of the two objects. All these attributes form a unique sound and the sound waves produced from the interaction give the information to the listener \cite{gaver1993world}.
-
-In this thesis we present an audio design tool made for Unity\textsuperscript{\textregistered} software platform, for physics-based sound synthesis in virtual environments. \\
-\Todo{describe how much better it is to have procedural audio than pre-recorded sounds and on top of that physics-based sounds!! WOW!!}
-
-By pre-computing all necessary data, we are able to model a sound produced by a 3D model, very similar to the one that would be produced from a real-world one.
-
-\paragraph{Why is our method better that others? (eg wavetable)? And why we think this is the future of the audio in video games?\\}
   
 
 
