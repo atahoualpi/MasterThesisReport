@@ -5,8 +5,8 @@ The target of this thesis is to provide sound designers with an easy-to-use tool
 \Todo{replace figure  with a better one}
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{synthesisChart.png}
-      \caption{Sound Synthesis Procedure.}
+    \includegraphics[width=\textwidth]{overview.png}
+      \caption{Tool overview.}
       \label{fig:synth_proc}
 \end{figure}
 
@@ -26,12 +26,54 @@ Since we only used simple shape everyday objects, we could easily assume that ne
 
 The procedure of the recordings will be explained in detail in section \ref{sec:recordings}.
 
-The reason why we chose to extract the modal data from recordings instead of using the FEM method as in \cite{director2001synthesizing} or \cite{o2002synthesizing} or using spring-mass systems as in \cite{raghuvanshi2006interactive} lays in simplicity. More specifically, recording impact sounds is much easier for our target users to do if they want to extend our tool, than having to use complex calculations or software.
+The reason why we chose to extract the modal data from recordings instead of using the FEM method as in \cite{director2001synthesizing} or \cite{o2002synthesizing} or using spring-mass systems as in \cite{raghuvanshi2006interactive} lays in simplicity. More specifically, recordings of impact sounds is much easier for our target users to perform, if they want to extend our tool, than having to use complex calculations or software.
 
 \section{3D models}
-To create the 3D models of the objects we used \textbf{Maya Autodesk} software \cite{bib:maya} and exported them as FBX\textsuperscript\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textsuperscript{\textregistered}.
+To achieve realistic sounds, we have to correspond the impact recordings of the real objects with same size 3D models of them. Hence, we measured the dimensions and weight of the eleven objects and used those data to model the objects. In table \ref{tab:dim_weig} the maximum dimensions and the weight of the objects are displayed. To create the 3D models of the objects we used \textbf{Maya Autodesk} software \cite{bib:maya} and exported them as FBX\textsuperscript\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textsuperscript{\textregistered}.
 
-\Todo{add a list with the objects modeled}
+\begin{table}[H]
+	\centering
+    \begin{tabular}{ l c r c}
+    \toprule
+    \textbf{Name} & \textbf{Dimensions(cm)} & \textbf{Weight(g)} & \textbf{Picture} \\
+    \toprule 
+    Cooking pot & $21.5L\times 21.5W\times 10.8H$ & 680 & \includegraphics[scale=0.1]{3DmodelsPics/cp.PNG} \\ 
+    Cup & $7.5L\times 7.5W\times 6H$ & 125 & \includegraphics[scale=0.1]{3DmodelsPics/cup.PNG} \\ 
+    Cutting board & $41.5L\times 26.5W\times 4.5H$ & 2200 & \includegraphics[scale=0.1]{3DmodelsPics/cb.PNG} \\ 
+    Jug & $14L\times 10W\times 21.5H$ & 150 & \includegraphics[scale=0.1]{3DmodelsPics/jug.PNG} \\ 
+    Mortar & $11L\times 11W\times 19H$ & 850 & \includegraphics[scale=0.1]{3DmodelsPics/mortar.PNG} \\
+    Bowl & $20L\times 20W\times 10.5H$ & 100 & \includegraphics[scale=0.1]{3DmodelsPics/bowl.PNG} \\
+    Plate & $25.5L\times 25.5W\times 2.5H$ & 700 & \includegraphics[scale=0.1]{3DmodelsPics/plate.PNG} \\
+    Rolling pin & $43L\times 7W\times 7H$ & 700 & \includegraphics[scale=0.1]{3DmodelsPics/rp.PNG} \\
+    Wine bottle & $7L\times 7W\times 29H$ & 400 & \includegraphics[scale=0.1]{3DmodelsPics/bottle.PNG} \\
+    Wine glass & $8L\times 8W\times 18H$ & 120 & \includegraphics[scale=0.1]{3DmodelsPics/glass.PNG} \\
+    Wok & $35L\times 35W\times 9.5H$ & 1225 & \includegraphics[scale=0.1]{3DmodelsPics/wok.PNG} \\
+    \bottomrule
+    \end{tabular}
+    \caption{Maximun dimensions and weight of the eleven objects.}
+    \label{tab:dim_weig}
+\end{table}
+
+%     \begin{minipage}{.45\textwidth}
+%      \begin{itemize}
+%        \item Cooking Pot
+%		\item Cup
+%		\item Cutting Board
+%		\item Jug
+%		\item Mortar
+%		\item Bowl
+%		\item Plate
+%		\item Rolling Pin
+%		\item Wine Bottle
+%		\item Wine Glass
+%		\item Wok
+%     \end{itemize}
+%  \end{minipage}
+%    \begin{minipage}{.45\textwidth}
+%    	\hspace{-3cm}
+%    		\includegraphics[scale=0.4]{3DmodelsPics/3dmodels.png}
+%     		 \label{fig:3d_all}
+%    \end{minipage}
 
 \section{Modal data extraction}\label{sec:chuck}
 \textbf{Chuck} language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independent of other sounds that may play at the same time.
@@ -70,14 +112,4 @@ Audio in Unity\textsuperscript{\textregistered} is enabled using the \textit{OnA
 
 \section{Microsoft Hololens Emulator}
 \Todo{keep it or not?}
-
-\gls{AR} 
-
-faefaef
-
-\glsunset{AR} 
-
-afaefea
-
-\gls{AR}
 
