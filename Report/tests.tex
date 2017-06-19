@@ -63,14 +63,13 @@ The stimuli of the third test are sounds coming from five different objects, one
 In the two first experiments, both the sequence of trials and the conditions (which method is A and which is B) are randomized. However, in experiment number three, we wanted to keep an increasing habit on the Q-factor, otherwise it would not make sense. Hence we randomized only the sequence of the trials.
 
 \section{Participants}
-\Todo{number of participants, age, gender, normal hearing, job}
-The participants are three adult volunteers. Zero women and three men, aged $25$ to $30$. They stated normal hearing. They have different backgrounds, namely a Digital Signal Processing (DSP) engineer, a mathematician and a movie director.
+The participants are nine adult volunteers. Three women and six men, aged $25$ to $61$. They stated normal hearing. They have different backgrounds, namely a mixture of audio specific and non-audio specific participants. An attempt to extract different results for the two groups would not give qualitative outcomes, since only two of the participants are engaged with audio (a musician and a \gls{DSP} Engineer).
 
 \section{Test Results}
 The participants' responses were processed using python programming language and the following results were acquired.
 
 \subsection{1st Experiment}
-Results of the 1st experiment are shown in figure \ref{fig:test1}. We divided the results into smaller sub-graphs, one for each of the eleven objects, to examine the participants' preference in the synthesis methods per object. Particularly, their opinion on which of the two resembles more the original recording of the real-world object (used as reference).
+Results of the 1st experiment are shown in figure \ref{fig:test1}. We divided the results into smaller sub-graphs, one for each of the eleven objects, to examine the participants' preference in the synthesis methods per object. Particularly, their opinion on which of the two methods resembles more the original recording of the real-world object (used as reference).
 
 \begin{figure}[H]
   \centering
@@ -78,7 +77,7 @@ Results of the 1st experiment are shown in figure \ref{fig:test1}. We divided th
       \caption{The mean values and standard deviations per location for all objects. Positive values give a preference to the filter-based method, while negative ones give preference to the sinusoidal method. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test1}
 \end{figure}
 
-Participants were asked to move a slider between the integer values $-3$ and $3$. Positive values correspond to a preference in the filter-based method, negative in the sinusoidal method and zero values means that both methods sound the same. Possible answers are displayed in table \ref{tab:test1_ans}. Every different tick of the x-axis corresponds to a different ``sound area'' of the object. From left to right the areas go from the top to the bottom.
+Participants were asked to move a slider between the integer values $-3$ and $3$. Positive values correspond to a preference in the filter-based method, negative to the sinusoidal method and zero values means that both methods sound the same. Possible answers are displayed in table \ref{tab:test1_ans}. Every different tick of the x-axis corresponds to a different ``sound area'' of the object. From left to right the areas go from the top to the bottom.
 
 \begin{table}[H]
 	\centering
@@ -102,10 +101,7 @@ Participants were asked to move a slider between the integer values $-3$ and $3$
     \label{tab:test1_ans}
 \end{table}  
 
-With this test we wanted to answer the question of which of the two synthesis methods - filter based or sinusoidal additive synthesis - used in this thesis is more accurate. From figure \ref{fig:test1} we can see that one universal answer for all objects does not exist. For example, we can see a tendency for the filter based method for the plastic (jug and plastic bowl) and the metal (cooking pot and wok) objects, but there is no distinct result for the rest of the objects.
-
-\Todo{check if those still are valid after adding more participants.}
-%Remember that results are significant if the standard deviations between different methods don't "touch" each other
+With this test we wanted to examine which of the two synthesis methods - filter based modal synthesis or sinusoidal additive synthesis - used in this thesis is more accurate. From figure \ref{fig:test1} we can see that one universal answer for all objects does not exist. More specifically, we can see a tendency for the sinusoidal method for the glass (bottle and wine glass) and the wooden (cutting board, mortar and rolling pin) objects. On the other hand, metal objects (cooking pot and wok) and plastic ones (jug and bowl), seem to sound more realistic in the filter-based method. Finally, for the ceramic objects (cup and plate) both methods have similar results. It is important to notice that ceramic material lays, also, in the middle of the Q-factor values.
 
 \subsection{2nd experiment}
 For the second experiment we also divided the results into sub-graphs per object. They are presented in figure \ref{fig:test2}. This experiment examines the participants' preference between a sound variation on impact sounds depending on the hit point and a single impact sound per object.
@@ -137,15 +133,17 @@ Participants were asked to use a slider similar to the previous test, with possi
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{test2.png}
-      \caption{The mean values and standard deviations per location for all objects. Positive values give a preference to the filter-based method, while negative ones give preference to the sinusoidal method. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test2}
+      \caption{The mean values and standard deviations per method for all objects. Positive values give a preference to sound variation, while negative ones give preference to one single sound per object. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test2}
 \end{figure}
 
-The aim of this experiment is to prove whether sound variation in game sound effects is desirable and makes a difference. By choosing the positive values, participants would prove that having spatial variation in impact sounds benefits the immersion of the player. \Todo{decribe the graph}
+The aim of this experiment is to prove whether sound variation in game sound effects is desirable and makes a difference. By choosing the positive values, participants would prove that having spatial variation in impact sounds benefits the immersion of the player. Although, it is not very profound, participants' answers lean towards this belief. In other words, sounds from seven out of eleven objects were chosen in the positive range. In addition, the rest of the objects' sounds have an average of about zero, which means that both examined sounds are the same. This might have been caused due to the lack of rotation during the fall of the object on the platforms, especially for the cooking pot and the plate. That is to say, probably there was no actual variation on the recorded sounds.
 
 \subsection{3rd experiment}
 \Todo{check if it comes out that we cannot transform a given object's material just with damping (maybe we need to change the spectral content)}
 
-Figure \ref{fig:test3} shows the results of the third experiment. This one was held to validate the chosen values of the Q-factor that correspond to each material. For the purpose of this thesis, we chose one value per object that sounded closer to the specified material, in our opinion. Those selected values are shown in table \ref{tab:default_Q}.   
+Figure \ref{fig:test3} shows the results of the third experiment. This one was held to validate the chosen values of the Q-factor that correspond to each material. For the purpose of this thesis, we chose one value per material that sounded closer to reality, in our opinion. Those selected values are shown in table \ref{tab:default_Q}.  
+
+Participants heard a range of materials assigned to the same object every time and were asked to move a slider if a change was noticed. The four changes that they had to identify are: plastic to wood, wood to ceramic, ceramic to glass and glass to metal.
 
 \begin{figure}[H]
   \centering
@@ -153,4 +151,5 @@ Figure \ref{fig:test3} shows the results of the third experiment. This one was h
       \caption{The chosen values of the quality factor that correspond to material change of the same object.}\label{fig:test3}
 \end{figure}
 
-By studying figure \ref{fig:test3}, we can see that the values chosen from the experiment participants do not vary a lot from ours (see table \ref{tab:default_Q}).
+By studying figure \ref{fig:test3}, we can see that the values chosen from the experiment participants validate ours. The first change (plastic to wood) is chosen to be at value 1600, while our choice is 1500. Then, there is a change around value 2200 which does not correspond to any of our examined materials. The second change (wood to ceramic) was chosen by the majority of the participants to be at value 3000 (the same as our choice). Afterwards, the change from ceramic to glass is split between the values 3400 and 3600, when 3500 is our chosen value. Finally, the last change (glass to metal) lays on value 4000, which corresponds to our choice. As far as the extra change noticed by the participants is concerned, opens a discussion of whether we should include a sixth material to be placed between wood and ceramic in the Q-factor range.
+

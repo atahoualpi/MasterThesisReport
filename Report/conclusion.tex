@@ -1,9 +1,15 @@
 \chapter{Conclusion}
 
-A sound designing tool was presented in this study, where two different synthesis algorithms were implemented. The goal was to achieve physics-based procedural audio implementation into games using the Unity\textsuperscript{\textregistered} game engine. 
+A sound designing tool was presented in this study, where two different synthesis algorithms were implemented. The goal was to achieve physics-based, procedural audio implementation in games using the Unity\textsuperscript{\textregistered} game engine. 
 
 A number of everyday objects were used, which were separated into different ``sound areas'' and an impact sound for each one of them was recorded. In addition, 3D models of the objects were created, matching their shape and dimensions. By using a peak detection algorithm on the real-world recordings, we were able to extract modal data necessary for sound re-production. Those data were fed to the synthesis algorithms, together with an impulse that activates the sound synthesis procedure. This process made it successful to transfer the audio properties of the original objects to the corresponding virtual ones.
 
-Both synthesis methods include three different parts; an impact, a rolling and a scratching sound synthesis, which summarize all possible interactions of two surfaces. The tool's \gls{UI}, with high level adjustable parameters, enables the designers to customize the sounds according to their needs.
+Both synthesis methods include three different parts; an impact, a rolling and a scratching sound synthesis, which summarize all possible interactions of two colliding surfaces. The tool's \gls{UI}, with high level adjustable parameters, enables the designers to customize the sounds according to their needs. A metallic object can be transformed into a wooden one just by adjusting a slider. In addition, having the original objects' sizes as reference, designers are able to scale the produced sound together with the object. Finally, the surface's roughness can be fine-tuned for the sound to match the texture's visualization.
 
-Although the extraction of data from recordings offers computational efficiency, it is impossible to include the whole sound information without alterations. Thus, the synthesized sounds do not sound exactly like the reference ones, but their source is recognizable. 
+Listening experiments performed to several people \Todo{here summarize the tests and analysis chapters.}
+
+Although the extraction of data from recordings offers computational efficiency, it is impossible to include the whole sound information without alterations. Thus, the synthesized sounds do not sound exactly like the reference ones, but their source is highly recognizable. In addition, the tool used for striking the objects produces a sound as well, which is added to the desired sound. To achieve good results, it is important to reduce external noise and energy transmission during the recording process.
+
+Further extension of the tool is possible, by adding more types of objects, following the same procedure.
+
+Procedural, physics-based audio aims to increase realism and immersion in games. Audio events match exactly with graphic events and compliment one another, producing a compelling experience.
