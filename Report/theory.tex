@@ -12,7 +12,7 @@ Researchers have been working on automatically generated synthesized sounds base
 
 Sound spatialization is a crucial component for building 3D virtual scenes and the listener's immersion. Different techniques such as Ambisonics, VBAP and Wave Field Synthesis have been developed to simulate 3D sounds on loudspeakers. Binaural techniques use HRTF functions to simulate the position of a sound source with respect to the listener through the use of headphones. In this thesis spatialization and sound synthesis are considered two separate processes. Here all sounding objects are considered point sources that are spatialized with Unity's Audio Spatializer SDK \cite{bib:unity_doc} which produces the desired effect. This is why sound propagation is not studied in depth. 
 
-Regarding studies related to sound simulation frameworks, in \cite{gaver1993we, gaver1993world} Gaver proposes the analysis and synthesis of contact sounds based on what he calls ``every listening'' which consists in focusing on the perceptual features of a sound event. Another pioneering work \cite{takala1992sound} presents a methodology to produce synchronized sounds with animations. \cite{van1998sounds} decribes a framework that uses modal analysis to generate sounds based on the object's material, shape and impact location. This analytical model however can not handle objects with arbitrary or more complex shapes. A \gls{FEM} in \cite{director2001synthesizing} takes advantage of existing simulation techniques models the surface vibration of virtual objects. Despite being more accurate, this method is expensive and non-interactive. In his book \cite{Cook:2002:RSS:515316}, Cook covers extensively physically based sound synthesis concepts and defines a parametric model as one that can be manipulated to change the interaction, object and sound.  
+Regarding studies related to sound simulation frameworks, in \cite{gaver1993we, gaver1993world} Gaver proposes the analysis and synthesis of contact sounds based on what he calls ``every listening'' which consists in focusing on the perceptual features of a sound event. Another pioneering work \cite{takala1992sound} presents a methodology to produce synchronized sounds with animations. \cite{van1998sounds} decribes a framework that uses modal analysis to generate sounds based on the object's material, shape and impact location. This analytical model however can not handle objects with arbitrary or more complex shapes. A \gls{FEM} in \cite{director2001synthesizing} takes advantage of existing simulation techniques and models the surface vibration of virtual objects. Despite being more accurate, this method is expensive and not suitable for interactive applications. In his book \cite{Cook:2002:RSS:515316}, Cook covers extensively physically based sound synthesis concepts and defines a parametric model as one that can be manipulated to change the interaction, object and sound.  
 
 Different techniques have been used to extract modal parameters necessary for modal synthesis. \cite{pai2001scanning} scans the response of real objects to model the interaction behaviour of 3D objects. Despite offering the possibility to synthesize sounds for arbitrary shaped objects, the hardware needed is a clear limitation. A \gls{FEM} approach is used in \cite{o2002synthesizing} for modal analysis and \cite{raghuvanshi2006interactive} uses spring-mass systems to model each object's deformation and vibration.\cite{van2001foleyautomatic} and \cite{lloyd2011sound} make use of modal models derived from recordings of struck objects which is similar to the approach described in this thesis. This model is used to create impact, rolling and sliding sounds.
 
@@ -41,7 +41,7 @@ This thesis examines sounds produced by the first two models. Impact forces are 
 
 In this thesis we focus on sound produced by rigid-body objects. When two of these objects collide, the energy from the impact deforms them. This deformation is propagated through the whole object, making its outer surfaces vibrate and emit sound waves to the environment. Sound waves impact on other objects in the environment and get reflected and absorbed from them before reaching the ear \cite{van1998sounds}. All the interactions that happen before reaching the ear, contribute to the characterization of the sound, making the listener able to visualize the impact just by sound. Since in this thesis we examine only object-related interactions and not sound propagation, below we explain in depth how each of these physical attributes affect sound.
 
-\subsection{How physical attributes affect sound}
+\subsection{Acoustic effects of sound attributes}
 
 \paragraph{Interaction\\}
 An object that receives an impact is deformed during a very short period of time. The vibration lasts until the initial energy is fully damped. Hence, the amplitude of the oscillation depends only on the object's damping. On the other hand, scraping sounds are characterized by a continuous supply of energy that varies throughout the object interaction. The force of the interaction plays the most significant role for the amplitude of the oscillation. The stronger the force, the bigger it imposes the amplitude value to be - and the louder the sound. Additionally, the force affects the spectrum of the resulting sound. The greater the force, the more high frequency components \cite{gaver1993world}.
@@ -113,7 +113,7 @@ Since every different point struck on the object produces different deformations
 
 A mass-spring system consists in constructing a model that approximates the object's surface based on its geometry and material properties. In \cite{raghuvanshi2006interactive}, the authors convert each mesh vertices into masses and the edges into damped springs. They solve an ordinary equation based on the input mesh to calculate the vibration modes and damping parameters. This modal analysis technique is faster than \gls{FEM} but less accurate \cite{ren2010synthesizing}.
 
-\subsection{Example-guided}
+\subsection{Example-guided}\label{sec:exampleguided}
 
 The method used in this thesis for modal parameters extraction is the ``Example-guided'', where data get extracted using example recordings of the objects being struck as seen in \cite{lloyd2011sound} and \cite{ren2013example}. Using suitable DSP algorithms it is possible to extract features from the recordings such as the fundamental frequency, its harmonics and the frequency peaks of the signal (amplitudes). An advantage of this technique is that it is easy to use for the sound designer as he just needs to supply an audio clip to obtain the corresponding modal model. The sound designer is used to selecting sounds from audio libraries although in a virtual scene with a high number of audio sources this process could be tedious.
 
@@ -181,7 +181,7 @@ In this method, a number of filters are constructed using modal frequencies of t
       \label{fig:filter_synth}
 \end{figure}
 
-\subsection{Sound Variations} \label{sec:sound_variation}
+\section{Sound Variations} \label{sec:sound_variation}
 Each point of an object produces a different sound when struck. This happens because of the different amount of excitation each resonant mode experiences. As mentioned in section \ref{sec:modal_extraction}, during data extraction we get a matrix of amplitudes of size $K\times N$ corresponding to $K$ different resonant modes of each of the $N$ points of the object. . Note that the frequencies and dampings are determined by the geometry and material properties of the object while the gains of the modes depend on the contact location on the
 object \cite{van2001foleyautomatic}. This means that even though resonant frequencies are the same for all surface points, each mode gain is different depending on the location.
 
@@ -198,6 +198,37 @@ There are several methods to achieve spatial variation on sound produced by the 
 \end{itemize}
 
 \section{3D Audio}
-In VR/AR applications, the location of the incoming sound plays as significant role as the sound itself. 
 
-\Todo{explain HRTF}
+Spatialized sound is important for 3D virtual worlds because it enables the localization of objects in combination with visual cues. Auditory cues are also essential to localize a sound source that is outside the field of view (i.e. a car driving closer but hidden behind a building corner). Studies show that accurate auditory information increases the sense of presence in a virtual environment \cite{larsson2002better}. Different methods for rendering three-dimentional sound field for the listener's ears are covered in this section.
+
+\subsection{Binaural and transaural techniques}
+
+The aim of these methods is to recreate a wave field at the ears of the listener using most commonly headphones (binaural) or loudspeakers (transaural).
+
+\paragraph{Head-Related Transfer Function\\}\label{par:hrtf}
+
+The goal of \gls{HRTF} is to model by the use of filters the effects of resonances inside the ear and close to the head and upper body on sound propagation. To obtain these filters small microphones can be placed at the entrance of a listener's ear canals or on a dummy-head. \gls{HRTF}s vary depending on the individual due to morphological differences and should be adapted for each listener to increase the quality \cite{funkhouser2002sounds}. It is nowadays the most used technique for sound spatialization in combination with head tracking for \gls{VR} and \gls{AR} headsets \cite{bib:hololens, bib:oculus}.
+
+\paragraph{Transaural stereo\\}\label{par:transaural}
+
+This method makes use of loudspeakers for binaural reproduction. As the signal emitted by the right speaker also reaches the listener's left ear and vice versa, filtering is needed to cancel the cross-talk . Its use is limited to desktop and suffers from a limited sweet-spot \cite{funkhouser2002sounds}
+
+\subsection{Multi-channel auditory displays}
+
+These techniques use an array of loudspeakers positioned around the listening area to generate a 3D sound field. They are usually used for larger audiences and suffer from sweet spot problems but on the other hand do not need complex  \gls{HRTF} filtering.
+
+\paragraph{Vector-Based Amplitude Panning\\}\label{par:vbap}
+
+\gls{VBAP} is a computationally efficient and accurate method based on auditory perception. By panning the sound sources the perceived source location is shifted. The loudspeakers can be positioned in an arbitrary three-dimentional placement. However it does not allow the reproduction of elevation of the virtual sound source \cite{pulkki1997virtual}.
+
+\paragraph{Ambisonics\\}\label{par:ambisonics}
+
+Ambisonics is a spatial sound encoding method for surround and multi-speaker systems. It uses soundfield microphones that encode audio through four channels that model the directional soundfield. Ambisonics has been extended to higher orders to offer more spatial resolution \cite{daniel2003further}. 
+
+\paragraph{Wave Field Synthesis\\}\label{par:wfs}
+
+\gls{WFS} is based on the Kirchoff integral theorem which states that any point of a wave front can be considered as a secondary source. This method requires a large amount (about 120-160 output channels) of loudspeakers and processing to work \cite{funkhouser2002sounds}.
+
+\subsection{3D audio analysis for VR/AR applications}
+
+\gls{WFS} is the only multi-user reproduction system which could be an interesting element for video games but due to its setup complexity dos not seem to be an option for virtual environments. Other methods that make use of loudspeakers offer good spatialization results but are impractical for \gls{VR}/\gls{AR} applications as there should be consistency between the user's viewpoint in the virtual space and the virtual listening location. Additionally, sound reflections on the screen surfaces can engage acoustical problems. This is why binaural systems that use HRTF and which are incorporated into nowadays \gls{VR}/\gls{AR} headsets seem to be the best option to maintain consistency between the listener's head motion and the audio scene.
