@@ -3,6 +3,7 @@
 \section{Results}
 
 \subsection{Which Synthesis Method Is Better?}
+After analyzing the results of the listening experiments on several people, we concluded that there is no good or bad method to synthesize modal sounds. Each object, with its characteristic physical attributes, gives different results.
 
 \subsection{Evaluation}
 %\begin{itemize}
@@ -18,6 +19,8 @@ Overall, the work on this thesis proved successful. We managed to replace pre-re
 An important drawback is the difficulty to extend the tool with new objects, but we include a detailed guide of how to do it in appendix \ref{ap:guide}. However, we managed to make it easy-to-use with the already existing objects, by implementing high level controllers that are easily understandable from a designer. Those controllers, that are explained in section \ref{sec:UI}, are neither \textit{weak} nor very \textit{strong}. As explained in \cite{jaffe1995ten}, weak parameters affect the result so little that there is a possibility that the designer adjusts it to a random, undesirable value. On the other hand, when even a minuscule tweaking of a very strong parameter induces a big change, the designer  will probably find it difficult to choose the value he wants.
 
 We tried to keep the UI similar to the Unity\textsuperscript{\textregistered}'s UI, so game developers can use the tool without further need of sound design knowledge. It is as easy to assign procedurally generated, physics based sound to objects as if you assign a texture to them. Therefore, with this tool we are not only targeting sound designers who desire more realistic sound effects, but also game developers with knowledge of the Unity\textsuperscript{\textregistered} Editor and no further sound design knowledge. 
+
+Since we separated the objects into different areas, it was easier to asume that all material are homogeneous and isotropic. 
 
 \subsubsection{Bugs}
 \begin{itemize}
