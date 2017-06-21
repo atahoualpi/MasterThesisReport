@@ -1,7 +1,7 @@
 \chapter{Analysis}\label{ch:analysis}
 
 \section{Results}
-This chapter includes an assessment of the thesis and a discussion about its strengths and weaknesses.  
+This section includes an assessment of the thesis and a discussion about its efficiency and weaknesses.  
 
 \subsection{Which Synthesis Method Is Better?}
 After analyzing the results of the listening experiments on several people, we concluded that there is no good or bad method to synthesize modal sounds. Each object, with its characteristic physical attributes, gives different results. However, a division per material is possible to arise as seen in table \ref{tab:method_mat}.
@@ -16,6 +16,8 @@ After analyzing the results of the listening experiments on several people, we c
 %\end{itemize} 
 
 Overall, the work on this thesis proved successful. We managed to replace pre-recorded sound effects with procedural audio. In addition, we made this audio physics-based and influenced by the context of the impact. One big challenge that was achieved is the ability to choose different material for every object, which extends our tool for imaginary game scenarios.
+
+We provide the sound designers with ready-made Unity\textsuperscript{\textregistered} prefabs and their corresponding audio components attached. The sounds are object specific, meaning that they are designed to match one specific object. This is done to enrich the sounds with the realism of a real object. Nevertheless, one can use them for different shaped object, if they fit their needs. 
 
 An important drawback is the difficulty to extend the tool with new objects, but we include a detailed guide of how to do it in appendix \ref{ap:guide}. However, we managed to make it easy-to-use with the already existing objects, by implementing high level controllers that are easily understandable from a designer. Those controllers, that are explained in section \ref{sec:UI}, are neither \textit{weak} nor very \textit{strong}. As explained in \cite{jaffe1995ten}, weak parameters affect the result so little, that there is a possibility that the designer adjusts it to a random, undesirable value. On the other hand, when even a minuscule tweaking of a very strong parameter induces a big change, the designer  will probably find it difficult to choose the value he wants.
 
@@ -32,7 +34,7 @@ Using the provided Unity\textsuperscript{\textregistered} prefabs as reference, 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{specs/sph_roughness.png}
-      \caption{Waveforms of a bottle object with surface roughness variation (from very smooth to very rough).}
+      \caption{Waveforms of a bottle object with surface roughness variation (from very smooth to very rough), rolling on a platform.}
       \label{fig:bottle_rough}
 \end{figure}
 
@@ -57,29 +59,13 @@ Since we separated the objects into different areas, it was easier to assume tha
 
 In appendix \ref{ap:spectrograms}, the spectrograms for one object of each material examined in this work are shown. Although there are a lot of differences, both synthesis methods follow similar behavior as the recordings, with filter-based method being closer to the recordings.  
 
-\subsubsection{Drawbacks}
-\begin{itemize}
-\item metals over 3100 Q
-\item you have to press apply on prefabs
-\item the procedure of putting the freq and ampl data in
-\item it is object specific (not a bug actually, more like a drowback)
-\item lack of acoustical richness that might characterize synthetic signals \cite{giordano2006material}
-\item some objects are not modal
-\end{itemize}
+\subsubsection{Limitations}
 
-\subsection{What did we do new?}
-Combined all three major sounds inside a game or an application (impact, rolling, scratching) and made them available and ready-to-use to developers.
+Although the tool's operation is satisfactory, there are several drawbacks. Firstly, metallic sounds' duration causes undesired distortions. More specifically, for Q-factor values over $3100$, a sound added to the audio cue becomes very low pitched. Despite the fact that both glass and metallic objects have a Q-factor value over 3100, the above case is only recognizable in metallic ones.
 
-Bridged university with industry by implementing a tool inside the game engine.
+Furthermore, using the tool involves some difficulties; it is important for the designer to remember to press the \textit{``Apply''} button, on the prefab, every time a change is made, otherwise it will be undone. In addition, there is not an automatic process to incorporate new modal data in the tool, so it might be cumbersome for someone without the appropriate expertise.
 
-\section{Discussion}
-
-\subsection{Types of games that it can be used}
-This tool can be used for development of all sorts of games that include object interaction. They can vary from indoor AR applications to open world environment games running in consoles. 
-
-\subsection{Why our work can be used in VR/AR?}
-Virtual and augmented reality are becoming more and more widespread technologies. There are multiple applications where they can prove to be very useful both in everyday life and entertainment. Focusing on AR, our thesis' goal is to develop a framework for sounds produced by object interactions. We designed the sounds to be realistic and event-based, so they can adapt into an AR environment where a big portion of the objects are indeed real.
-
+As far as the synthesized sounds are concerned, they are not identical to the real-world recorded sounds for two reasons. Firstly, because every synthetic sound lacks information that forms the richness of a real sound \cite{giordano2006material}. Secondly, because this thesis does not calculate the residual sound, namely the differentiation between the real-world audio and the synthesized sound \cite{ren2013example}. Therefore, information that concerns mostly the beginning of the sound (when the collision happens) is not calculated. The reason why we chose not to include it is because we wanted to subtract the noise produced by the striker (a drumstick in our case).
 
 \subsection{CPU demands}
 Synthesizing sounds for applications real-time instead of using a mass of prerecorded clips is a good solution to the storage problem of nowadays portable and limited in memory devices. On the other hand, it is challenging and requires a lot of CPU performance when usually audio is restricted to a low limit and most of it is given to graphics, physics and artificial intelligence (AI) \cite{lloyd2011sound}. 
@@ -93,7 +79,9 @@ In our tool, however, when profiling a demonstration of a wine bottle rolling do
       \label{fig:profile}
 \end{figure} 
 
-When testing the limits of the tool, we found out that in Filter-based method a total of 16 objects can be active at the same time before audio gets distorted. The corresponding number for the Sinusoidal method is 12, since more calculations take place. Those numbers were obtained on the laptop mentioned above and using the \textit{Unity\textsuperscript{\textregistered} Audio Profiler window} and represent the amount of \textbf{``Playing Audio Sources''} without the \textbf{``Total Audio CPU''} exceeding $100\%$ (see figure \ref{fig:audio_profile}).
+When testing the limits of the tool, we found out that in Filter-based method a total of 16 objects can be active at the same time before audio gets distorted. The corresponding number for the Sinusoidal method is 12, since more calculations take place. Those numbers were obtained on the laptop mentioned above, using the \textit{Unity\textsuperscript{\textregistered} Audio Profiler window} and represent the amount of \textbf{``Playing Audio Sources''} without the \textbf{``Total Audio CPU''} exceeding $100\%$ (see figure \ref{fig:audio_profile}).
+
+Overall, most of the calculations happen in the start of the application, leaving only the identification of object and the corresponding data sending to audio chain to happen in real-time. We can, therefore, confirm that procedural audio does not consume more calculation power than is provided for audio in game and application productions.   
 
 \begin{figure}[H]
   \centering
@@ -102,31 +90,36 @@ When testing the limits of the tool, we found out that in Filter-based method a 
       \label{fig:audio_profile}
 \end{figure}
 
-\subsection{How can we improve our work?}
+\subsection{What did we do new?}
+First of all, we conducted an examination between two different sound synthesis methods. The sinusoidal one follows the modal synthesis equation (see equation \ref{eq:modal_response}, while the filter-based does the calculations inside the band-pass filters. We also tested the quality of the methods on people, by performing perception experiments. In addition, we combined all three major contact sounds (impact, rolling, scratching) in a sound designing tool, available and ready-to-use for developers. Our goal was to bridge university research with industry by implementing a tool inside the game engine.
+
+\section{Discussion}
+In this section, further discussion about the tool's usability is made and also several future extensions.
+
+\subsection{Types of games the tool can be used to}
+This tool can be used for development of all sorts of games that include object interaction. They can vary from indoor AR applications to open world environment games running in consoles. However, in its current form it is recommended to be used for indoor games, since all prefabs available are every day object found in a kitchen. Designers are, also, highly endorsed to use it for \gls{AR} applications, where the synthesized sounds' realism will be compared with the real sounds of the environment.
+
+\subsection{Why our work can be used in AR/VR?}
+Virtual and augmented reality are becoming more and more widespread technologies. There are multiple applications where they can prove to be very useful both in everyday life and entertainment. Focusing on \gls{AR}, this thesis' goal is to develop a framework for sounds produced by object interactions. The sounds are designed to be realistic and event-based, so they can adapt into an \gls{AR} environment where a big portion of the objects are indeed real. Furthermore, with everything being generated in real time, it is possible to use our tool on portable devices with small storage space.
+
+\gls{VR} devices, although they do not have storage problems since they are connected to PCs, they, as well as \gls{AR}, require flexible sounds that can adapt to any scenario. In addition, both technologies have graphics in 3D space, so 3D sound is essential to conclude the experience.
+
+\subsection{Future work}
+\colorbox{pink}{put those two or not?}
 \begin{itemize}
-\item take into account the environment (reverberation etc)
-\item make objects destructible
-\item randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)
-\item spatialize at the same time with the synthesis
-\item radiation and propagation (Interactive Acoustic Transfer Approximation for Modal Sound has a method)
-Even though the recordings used to extract the modal data include information about the radiation and propagation of the sound in the environment, this thesis did not examine it.
-\item use only one recording and interpolate for all areas
-\item level of detail, using a masking threshold of e.g. 15dB as used in MEASUREMENTS OF PERCEPTUAL QUALITY OF CONTACT SOUND MODELS
+\item \colorbox{pink}{randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)}
+\item \colorbox{pink}{use only one recording and interpolate for all areas}
 \end{itemize}
 
-\subsection{Pros and Cons of Procedural Game Audio}
-pros\\
-more adaptive (flexible/dynamic).\\
-physics based.\\
-possibility of alternations without extra memory.\\
-less memory space.\\
-no need for time consuming sound library development.\\
-easy to create new sounds.\\
-better for mobile platforms.\\
+The implemented tool is able to transfer an object's physical attributes from recordings to synthesized sounds. However, it does not take into account several parameters that would make the synthesis more accurate and less expensive when it is not necessary to be very detailed (e.g. sounds that are produced far away from the listener). As described in \cite{corbett2007timbrefields}, not only the location of the excitation point controls the timbre of the sound, but also the location of the listener. The radiation, namely the energy transferred to the listener's ear, depends on his location and it is calculated through the \textit{acoustic transfer function}. 
 
-cons\\
-usually bad quality (not realistic - you can tell it's synthesized).\\
-more processing power.\\
-additional code requirements.\\
-not everyone is familiar with this sound design approach.\\
-not every sound is easy to be produce procedurally.\\
+Another parameter is the early spatialization of the sound. More specifically, instead of spatialize every sound after it is synthesized, another option would be to do it at the same time, using the location of the object and listener. This approach would save calculation power for sounds that are very far away from the listener. In addition, for the filter-based method this can be accomplished by cascading the band-pass filters with spatial filters. Moreover, level of detail should be handled for sound quality. For example, a produced sound, with a sound pressure under a threshold of 10dB for example, should not be synthesized very qualitatively.   
+
+Furthermore, some future work for more realistic effects could be done. Room acoustics, for example calculating the reverberation of the sounds, could be examined, or make the objects destructible by assigning a more high-pitched sound for each of the fragments of the object.
+
+\subsection{Discussion on Procedural Audio}
+
+Using procedural audio in games is much more convenient and less expensive in storage space, than audio files. It is adaptive to several different scenarios without further change or additional memory needs, as it is flexible and dynamic. For example, with just a slider, size adjustment is achieved. In addition, it provides the ability of physics-based audio by adding only a few kilobytes of data space. Adding new sounds is less time consuming and it is better for mobile platforms that are limited in both storage space and computational power.
+
+On the other hand, using audio files in a game gives better quality results, while procedural audio's sounds lack some information that makes them not very realistic. With procedural audio, there are also requirements for more processing power, to synthesize the sounds, and additional coding, which is, usually, not a familiar approach for sound designers.
+\colorbox{pink}{not every sound is easy to be produce procedurally}
