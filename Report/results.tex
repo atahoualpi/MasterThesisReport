@@ -104,33 +104,22 @@ Virtual and augmented reality are becoming more and more widespread technologies
 
 \gls{VR} devices, although they do not have storage problems since they are connected to PCs, they, as well as \gls{AR}, require flexible sounds that can adapt to any scenario. In addition, both technologies have graphics in 3D space, so 3D sound is essential to conclude the experience.
 
-\subsection{How can we improve our work?}
+\subsection{Future work}
+\colorbox{pink}{put those two or not?}
 \begin{itemize}
-\item take into account the environment (reverberation etc)
-\item make objects destructible
-\item randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)
-\item spatialize at the same time with the synthesis
-\item radiation and propagation (Interactive Acoustic Transfer Approximation for Modal Sound has a method)
-Even though the recordings used to extract the modal data include information about the radiation and propagation of the sound in the environment, this thesis did not examine it.
-\item use only one recording and interpolate for all areas
-\item level of detail, using a masking threshold of e.g. 15dB as used in MEASUREMENTS OF PERCEPTUAL QUALITY OF CONTACT SOUND MODELS
+\item \colorbox{pink}{randomize initial phase so peaks of the sine wave don't line up and distort the sound (saturation)}
+\item \colorbox{pink}{use only one recording and interpolate for all areas}
 \end{itemize}
 
-The implemented tool is able to transfer object physical attributes from recordings to synthesized sounds. However, it does not take into account the radiation and propagation of the sound. 
+The implemented tool is able to transfer an object's physical attributes from recordings to synthesized sounds. However, it does not take into account several parameters that would make the synthesis more accurate and less expensive when it is not necessary to be very detailed (e.g. sounds that are produced far away from the listener). As described in \cite{corbett2007timbrefields}, not only the location of the excitation point controls the timbre of the sound, but also the location of the listener. The radiation, namely the energy transferred to the listener's ear, depends on his location and it is calculated through the \textit{acoustic transfer function}. 
 
-\subsection{Pros and Cons of Procedural Game Audio}
-pros\\
-more adaptive (flexible/dynamic).\\
-physics based.\\
-possibility of alternations without extra memory.\\
-less memory space.\\
-no need for time consuming sound library development.\\
-easy to create new sounds.\\
-better for mobile platforms.\\
+Another parameter is the early spatialization of the sound. More specifically, instead of spatialize every sound after it is synthesized, another option would be to do it at the same time, using the location of the object and listener. This approach would save calculation power for sounds that are very far away from the listener. In addition, for the filter-based method this can be accomplished by cascading the band-pass filters with spatial filters. Moreover, level of detail should be handled for sound quality. For example, a produced sound, with a sound pressure under a threshold of 10dB for example, should not be synthesized very qualitatively.   
 
-cons\\
-usually bad quality (not realistic - you can tell it's synthesized).\\
-more processing power.\\
-additional code requirements.\\
-not everyone is familiar with this sound design approach.\\
-not every sound is easy to be produce procedurally.\\
+Furthermore, some future work for more realistic effects could be done. Room acoustics, for example calculating the reverberation of the sounds, could be examined, or make the objects destructible by assigning a more high-pitched sound for each of the fragments of the object.
+
+\subsection{Discussion on Procedural Audio}
+
+Using procedural audio in games is much more convenient and less expensive in storage space, than audio files. It is adaptive to several different scenarios without further change or additional memory needs, as it is flexible and dynamic. For example, with just a slider, size adjustment is achieved. In addition, it provides the ability of physics-based audio by adding only a few kilobytes of data space. Adding new sounds is less time consuming and it is better for mobile platforms that are limited in both storage space and computational power.
+
+On the other hand, using audio files in a game gives better quality results, while procedural audio's sounds lack some information that makes them not very realistic. With procedural audio, there are also requirements for more processing power, to synthesize the sounds, and additional coding, which is, usually, not a familiar approach for sound designers.
+\colorbox{pink}{not every sound is easy to be produce procedurally}

@@ -39,7 +39,7 @@ Eleven objects of everyday life made of five different materials (plastic, wood,
 \section{Modal data}
 Using the peak locator algorithm described in section \ref{sec:chuck}, we extracted the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:bottle_data} shows the data extracted for the wine bottle object. Each graph corresponds to one of the ``sound areas'' we have divide it into.
 
-Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data, one for each different vertex, we can see in figure \ref{fig:bottle_data} that this does not happen in practice. There are multiple reasons why, with the most notable one being the possible discrepancies of the data extracting algorithm. In addition, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, we would need a very big frequency vector. This would take up a lot of memory space, without improving significantly the result. However, other causes could be the environment noise, the difference in the force when hitting the object or the way it is hold when being hit, during the recordings.
+Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data (one for each different vertex) we can see in figure \ref{fig:bottle_data} that this does not happen in practice. There are multiple reasons why, with the most notable being the possible discrepancies of the data extracting algorithm. In addition, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, we would need a very big frequency vector. This would take up a lot of memory space, without improving significantly the result. However, other causes could be the environment noise, the difference in the force when hitting the object or the way it is hold when being hit, during the recordings.
 
 \begin{figure}[H]
   \centering
@@ -53,7 +53,7 @@ Nevertheless, it is obvious that the fundamental frequencies are similar for eac
 
 All synthetic sounds have been created in Pd patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity\textsuperscript{\textregistered}. This C\# script is attached to the GameObject in the scene so that the sound is processed within the game world.
 
-We have created our own C\# script that assigns the modal parameters, that we extracted in the analysis part with the ChucK code (see section \ref{sec:chuck}), to every one of the objects. This is done independently of the synthesis methods used here below.
+We have created our own C\# script that assigns the modal parameters, that we extracted in the analysis part (see section \ref{sec:chuck}), to every one of the objects. This is done independently of the synthesis methods used below.
 
 We consider two different types of force models as input to the synthesis patches. Impact forces that are used for sounds produced by a collision and constant contact forces, used for rolling and scratching sounds.
 
