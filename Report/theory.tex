@@ -154,7 +154,7 @@ The frequencies used for the sound synthesis are the resonant modes at which an 
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.5\textwidth]{sinusoidal_add_synth.PNG}
-      \caption{Sinusoidal Additive Synthesis Algorithm \cite{Cook:2002:RSS:515316}.}
+      \caption{Sinusoidal Additive Synthesis Algorithm. Picture from \cite{Cook:2002:RSS:515316}.}
       \label{fig:sin_add_synth}
 \end{figure}
 
@@ -165,7 +165,7 @@ This method is also additive, since we are adding the outputs of a number of ban
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.5\textwidth]{filter-based_add_synth.PNG}
-      \caption{Filter-based Modal Synthesis Algorithm \cite{Cook:2002:RSS:515316}.}
+      \caption{Filter-based Modal Synthesis Algorithm. Picture from \cite{Cook:2002:RSS:515316}.}
       \label{fig:filter_synth}
 \end{figure}
 
@@ -178,7 +178,7 @@ In figure \ref{fig:resp_bpf} we can see the frequency response of a \gls{BPF}.
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.7\textwidth]{BPF.PNG}
-      \caption{Frequency Response of a Band-pass Filter  \cite{bib:bpf}.}
+      \caption{Frequency Response of a Band-pass Filter. Picture from \cite{bib:bpf}.}
       \label{fig:resp_bpf}
 \end{figure}
 
@@ -193,7 +193,7 @@ BW = f_{c,high}-f_{c,low}.
 In this method, a number of filters are constructed using modal frequencies of the object as center frequencies and the damping of the material is used to control the \gls{Q} of the filters.  The \gls{Q} is a dimensionless parameter that is inversely proportional to the bandwidth ($Q=f_c/BW$), so the lower the \gls{Q}, the wider the bandwidth and vice-versa. Using amplitudes from matrix \textbf{A} (section \ref{sec:modal_extraction}), the level of the passing frequencies is controlled and resonators can be created through the sum of these filters. 
 
 \section{Sound Variations} \label{sec:sound_variation}
-Each point of an object produces a different sound when struck. This happens because of the different amount of excitation each resonant mode experiences. As mentioned in section \ref{sec:modal_extraction}, during data extraction we get a matrix of amplitudes of size $K\times N$ corresponding to $K$ different resonant modes of each of the $N$ points of the object. Note that the frequencies and dampings are determined by the geometry and material properties of the object while the gains of the modes depend on the contact location on the
+Each point of an object produces a different sound when struck. This happens because of the different amount of excitation each resonant mode experiences. As mentioned in section \ref{sec:modal_extraction}, during data extraction we get a matrix of amplitudes of size $K\times N$ corresponding to $K$ different resonant modes of each of the $N$ points of the object. It is to note that the frequencies and dampings are determined by the geometry and material properties of the object while the gains of the modes depend on the contact location on the
 object \cite{van2001foleyautomatic}. This means that even though resonant frequencies are the same for all surface points, each mode gain is different depending on the location.
 
 There are several methods to achieve spatial variation on sound produced by the same object. 

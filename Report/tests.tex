@@ -2,18 +2,20 @@
 When working in a field in which human perception plays a significant role, it is important to test whether your work makes sense for target users and if it solves successfully the problem that it was designed for.
 
 To examine the quality of physics-based synthetic sounds on listeners, \textit{A-B} and \gls{MUSHRA} \cite{series2014method} tests were performed. The aim is to answer the following questions: \begin{inparaenum}[1)]
-\item Which of the two synthesis methods (sinusoidal and filter-based additive synthesis) offers the best results? 
+\item Which of the two synthesis methods (sinusoidal or filter-based additive synthesis) offers the best results? 
 \item Does physics-based synthesis make a sound more appealing?
-\item Which is the range (in Q-factor values) of every material's sound?
-\end{inparaenum}.
+\item Which is the range (in \gls{Q} factor values) of every material's sound?
+\end{inparaenum}
 The results of the experiments are used to verify the modal synthesis methods implemented in this thesis, choose the more qualitative one and increase our understanding of spectral characteristics in relation with the material of the object. The interface of the tests is displayed in appendix \ref{ap:experiments}.
 
 \section{Preparation}
 The experiments use several audio files that were recorded inside the Unity\textsuperscript{\textregistered} platform. Two special scenes were created to test both the impulse response of the synthesis model and the sounds in real-life conditions -when an object is falling and colliding with other objects (figure \ref{fig:test_scenes}). 
 
-In the first scene (figure \ref{fig:test_sc1}), the audio files for the first experiment were recorded. During the recording session, the cube was ``tagged'' with different object names (a process which implies assigning different modal data) and let it hit the ground without bouncing. The process was repeated adding an Audio Source component to the cube with the anechoic chamber recordings to achieve consistency of the stimuli.
+In the first scene (figure \ref{fig:test_sc1}), the audio files for the first experiment were recorded. During the recording session, the cube was ``tagged'' with different object names (a process which implies assigning different modal data) and let it hit the ground without bouncing. The process was repeated adding an \textit{Audio Source} component to the cube with the anechoic chamber recordings to achieve consistency of the stimuli.
 
 In the second scene (figure \ref{fig:test_sc2}), the audio files for the second and third experiment were recorded. In this scene, objects fall, roll and scratch freely on rotated platforms, simulating a real room with obstacles.
+
+Every sound in the audio files starts one second after the participant presses play and ends half a second after no sound can be heard. They are recorded with 16-bit resolution and a sample rate of 44100Hz using Audacity\textsuperscript{\textregistered} \cite{bib:audacity}. Stimuli was presented to the participants through a pair of \textit{AKG K271} headphones, in a room with reduced external noise.
 
 \begin{figure}[H]
     \centering
@@ -32,8 +34,6 @@ In the second scene (figure \ref{fig:test_sc2}), the audio files for the second 
     \caption{The Unity\textsuperscript{\textregistered} scenes designed to record the audio files used for the user tests.}\label{fig:test_scenes}
 \end{figure}
 
-Every sound in the audio files starts one second after the participant presses play and ends half a second after no sound can be heard. They are recorded with 16-bit resolution and a sample rate of 44100Hz using Audacity\textsuperscript{\textregistered} \cite{bib:audacity}. Stimuli was presented to the participants through a pair of \textit{AKG K271} headphones, in a room with reduced external noise.
-
 Table \ref{tab:test_dec} gives details about all parts of the experiment.
 
 \begin{table}[H]
@@ -44,9 +44,9 @@ Table \ref{tab:test_dec} gives details about all parts of the experiment.
     \addlinespace
     $1$ & Single impact (\ref{fig:test_sc1}) & Participants listen to impact sounds and choose which method (filter-based or sinusoidal additive synthesis) sounds closer to the real-world recording.  \\
     \addlinespace
-    $2$ & Slanted platforms (\ref{fig:test_sc2}) & Participants listen to sounds recorded using three different methods: real-world recording, filter-based and sinusoidal additive synthesis. They are asked to decide, for each of them, whether a sound variation per object area or a single sound per object sounds better in their opinion.  \\
+    $2$ & Rotated platforms (\ref{fig:test_sc2}) & Participants listen to sounds recorded using three different methods: real-world recording, filter-based and sinusoidal additive synthesis. They are asked to decide, for each of them, whether a sound variation per object area or a single sound per object sounds better in their opinion.  \\
     \addlinespace
-    $3$ & Slanted platforms (\ref{fig:test_sc2}) & Participants listen to sounds produced by five different objects (one of each material under observation: plastic, wood, ceramic, glass and metal). However, they listen to a range of sounds that derive from a continuous increment of a parameter that affects the material of the object. They are asked to choose the point where a change of the material took place. \\ 
+    $3$ & Rotated platforms (\ref{fig:test_sc2}) & Participants listen to sounds produced by five different objects (one of each material under observation: plastic, wood, ceramic, glass and metal). However, they listen to a range of sounds that derive from a continuous increment of a parameter that affects the material of the object. They are asked to choose the point where a change of the material took place. \\ 
     \bottomrule
     \end{tabular}
     \caption{Overview of the experiments.}
@@ -56,14 +56,14 @@ Table \ref{tab:test_dec} gives details about all parts of the experiment.
 \section{Stimuli}
 Three different tests were performed. In the first test, the participant listens to 44 impulse responses, corresponding to different areas of the eleven materials. Each trial of the test includes a reference sound, which is the recording of the actual sound produced by the physical object and the two different synthesized sounds, corresponding to the two examined methods. The participant is then asked to choose which of the two synthesized sounds is closer to the reference and to what extend. The goal of this experiment is to gather information about the quality of the two methods and address which one of the two is best.
 
-In the second test, the stimuli consists of 33 trials that contain sounds produced by falling objects. This time each trial includes two sounds and no reference. One of the sounds corresponds to an object that has been split into ``sound areas'' and struck in different locations. The second sound corresponds to an object that does not present sound variations along its surface and that is also struck several times. This single sound was chosen instead of the other recordings corresponding to the object because it was the closest to the real sound (authors opinion). Participants were asked which of the two sounds they preferred and by how much. This test provides the results for sound variation versus repeating the same sound over and over.
+In the second test, the stimuli consists of 33 trials that contain sounds produced by falling objects. This time each trial includes two sounds and no reference. One of the sounds corresponds to an object that has been split into ``sound areas'' and struck in different locations. The second sound corresponds to an object that does not present sound variations along its surface and that is also struck several times. This single sound was chosen instead of the other recordings corresponding to the object because it was the closest to the real sound (in authors' opinion). Participants were asked which of the two sounds they preferred and by how much. This test provides the results for sound variation versus repeating the same sound over and over.
 
-The stimuli of the third test are sounds coming from five different objects, one of each material tested in this thesis (plastic jug, wooden mortar, ceramic plate, glass bottle and metallic cooking pot). For each object, we use ten different sounds per synthesis method. Each trial includes ten sounds that correspond to the same event, but with a small variation of the \gls{Q} for every sound. More specifically, starting from a value of 1000, the \gls{Q} was increased by 200 up to 4600. Some sounds that were too similar with others were removed to decrease the total size and length of the test. The participants were asked to choose the sounds where, in their opinion, a change in the material happened. This test was done to validate the chosen values for the \gls{Q}.
+The stimuli of the third test are sounds coming from five different objects, one of each material tested in this thesis (plastic jug, wooden mortar, ceramic plate, glass bottle and metallic cooking pot). For each object, we use ten different sounds per synthesis method. Each trial includes ten sounds that correspond to the same event, but with a small variation of the \gls{Q} for every sound. More specifically, starting from a value of $1000$, the \gls{Q} was increased by $200$ up to $4600$. Some sounds that were too similar with others were removed to decrease the total size and length of the test. The participants were asked to choose the sounds where, in their opinion, a change in the material happened. This test was done to validate the chosen values for the \gls{Q}.
 
-In the two first experiments, both the sequence of trials and the conditions (which method is A and which is B) are randomized. However, in experiment number three, an increase of the Q-factor was desired and thus the order of the sounds matters. Hence only the sequence of the trials were randomized .
+In the first two experiments, both the sequence of trials and the conditions (which method is A and which is B) are randomized. However, in experiment number three, an increase of the \gls{Q} factor was desired and thus the order of the sounds matters. Hence, only the sequence of the trials were randomized.
 
 \section{Participants}
-Eleven adult volunteers participated in this test which lasted about half an hour. They were five women and six men, aged $25$ to $61$ who stated having normal hearing. They have different backgrounds, two of them were musicians and the rest were not. An attempt to extract different results for the two groups would not give qualitative outcomes due to the reduced number of individuals in one of them.
+Eleven adult volunteers participated in this test which lasts about half an hour. They were five women and six men, aged $25$ to $61$ who stated having normal hearing. They have different backgrounds, two of them were musicians and the rest were not. An attempt to extract different results for the two groups would not give qualitative outcomes due to the reduced number of individuals in one of them.
 
 
 \section{Test Results}\label{sec:testresults}
@@ -73,13 +73,13 @@ The participants' responses were obtained in ``.txt'' format and processed using
 \subsection{First experiment}
 Results of the first experiment are shown in figure \ref{fig:test1}. The results were divided into smaller sub-graphs, one for each of the eleven objects, to examine the participants' preferences with respect to the synthesis methods per object. More precisely, their opinion on which of the two methods is closer to the recording of the real-world object (used as reference).
 
+Participants were asked to move a slider between the integer values $-3$ and $3$. Positive values correspond to a preference in the filter-based method, negative to the sinusoidal method and zero values means that both methods sound the same. Possible answers are displayed in table \ref{tab:test1_ans}. Every different tick of the x-axis of figure \ref{fig:test1} corresponds to a different ``sound area'' of the object. From left to right the areas go from the top to the bottom.
+
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{test1.png}
       \caption{The mean values and standard deviations per location for all objects. Positive values give a preference to the filter-based method, while negative ones give preference to the sinusoidal method. Participants choises were 0: both sound the same, 1/-1: the chosen is slightly better, 2/-2: the chosen is better and 3/-3: the chosen is much better.}\label{fig:test1}
 \end{figure}
-
-Participants were asked to move a slider between the integer values $-3$ and $3$. Positive values correspond to a preference in the filter-based method, negative to the sinusoidal method and zero values means that both methods sound the same. Possible answers are displayed in table \ref{tab:test1_ans}. Every different tick of the x-axis corresponds to a different ``sound area'' of the object. From left to right the areas go from the top to the bottom.
 
 \begin{table}[H]
 	\centering
@@ -154,7 +154,7 @@ The aim of this experiment is to prove whether sound variation for objects withi
 
 \subsection{Third experiment}
 
-Figure \ref{fig:test3} shows the results of the third experiment. This one was held to validate the chosen values of the Q-factor that corresponds to each material. For the purpose of this thesis, one value per material that sounded closer to reality was chosen. Those selected values are shown in table \ref{tab:default_Q}.  
+Figure \ref{fig:test3} shows the results of the third experiment. This one was held to validate the chosen values of the \gls{Q} factor that corresponds to each material. For the purpose of this thesis, one value per material that sounded closer to reality was chosen. Those selected values are shown in table \ref{tab:default_Q}.  
 
 Participants heard a range of materials assigned to the same object every time and were asked to move a slider if a change was noticed. The four changes that they had to identify are: plastic to wood, wood to ceramic, ceramic to glass and glass to metal.
 
@@ -164,5 +164,5 @@ Participants heard a range of materials assigned to the same object every time a
       \caption{The chosen values of the quality factor that correspond to material change of the same object.}\label{fig:test3}
 \end{figure}
 
-By studying figure \ref{fig:test3}, it can be seen that the values chosen by the participants in the experiment are similar to ours. The first change (plastic to wood) is chosen to be at value 1600, while our choice is 1500. Then, there is a change around value 2200 which does not correspond to any of our examined materials. The second change (wood to ceramic) was chosen by the majority of the participants to be at value 3000 (the same as our choice). Afterwards, the change from ceramic to glass is split between the values 3400 and 3600, when 3500 is our chosen value. Finally, the last change (glass to metal) lays on value 4000, which corresponds to our choice. As far as the extra change noticed by the participants is concerned, opens a discussion of whether we should include a sixth material to be placed between wood and ceramic in the \gls{Q} range.
+By studying figure \ref{fig:test3}, it can be seen that the values chosen by the participants in the experiment are similar to ours. The first change (plastic to wood) is chosen to be at value $1600$, while our choice is $1500$. Then, there is a change around value $2200$ which does not correspond to any of our examined materials. The second change (wood to ceramic) was chosen by the majority of the participants to be at value $3000$ (the same as our choice). Afterwards, the change from ceramic to glass is split between the values $3400$ and $3600$, when $3500$ is our chosen value. Finally, the last change (glass to metal) lays on value $4000$, which corresponds to our choice. As far as the extra change noticed by the participants is concerned, opens a discussion of whether we should include a sixth material to be placed between wood and ceramic in the \gls{Q} range.
 
