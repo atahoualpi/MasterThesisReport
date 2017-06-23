@@ -1,12 +1,12 @@
 \chapter{Subjective Experiments}\label{ch:tests}
 When working in a field in which human perception plays a significant role, it is important to test whether your work makes sense for target users and if it solves successfully the problem that it was designed for.
 
-To examine the quality of physics-based synthetic sounds on listeners,  \textit{MUSHRA}\cite{series2014method} tests were performed. The aim is to answer the following questions: \begin{inparaenum}[1)]
+To examine the quality of physics-based synthetic sounds on listeners, \textit{A-B} and \gls{MUSHRA} \cite{series2014method} tests were performed. The aim is to answer the following questions: \begin{inparaenum}[1)]
 \item Which of the two synthesis methods (sinusoidal and filter-based additive synthesis) offers the best results? 
 \item Does physics-based synthesis make a sound more appealing?
 \item Which is the range (in Q-factor values) of every material's sound?
 \end{inparaenum}.
-The results of the experiments are used to verify the modal synthesis methods implemented in this thesis, choose the more qualitative one and increase our understanding of spectral characteristics in relation with the material of the object. 
+The results of the experiments are used to verify the modal synthesis methods implemented in this thesis, choose the more qualitative one and increase our understanding of spectral characteristics in relation with the material of the object. The interface of the tests is displayed in appendix \ref{ap:experiments}.
 
 \section{Preparation}
 The experiments use several audio files that were recorded inside the Unity\textsuperscript{\textregistered} platform. Two special scenes were created to test both the impulse response of the synthesis model and the sounds in real-life conditions -when an object is falling and colliding with other objects (figure \ref{fig:test_scenes}). 
@@ -66,7 +66,7 @@ In the two first experiments, both the sequence of trials and the conditions (wh
 Eleven adult volunteers participated in this test which lasted about half an hour. They were five women and six men, aged $25$ to $61$ who stated having normal hearing. They have different backgrounds, two of them were musicians and the rest were not. An attempt to extract different results for the two groups would not give qualitative outcomes due to the reduced number of individuals in one of them.
 
 \section{Test Results}
-The participants' responses were processed using Python programming language and the following results were acquired.
+The participants' responses were obtained in ``.txt'' format and processed using Python programming language and the following results were acquired.
 
 \subsection{First Experiment}
 Results of the first experiment are shown in figure \ref{fig:test1}. The results were divided into smaller sub-graphs, one for each of the eleven objects, to examine the participants' preferences with respect to the synthesis methods per object. More precisely, their opinion on which of the two methods is closer to the recording of the real-world object (used as reference).
@@ -101,7 +101,7 @@ Participants were asked to move a slider between the integer values $-3$ and $3$
     \label{tab:test1_ans}
 \end{table}  
 
-This experiment examines which of the two synthesis methods - filter based modal synthesis and sinusoidal additive synthesis - used in this thesis is more accurate. From figure \ref{fig:test1} it can be seen that there is no universal answer for all objects. More specifically, there is a tendency for the sinusoidal method for the glass (bottle and wine glass) and the wooden (cutting board, mortar and rolling pin) objects. On the other hand, metal objects (cooking pot and wok) and plastic ones (jug and bowl) seem to sound more realistic with the filter-based method. Finally, for the ceramic objects (cup and plate) both methods have similar results. It is important to notice that ceramic material lays, also, in the middle of the \gls{Q} values. Those results are summed up in table \ref{tab:method_mat}.
+This experiment examines which of the two synthesis methods - filter based modal synthesis or sinusoidal additive synthesis - used in this thesis is more accurate. From figure \ref{fig:test1} it can be seen that there is no universal answer for all objects. More specifically, there is a tendency for the sinusoidal method for the glass (bottle and wine glass) and the wooden (cutting board, mortar and rolling pin) objects. On the other hand, metal objects (cooking pot and wok) and plastic ones (jug and bowl) seem to sound more realistic with the filter-based method. Finally, for the ceramic objects (cup and plate) both methods have similar results. It is important to notice that ceramic material lays, also, in the middle of the \gls{Q} values. Those results are summed up in table \ref{tab:method_mat}.
 
 \begin{table}[H]
 	\centering
