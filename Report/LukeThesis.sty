@@ -24,7 +24,7 @@
 \usepackage[hang,normalsize,bf]{caption}            %Make pretty captions
 \usepackage{varioref}                               %Enhances references (\vref {label})
 \usepackage{fancyhdr}                               %Pretty headers/footers
-\usepackage[colorlinks=false]{hyperref}                               %References package
+\usepackage[colorlinks=false]{hyperref}                                                             %References package
 \usepackage{amsmath,amssymb,latexsym}               %AMS and other symbols
 \usepackage{epic,eepic,epsfig,graphics,psfrag}      %Figure/picture packages
 \usepackage{theorem} 
@@ -123,7 +123,10 @@
          pdfsubject={\thesisdef},
          pdfkeywords={\thesiskeywords},
          colorlinks,
-         linkcolor=blue,
+         linkcolor={blue!80!black},
+    	 citecolor={green!50!black},
+    	 urlcolor={blue!80!black},
+         %linkcolor=blue,
          breaklinks,
          bookmarksopen,
          bookmarksnumbered,
