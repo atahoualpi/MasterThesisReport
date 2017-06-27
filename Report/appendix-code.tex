@@ -1,18 +1,18 @@
 \chapter{Pure Data Patches}\label{ap:pd_patches}
 %\Todo{make the patches more readable and replace the pics}
 
-\section{Filter Based Additive Synthesis}
+\section{Filter-based Modal Synthesis}
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{PdPatches/FBmain.PNG}
-      \caption{The main Pure Data patch for the filter-based additive synthesis.}
+      \caption{The main Pure Data patch for the filter-based modal synthesis.}
       \label{fig:FBmain}
 \end{figure}
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{PdPatches/FBresonator.PNG}
-      \caption{The resonator Pure Data patch for the filter-based additive synthesis.}
+      \caption{The \textit{resonator} Pure Data patch for the filter-based modal synthesis.}
       \label{fig:FBres}
 \end{figure}
 
@@ -20,7 +20,7 @@
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{PdPatches/Smain.PNG}
+    \includegraphics[width=\textwidth]{PdPatches/sinusoidalMainPatch.PNG}
       \caption{The main Pure Data patch for the sinusoidal additive synthesis.}
       \label{fig:Smain}
 \end{figure}
@@ -28,14 +28,14 @@
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{PdPatches/Sselector.PNG}
-      \caption{The selector Pure Data patch for the filter-based additive synthesis.}
+      \caption{The \textit{selector} Pure Data patch for the sinusoidal additive synthesis.}
       \label{fig:Ssel}
 \end{figure}
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{PdPatches/Sdsp.PNG}
-      \caption{The dsp Pure Data patch for the filter-based additive synthesis.}
+      \caption{The \textit{dsp} Pure Data patch for the sinusoidal additive synthesis.}
       \label{fig:Sdsp}
 \end{figure}
 
@@ -50,7 +50,7 @@ The perceptual tests on people use the \textit{A-B} and \gls{MUSHRA} interface. 
 \end{figure}
 
 \section*{First Experiment}
-The first experiment is an A-B test, where participants are encouraged to choose the closer to the reference between two sounds. All sounds come from stuck objects and the reference sound is a real-world recording, while A-B options are synthesized sounds one for each synthesis method. The test was split in two parts, to reduce the fatigue of participants. The options required for this part are the ``Randomize Trials'', which makes the trials show up in different order every time, the ``Randomize Conditions'', which randomizes the possibility an audio file to be assigned as an ``A'' or ``B'' option, and the ``Show REF'', which enables the reference sound button to appear. 
+The first experiment is an A-B test, where participants are encouraged to choose the closer to the reference between two sounds. All sounds come from struck objects and the reference sound is a real-world recording, while A-B options are synthesized sounds one for each synthesis method. The test was split in two parts, to reduce the fatigue of participants. The options required for this part are the ``Randomize Trials'', which makes the trials show up in different order every time, the ``Randomize Conditions'', which randomizes the possibility an audio file to be assigned as an ``A'' or ``B'' option, and the ``Show REF'', which enables the reference sound button to appear. 
 
 \begin{figure}[H]
     \centering  
@@ -75,7 +75,7 @@ The second experiment is, also, an A-B test and is split in two parts; recording
 
 The interface of this test (figure \ref{fig:t2_ui}) is similar to the previous one, except for the ``REF'' button. Participants were asked to follow the same procedure as before.
 
-\section*{Third experiment}
+\section*{Third Experiment}
 The third experiment in a \gls{MUSHRA} test, where participants listen to ten different sounds produced by the same object falling on inclining platforms, while a range of different materials is assigned to it. The only option required for this part is ``Randomize Trials'', since the same increasing range of values for \gls{Q} is necessary. Participants are encouraged to listen the ten sounds and decide where a change in material happened. Then, they are asked to bring the corresponding slider down to zero.
 
 \begin{figure}[H]
@@ -85,11 +85,11 @@ The third experiment in a \gls{MUSHRA} test, where participants listen to ten di
         \label{fig:t3_ui}
 \end{figure}
 
-The interface of the third part of the experiment is displayed in figure \ref{fig:t3_ui}, where participants where asked to ignore the scaling of the slider and adjust it either at the top when no change in material was noticed, or at the bottom when it was noticed.
+The interface of the third part of the experiment is displayed in figure \ref{fig:t3_ui}, where participants were asked to ignore the scaling of the slider and adjust it either at the top when no change in material was noticed, or at the bottom when it was noticed.
 
 \chapter{Spectrograms}\label{ap:spectrograms}
-Spectrograms of one object from each material used in this study. Each graph represents sound coming from one ``sound area'' of the object, either from the real-world recording or from the two synthesis methods (Sinusoidal Additive Synthesis and Filter-based Modal Synthesis).
-\section*{Plastic bowl}
+Spectrograms of one object from each material used in this study. Each graph represents sound coming from one ``sound area'' of the object, either from the real-world recording or from the two synthesis methods (\textit{Sinusoidal Additive Synthesis} and \textit{Filter-based Modal Synthesis}).
+\section*{Plastic Bowl}
 
 \begin{figure}[H]
   \centering
@@ -100,7 +100,7 @@ Spectrograms of one object from each material used in this study. Each graph rep
 
 \newpage
 
-\section*{Wooden mortar}
+\section*{Wooden Mortar}
 
 \begin{figure}[H]
   \centering
@@ -111,7 +111,7 @@ Spectrograms of one object from each material used in this study. Each graph rep
 
 \newpage
 
-\section*{Ceramic plate}
+\section*{Ceramic Plate}
 
 \begin{figure}[H]
   \centering
@@ -122,7 +122,7 @@ Spectrograms of one object from each material used in this study. Each graph rep
 
 \newpage
 
-\section*{Wine glass}
+\section*{Wine Glass}
 
 \begin{figure}[H]
   \centering
@@ -133,7 +133,7 @@ Spectrograms of one object from each material used in this study. Each graph rep
 
 \newpage
 
-\section*{Metallic wok}
+\section*{Metallic Wok}
 
 \begin{figure}[H]
   \centering

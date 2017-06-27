@@ -1,6 +1,6 @@
 \chapter{Overview of Method and Tools Used}\label{ch:method}
 
-\section{Method overview}
+\section{Method Overview}
 The aim of this thesis is to provide sound designers with an easy-to-use tool which enriches video games with procedural and physics-based audio instead of the use of prerecorded sounds. The tool enables to control contact sounds (impact, rolling and scratching) produced by vibrating objects through high level parameters that characterize the objects' (size, material and surface roughness). The challenge is to offer realistic real-time and event-based sounds in a game engine without high \gls{CPU} usage.
 
 \begin{figure}[H]
@@ -20,11 +20,11 @@ As far as the modal synthesis of impact sounds is concerned, the two methods sho
 
 At runtime, rigid-body physics events have been used to drive the synthesizer. Depending on the interaction (impact, rolling or scratching) the model is excited differently and produces the corresponding sound which is tightly coupled with the graphics. The final stage of the audio chain is the spatialization which is done with Unity\textsuperscript{\textregistered}'s Audio Spatializer \gls{SDK} \cite{bib:unity_doc}.
 
-\section{Sound discretization scheme}\label{sec:discretization}
+\section{Sound Discretization Scheme}\label{sec:discretization}
 
 The first step for the creation of this tool is to obtain the necessary data for the audio synthesis, through the use of the ``Example-guided'' method as mentioned in section \ref{sec:exampleguided}. This method was applied instead of the \gls{FEM}, as in \cite{director2001synthesizing} and \cite{o2002synthesizing}, or the spring-mass systems method as in \cite{raghuvanshi2006interactive} because of its simplicity within an audio pipeline in a video game production. More specifically, the usage of recordings is an easier option for the targeted users (sound designers and game developers) than one that implies complex computations of vibrating structures. Additionally, Unity\textsuperscript{\textregistered} seems to present some limitations for techniques that present sound variation depending on vertex collisions such as the \gls{FEM} and spring-mass systems. The game engine is not able to provide the exact vertex that has collided. 
 
-To produce sound variations along the surface of an object, a method is to have only one amplitude matrix (corresponding to only one point of the object) and randomize the values every time a collision occurs. During the development of this thesis we tried this method, but we abandoned it rather quickly due to undesirable sounding results. In other words, two impact sounds, being produced by two very close locations on the object, were exceptionally different. Thus, recordings of the sound produced by everyday objects when hit in several locations were performed instead. The strategy used is explained in detail in section \ref{sec:recordings}.
+To produce sound variations along the surface of an object, a method is to have only one amplitude matrix (corresponding to only one point of the object) and randomize the values every time a collision occurs.  This method was tried during the development of this thesis, but was abandoned rather quickly due to undesirable sounding results. In other words, two impact sounds, being produced by two very close locations on the object, were exceptionally different. Thus, recordings of the sound produced by everyday objects when hit in several locations were performed instead. The strategy used is explained in detail in section \ref{sec:recordings}.
 
 The objects recorded were chosen due to their simple shape and symmetry plus the fact that they are easy to find in most kitchens. A heuristic approach that assumes that nearby points produce almost the same sound was adopted. This lead to the division of the object into ``sound areas'' instead of calculating different modal matrices for each vertex of the model as in the \gls{FEM}. Unofficial audio tests proved that this complexity-accuracy trade-off was acceptable to map the different sound variations along the struck object's surface. Depending on the range of substantially different sounds produced by the object, more or less areas were chosen. A sample object and its division in areas is shown in figure \ref{fig:pot_sep}. 
 
@@ -35,7 +35,7 @@ The objects recorded were chosen due to their simple shape and symmetry plus the
       \label{fig:pot_sep}
 \end{figure} 
 
-\section{3D models}
+\section{3D Models}
 
 For coherence purposes the objects recorded were modeled so that the synthetic sounds match with the 3D model, the same way the recordings match with the real world objects. Hence, the dimensions and weight of the eleven objects were measured to model the objects. In table \ref{tab:dim_weig} the maximum dimensions and the weight of the objects are displayed. Maya Autodesk software was used to create the 3D models of the objects. They were exported as FBX\textsuperscript\textregistered\ files \cite{bib:fbx} which is a format recognizable by Unity\textsuperscript{\textregistered}.
 
@@ -83,7 +83,7 @@ For coherence purposes the objects recorded were modeled so that the synthetic s
 %     		 \label{fig:3d_all}
 %    \end{minipage}
 
-\section{Modal data extraction}\label{sec:chuck}
+\section{Modal Data Extraction}\label{sec:chuck}
 
 The ChucK language is a music programming language, made for ``real-time sound synthesis and music creation'' as mentioned in their website \cite{bib:chuck}. It's biggest advantage is the way it manipulates time. More specifically, the user specifies how long a sound will last, independently of other sounds that may be playing at the same time.
 
@@ -92,7 +92,7 @@ ChucK was chosen for this stage of the work, because of its built-in functions t
 
 When analyzing the recordings, one can identify that each object has a very high number of resonant modes. Although, most of them are inaudible and do not contribute significantly to the sound model. It is, therefore, desirable to preserve \gls{CPU} cycles by reducing the number of calculated modes. Based on the recommendations of the author, Perry Cook, ten modes were chosen as the sufficient amount for the analysis/synthesis. Afterwards, the algorithm having taken a recording as input, computes an histogram and identifies the modes. The frequencies where peaks occur are the modal frequency candidates. Depending on the number of modes chosen, the algorithm outputs the most relevant ones. Finally, the algorithm calculates after a normalization process the corresponding amplitude of each mode.
  
-\section{Modal synthesis patches}
+\section{Modal Synthesis Patches}
 
 Pure Data (\gls{Pd}) is another music programming language. It is open source and the main difference with the ChucK language is that \gls{Pd} is a visual or ``patcher'' programming language, using objects instead of code, linked together to form a sequence \cite{bib:pd}. This software was chosen as our synthesis engine mainly because of the ability to compile the patches into C\# code, as explained below in section \ref{sec:heavy}. Another important reason for choosing it is the possibility of real-time parameter manipulation and easy testing during the implementation period.
 
@@ -100,16 +100,16 @@ All interaction sounds (impact, rolling and scratching) are synthesized under on
 
 %For optimization reasons, we lowered the number of modes down to 10 instead of 20 that we initially had, since the extra 10 did not add any useful information to the output sound. In addition, we clipped the range of frequencies to the human audible range of 20Hz to 20KHz. 
 
-\section{Audio plugins}\label{sec:heavy}
+\section{Audio Plugins}\label{sec:heavy}
 
 Heavy is a compiler that generates audio plugins from \gls{Pd} patches in interactive sound and music applications \cite{bib:heavy}. In this thesis it is used to compile \gls{Pd} patches into Unity\textsuperscript{\textregistered} audio plugins. Heavy's interface is a website where users upload patches and then are able to download the corresponding plugins and put them into their applications. The plugins used consist of \gls{DLL} files and a C\# (Unity\textsuperscript{\textregistered} code) script that allows communication of the plugins with the rest of the scripts and also enables the sound card to play audio.
 
-Through the generated C\# script, we are able to send float values to the audio plugins - which are the compiled \gls{Pd} patches - as inputs, to generate the appropriate sound. Those floats are the frequencies and their corresponding amplitudes, the quality factor (\gls{Q}) of the band-pass filters, the impact force of the collision, the roughness of the object, the multiplier of the size of the object, the velocity of the object and the rolling and scratching duration times. A difficulty encountered while using this compiler was the inability of sending a whole array or list of floats. Thus, we had to send every frequency and every amplitude individually, creating a float parameter for each.
+Through the generated C\# script, float values can be sent to the audio plugins - which are the compiled \gls{Pd} patches - as inputs, to generate the appropriate sound. Those floats are the frequencies and their corresponding amplitudes, the quality factor (\gls{Q}) of the band-pass filters, the impact force of the collision, the roughness of the object, the multiplier of the size of the object, the velocity of the object and the rolling and scratching duration times. A difficulty encountered while using this compiler was the inability of sending a whole array or list of floats. Thus, we had to send every frequency and every amplitude individually, creating a float parameter for each.
  
-\subsection{Why not OSC?}
-The most popular way to communicate between Unity\textsuperscript{\textregistered} and \gls{Pd} is the \gls{OSC} protocol. The reason why we did not prefer it is because it requires establishing a connection between two software programs and send data between them. On the other hand, Heavy makes everything work inside Unity\textsuperscript{\textregistered} and it is as simple as passing floats between scripts. 
+\subsection{Why Not OSC?}
+The most popular way to communicate between Unity\textsuperscript{\textregistered} and \gls{Pd} is the \gls{OSC} protocol. The reason why OSC was not chosen is because it requires establishing a connection between two software programs and send data between them. On the other hand, Heavy makes everything work inside Unity\textsuperscript{\textregistered} and it is as simple as passing floats between scripts. 
 
-\section{Game engine}
+\section{Game Engine}
 Unity\textsuperscript{\textregistered} is a game engine software. This is where all previous work is combined together and the final product is delivered. For the purpose of this thesis, several demonstration scenes are made inside Unity\textsuperscript{\textregistered} where objects are struck in several points and suffer different interactions while producing different sounds. 
 
 Unity\textsuperscript{\textregistered} was chosen due to its ease of use, cross-platform publishing compatibility, intuitive collision events and because the authors have experience developing games with this game engine. Additionally, Unity\textsuperscript{\textregistered} is the only game engine that is supported by Heavy.
@@ -118,7 +118,7 @@ The first part of the Unity\textsuperscript{\textregistered} implementation is t
 
 Audio in Unity\textsuperscript{\textregistered} is enabled using the \textit{OnAudioFilterRead()} function. This function is running in the audio thread, which is a different one from the main thread. Its job is to send the audio buffer to the sound card and is called every $\sim 20$ms, so it does not require a function call from the programmer \cite{bib:unity_doc}.
 
-\section{Sound spatialization}
+\section{Sound Spatialization}
 
 In this paper the sound spatialization is considered a separate process with respect to the sound synthesis. This approach was considered due to the Audio Spatializer \gls{SDK} provided by Unity\textsuperscript{\textregistered} which delivers the desired effect.
 

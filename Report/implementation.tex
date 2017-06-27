@@ -17,7 +17,7 @@ The measurements were conducted in an anechoic chamber at \gls{DTU}'s Department
 
 To control the impact, the objects were hit by hand with a wooden drumstick (figure \ref{fig:experiment} right), while trying to use the same impulsive force. Prior to the recordings, every object was divided into different surface areas depending on its shape and the sound produced by these areas (see figure \ref{fig:pot_sep}). Therefore, several impact locations were chosen and recorded for every object.
 
-Eleven objects of everyday life made of five different materials (plastic, wood, ceramic, glass and metal) were used for the experiment. The idea of choosing these objects came firstly from the need of owning them (to perform the recording) and our ability to model them for the demo (as they should be simple enough). Secondly, since we wished to test the immersion of the synthesized sounds on users, we wanted to be sure that the sounds used are familiar to them. In figure \ref{fig:objects} both real and modeled objects are shown. 
+Eleven objects of everyday life made of five different materials (plastic, wood, ceramic, glass and metal) were used for the experiment. The idea of choosing these objects came firstly from the need of owning them (to perform the recording) and the ability to model them for the demo (as they should be simple enough). Secondly, there was a desire for the sounds to be familiar for the users who would perform the listening test. In figure \ref{fig:objects} both real and modeled objects are shown. 
 
 \begin{figure}[H]
     \centering
@@ -36,11 +36,11 @@ Eleven objects of everyday life made of five different materials (plastic, wood,
     \caption{The eleven objects used in the thesis.}\label{fig:objects}
 \end{figure}
 
-\section{Modal data}
-The modes detector algorithm described in section \ref{sec:chuck} was used to extract the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:bottle_data} shows the data extracted for the wine bottle object. Each graph corresponds to one of the ``sound areas'' we have divide it into.
+\section{Modal Data}
+The modes detector algorithm described in section \ref{sec:chuck} was used to extract the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:bottle_data} shows the data extracted for the wine bottle object. Each graph corresponds to one of the ``sound areas'' it was divided into.
 
 
-Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data (one for each different vertex) we can see in figure \ref{fig:bottle_data} that this does not happen in practice. There are multiple reasons why, with the most notable being the possible discrepancies of the data extracting algorithm. In addition, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, we would need a very big frequency vector. This would take up a lot of memory space, without improving significantly the result. However, other causes could be the environment noise, the difference in the force when hitting the object or the way it is hold when being hit, during the recordings.
+Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data (one for each different vertex) it can be seen in figure \ref{fig:bottle_data} that this does not happen in practice. There are different reasons why this could be. During the measurement process certain factors such as the force applied when hitting the object or the way it is hold could affect the resulting sound. Holding the object prevents a free vibration behavior which could lead to the cancellation or significant reduction of some of the resonant modes' gains. In addition, the sound produced by the wooden stick when striking could interfere with the one of the object under study. Another factor could be related to the anisotropic material properties of the objects. As far as the audio algorithm is concerned there could probably be some improvement in the \gls{DSP} calculations to obtain more accurate results. Additionally, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, would require a large frequency vector. This would take up a lot of memory space, without improving significantly the result.
 
 
 \begin{figure}[H]
@@ -49,11 +49,11 @@ Although, theoretically, each object can be modeled using one vector of frequenc
       \caption{The frequencies and their corresponding peaks for each area of the wine bottle object.}\label{fig:bottle_data}
 \end{figure}
 
-Nevertheless, it is obvious that the fundamental frequencies are similar for each graph and lay just above $2$kHz for the wine bottle.
+Nevertheless, it can be noted that most of the frequencies are set just over 2 kHz and close to 4 kHz for different parts of the wine bottle although the bottom one presents some variations, probably due to the thickness of the glass in that specific area.
 
 \section{Sound Synthesis}\label{sec:synthesis_implem}
 
-All synthetic sounds have been created in \gls{Pd} patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity\textsuperscript{\textregistered}. This C\# script is attached to the GameObject in the scene so that the sound is processed within the game world.
+All synthetic sounds have been created in \gls{Pd} patches and are interpreted by Heavy which generates audio plugins and a C\# interface for Unity\textsuperscript{\textregistered}. This C\# script is attached to the \textit{GameObject} in the scene so that the sound is processed within the game world.
 
 
 Another C\# script assigns, to every one of the objects, the modal parameters that were extracted in the analysis part (see section \ref{sec:chuck}). This is done independently of the synthesis methods used below.
@@ -65,7 +65,7 @@ Two different types of force models are considered as input to the synthesis pat
 
 This section describes in depth how the \gls{Pd} patch corresponding to the sinusoidal additive synthesis of impact sounds works. The patch attempts to translate equation \ref{eq:modal_response} into the programming language of \gls{Pd}. Some of its terms are referenced in the following explanation.
 
-First of all, the frequencies and amplitudes matching the ten modes of the object are initialized. Therefore, these frequencies which we identified as $f_n$ in the equation \ref{eq:modal_response}, can be fed into the different oscillators. In \gls{Pd}, oscillators output a cosine wave which is equivalent to $cos(2 \pi f_nt)$ from the equation which suits our purpose perfectly.
+First of all, the frequencies and amplitudes matching the ten modes of the object are initialized. Therefore, these frequencies which are identified as $f_n$ in the equation \ref{eq:modal_response}, can be fed into the different oscillators. In \gls{Pd}, oscillators output a cosine wave which is equivalent to $cos(2 \pi f_nt)$ from the equation which suits our purpose perfectly.
 
 \begin{figure}[H]
   \centering
@@ -78,20 +78,20 @@ The expression $e^{-d_n t}$ which corresponds to the damping of every mode $n$ i
 
 The final sound is produced by adding together the ten partials. The resulting signal is multiplied by the magnitude of the impact. For this, the kinetic energy is calculated with Unity\textsuperscript{\textregistered}'s physics components (see section \ref{sec:coll_enter}). As described in \cite{farnell2010designing}, before sending the signal to the \gls{DAC}, it is passed through a clipper. This gives richer harmonics and produces brighter sounds the harder the impact is \cite{aramaki2009thinking}.
 
-The patch, which is compiled in audio plugins, produces an impact sound whenever the \textit{OnCollisionEnter} \cite{bib:unity_doc} method from Unity\textsuperscript{\textregistered} is called. This is done when the collider, that has the script attached to it, has begun to touch another collider. When this happens we set the magnitude of the collision and then send an event to excite the patch. This is done by setting the value of $t$ in equation \ref{eq:modal_response} to zero which increases over time making the sound to decay.
+The patch, which is compiled in audio plugins, produces an impact sound whenever the \textit{OnCollisionEnter} \cite{bib:unity_doc} method from Unity\textsuperscript{\textregistered} is called. This is done when the collider, that has the script attached to it, has begun to touch another collider. When this happens the magnitude of the collision is set and an event to excite the patch is sent. This is done by setting the value of $t$ in equation \ref{eq:modal_response} to zero which increases over time making the sound to decay.
 
 \subsubsection{Filter-based Modal Synthesis}\label{sec:filter_synth}
 
-This synthesis method is based on the utilization of a bank of ten bandpass filters. \gls{Pd}'s bandpass filters have three control inputs as seen in figure \ref{fig:pdbandpass}. The left inlet is the incoming audio signal, the middle one sets the center frequency and the right input sets the \gls{Q} factor value. The characteristics of these filters define the virtual object.
+This synthesis method is based on the utilization of a bank of ten band-pass filters. \gls{Pd}'s band-pass filters have three control inputs as seen in figure \ref{fig:pdbandpass}. The left inlet is the incoming audio signal, the middle one sets the center frequency and the right input sets the \gls{Q} factor value. The characteristics of these filters define the virtual object.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.5\textwidth]{bandpassfilter.png}
-      \caption{Pd's bandpass filter with its three inlets}
+      \caption{Pd's band-pass filter with its three inlets}
       \label{fig:pdbandpass}
 \end{figure} 
 
-The same way it is done in the previous method, all ten frequencies and amplitudes of the object are initialized. Every frequency $f_n$ is sent into a bandpass filter as the center frequency. 
+The same way it is done in the previous method, all ten frequencies and amplitudes of the object are initialized. Every frequency $f_n$ is sent into a band-pass filter as the center frequency. 
 
 Every filter is characterized by its \gls{Q} factor which is directly related to the damping. The higher the value of \gls{Q}, the narrower the bandwidth and the less the resonator becomes damped. Thus, \gls{Q} determines the material of the impacted object \cite{gaver1993we}. By manipulating \gls{Q} different material sounds can be obtained. Through experimentation values of \gls{Q} that range from about 20 for plastic to 5000 for metal were found. 
 
@@ -130,7 +130,7 @@ The output signal of each of the ten filters is multiplied by the corresponding 
 
 The sound produced by an object that is scraped across a rough surface can be assimilated to a succession of multiple impacts in a short time according to \cite{gaver1993we}. Additionally, the aforementioned paper shows that the resonant modes present in the spectrum of a struck object, are the same as when the object is scrapped. The same modal parameters can then be used as in the impact methods described here above.
 
-To produce scratching sounds, a similar technique to \cite{gaver1993we} and \\ \cite{van2001foleyautomatic} who propose the use of filters is followed. The filter-based modal synthesis method is therefore chosen to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. This is implemented by generating a noise impulse waveform, as seen in figure \ref{fig:scratchingimpulse}, that passes through the bandpass filters. This waveform is created by having a simple impulse signal that is scaled relative to the velocity and material of the object and then multiplied by a white noise signal. From a heuristic approach it was deduced that the higher the velocity and the \gls{Q}, the higher the gain of the scratching sound. The length of the excitation signal depends on the time it took Unity\textsuperscript{\textregistered} to complete the last frame. The scratching sound is triggered in Unity\textsuperscript{\textregistered}'s \textit{OnCollisionStay} \cite{bib:unity_doc} method, when the object's collider is touching another one and with the condition that the angular velocity of the object is beneath a threshold. The angular velocity specifies the rotational motion of a rigid body \cite{sears1964university}. This condition is therefore added to differentiate between scratching and rolling.
+To produce scratching sounds, a similar technique to \cite{gaver1993we} and \\ \cite{van2001foleyautomatic} who propose the use of filters is followed. The filter-based modal synthesis method is therefore chosen to model the resonator as seen in the previous section. The difference lies in the signal that excites the model. This is implemented by generating a noise impulse waveform, as seen in figure \ref{fig:scratchingimpulse}, that passes through the band-pass filters. This waveform is created by having a simple impulse signal that is scaled relative to the velocity and material of the object and then multiplied by a white noise signal. From a heuristic approach it was deduced that the higher the velocity and the \gls{Q}, the higher the gain of the scratching sound. The length of the excitation signal depends on the time it took Unity\textsuperscript{\textregistered} to complete the last frame. The scratching sound is triggered in Unity\textsuperscript{\textregistered}'s \textit{OnCollisionStay} \cite{bib:unity_doc} method, when the object's collider is touching another one and with the condition that the angular velocity of the object is beneath a threshold. The angular velocity specifies the rotational motion of a rigid body \cite{sears1964university}. This condition is therefore added to differentiate between scratching and rolling.
 
 \begin{figure}[H]
   \centering
@@ -164,7 +164,7 @@ Let us dive into the actual implementation of the latterly described model. It w
       \label{fig:roughnessgraph}
 \end{figure} 
 
-We now look into the sounds produced due to the irregularity of the ground. As pointed out in \cite{van2001foleyautomatic}, even a smooth ball rolling on a rough surface produces sound. This paper and \cite{rath2003expressive} indicate that this is due to the small constant collisions of the ball with the surface's asperities. The bigger the ball, the less the surface details are ``felt''. In our implementation, the surface's irregularities are considered to be very small compared to the radius of the rolling object (see figure \ref{fig:rollingdoel}). This suggests that our model, for uneven ground, is similar to our previously explained scratching model as \cite{van2001foleyautomatic} proposes. The difference is that the gain of the output signal is lower for the rolling, as rolling friction forces are considered to be smaller compared to scratching friction \cite{mehtas}.
+This paragraph looks into the sounds produced due to the irregularity of the ground. As pointed out in \cite{van2001foleyautomatic}, even a smooth ball rolling on a rough surface produces sound. This paper and \cite{rath2003expressive} indicate that this is due to the small constant collisions of the ball with the surface's asperities. The bigger the ball, the less the surface details are ``felt''. In our implementation, the surface's irregularities are considered to be very small compared to the radius of the rolling object (see figure \ref{fig:rollingdoel}). This suggests that our model, for uneven ground, is similar to our previously explained scratching model as \cite{van2001foleyautomatic} proposes. The difference is that the gain of the output signal is lower for the rolling, as rolling friction forces are considered to be smaller compared to scratching friction \cite{mehtas}.
 
 \begin{figure}[H]
   \centering
@@ -176,7 +176,7 @@ We now look into the sounds produced due to the irregularity of the ground. As p
 
 
 \section{User Interface}\label{sec:UI}
-This section describes the \gls{UI} of the tool, where designers are able to tweak parameters and choose the sound they prefer for every object. The \gls{UI} is made inside Unity\textsuperscript{\textregistered}, by programming a custom inspector. \textit{Inspector} in Unity\textsuperscript{\textregistered} is a window that shows up inside the platform, after selecting an object, a file, etc. and it displays all information relevant to it. A custom \textit{GUISkin} is also used, which is a set of settings about the \gls{GUI}. 
+This section describes the \gls{UI} of the tool, where designers are able to tweak parameters and choose the sound they prefer for every object. The \gls{UI} is made inside Unity\textsuperscript{\textregistered}, by programming a custom inspector. The \textit{Inspector} in Unity\textsuperscript{\textregistered} is a window that shows up inside the platform, after selecting an object, a file, etc. and it displays all information relevant to it. A custom \textit{GUISkin} is also used, which is a set of settings about the \gls{GUI}. 
 
 When the designer wants to insert a new object with the audio implemented, he can either use one of the pre-made prefabs that have been created (which correspond to the modeled kitchen objects) or assign the procedural audio component on a Unity\textsuperscript{\textregistered} game object of his choice. In the second case, he only has to select this game object and then from the Unity\textsuperscript{\textregistered} menu bar he can select one of the two available methods described above, as seen in figure \ref{fig:menu_item}.
 
@@ -187,11 +187,11 @@ When the designer wants to insert a new object with the audio implemented, he ca
       \label{fig:menu_item}
 \end{figure}
 
-There are a number of components that are necessary for a game object. The \textit{``Rigidbody''} which gives physics characteristics, the \textit{``Audio Source''} that activates the sound, the \textit{synthesis plugin} that generates  procedural audio, the \textit{``Modal Data Script''} that assigns the correct modal data to the object and the \textit{``Audio Manager Script''} which controls the audio events. An example of the whole Unity\textsuperscript{\textregistered} inspector of a modal object can be seen in figure \ref{fig:audio_insp}.
+There are a number of components that are necessary for a game object. The \textit{Rigidbody} which gives physics characteristics, the \textit{Audio Source} that activates the sound, the synthesis plugin that generates  procedural audio, the \textit{Modal Data Script} that assigns the correct modal data to the object and the \textit{Audio Manager Script} which controls the audio events. An example of the whole Unity\textsuperscript{\textregistered} inspector of a modal object can be seen in figure \ref{fig:audio_insp}.
 
-Since each set of modal data is related to one specific object, the tool is restricted to the objects available up to this time. Therefore, the designer has to assign a ``tag'' of one of the eleven objects available on the tool (cooking pot, cup, cutting board, jug, mortar, bowl, plate, rolling pin, wine bottle, wine glass or wok), or make his own if he uses his own objects. It is possible for everyone to contribute with new objects to the tool, by following the guide on appendix \ref{ap:guide}.
+Since each set of modal data is related to one specific object, the tool is restricted to the objects available up to this time. Therefore, the designer has to assign a ``tag'' of one of the eleven objects available on the tool (\textit{cooking pot, cup, cutting board, jug, mortar, bowl, plate, rolling pin, wine bottle, wine glass} or \textit{wok}), or make his own if he uses his own objects. It is possible for everyone to contribute with new objects to the tool, by following the guide in appendix \ref{ap:guide}.
 
-Figure \ref{fig:custom_insp} shows the three parameter sliders, available to designers for adjusting the audio. They are the same for both of the synthesis methods  used in this thesis (figures \ref{fig:FB}, \ref{fig:sin}). The first slider is the material selection. Although each object used in this thesis has a distinct type of material, designers are able to assign to them another material of the five available choices (plastic, wood, ceramic, glass, metal), or even a blend of two of them. The second slider, concerning the size of the object, can be used when the designer wants to introduce a smaller or bigger object than the default ones, or even when he prefers the sound to be more high or low pitched. The last slider adjusts the roughness of the object's surface. By tweaking this, designers are able to chose surfaces of the objects to be smoother of rougher than the default ones. Change of the last parameter is perceived when the object is rolling. Below there is an extended description of the sliders.
+Figure \ref{fig:custom_insp} shows the three parameter sliders, available for the designers to adjust the audio. They are the same for both of the synthesis methods  used in this thesis (figures \ref{fig:FB}, \ref{fig:sin}). The first slider is the material selection. Although each object used in this thesis has a distinct type of material, designers are able to assign to them another material of the five available choices (\textit{Plastic, Wood, Ceramic, Glass} and \textit{Metal}), or even a blend of two of them. The second slider, concerning the size of the object, can be used when the designer wants to introduce a smaller or bigger object than the default ones, or even when he prefers the sound to be more high or low pitched. The last slider adjusts the roughness of the object's surface. By tweaking this, designers are able to choose surfaces of the objects to be smoother or rougher than the default ones. Changing this parameter is perceived when the object is rolling. Below is an extended description of the sliders.
 
 \begin{figure}[H]
     \centering
@@ -229,9 +229,9 @@ Figure \ref{fig:custom_insp} shows the three parameter sliders, available to des
 \end{figure}
 
 \subsection{Changing the Material}
-Different materials can be assigned to the objects used in this tool. The designer is able to choose between \textit{plastic, wood, ceramic, glass} and \textit{metal} by adjusting the corresponding slider on the interface (see figure \ref{fig:custom_insp}). 
+Different materials can be assigned to the objects used in this tool. The designer is able to choose between \textit{Plastic, Wood, Ceramic, Glass} and \textit{Metal} by adjusting the corresponding slider on the interface (see figure \ref{fig:custom_insp}). 
 
-Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. We achieve those sounds by changing the \gls{Q} factor of the band-pass filters used in the \GLS{Pd} patch. The \gls{Q} indicates the power loss in the filter. The higher the \gls{Q} the less power is lost, so the resonator vibrates longer as explained in equation \ref{eq:Qfactor} \cite{bib:Q}.
+Metallic or glass sounds are more ``ringy'' than wooden or plastic ones that are more ``thud''. Those sounds are achieved by changing the \gls{Q} factor of the band-pass filters used in the \GLS{Pd} patch. The \gls{Q} indicates the power loss in the filter. The higher the \gls{Q} the less power is lost, so the resonator vibrates longer as explained in equation \ref{eq:Qfactor} \cite{bib:Q}.
 
 \begin{equation}\label{eq:Qfactor}
 Q=2\pi \frac{\mbox{maximum energy stored}}{\mbox{total energy lost per cycle at resonance}}
@@ -281,11 +281,11 @@ As mentioned above, impact sounds are more high-pitched when an object is scaled
 avgScale = (scale of x dimension + scale of y dimension + scale of z dimension) / 3
 \end{lstlisting}
 
-This average is used as an adder to the \textit{size parameter} described above, which is then used as a multiplier for the resonant frequencies - we call it ``pitch multiplier''. To avoid distortion in sound and to stay within the audible frequency range, we set a limit of $8.5$ units scale up, a number found heuristically. This is considered to be a good choice because Unity\textsuperscript{\textregistered} uses \textit{meter} as the default unit and since everyday objects are focused on, it is rare for someone to use objects more than $8.5$ times its original size.
+This average is used as an adder to the \textit{Size} parameter described above, which is then used as a multiplier for the resonant frequencies - here called ``pitch multiplier''. To avoid distortion in sound and to stay within the audible frequency range, a limit of $8.5$ units for the maximum scaling is set, a number found heuristically. This is considered to be a good choice because Unity\textsuperscript{\textregistered} uses \textit{meters} as the default unit and since everyday objects are used, it is rare for someone to handle objects more than $8.5$ times its original size.
 
-Then, the tool checks whether a scale-up or a scale-down was executed. In the first case, a normalization to $1/10$th of the average scale value is performed. The resulting scaling is applied to the size slider value, and to the pitch multiplier which we use to re-set the modal frequencies. To be more precise, instead of applying the actual pitch multiplier value added with the average scaling variable, we subtract this value from $2$ and then we use it. This happens because we reversed the size slider. More specifically, the multiplier directly applied to the frequencies, increases them when it is smaller and decreases them when it is bigger. However, for convenient reasons, we wanted it to be the bigger the multiplier, the bigger the object and reverse. Since $2$ is the biggest value, we normalized it to correspond to the biggest one.
+Then, the tool checks whether a scale-up or a scale-down was executed. In the first case, a normalization to $1/10$th of the average scale value is performed. The resulting scaling is applied to the size slider value, and to the pitch multiplier which is used to re-set the modal frequencies. To be more precise, instead of applying the actual pitch multiplier value added with the average scaling variable, this value is subtracted from $2$ and is then used. This happens because the size slider is reversed. More specifically, the multiplier directly applied to the frequencies, increases them when it is smaller and decreases them when it is bigger. However, for convenient reasons, it was desired that the bigger the multiplier (right side), the bigger the object. Since $2$ is the biggest value, it was normalized to correspond to the biggest one.
 
-In the second case, we subtract the value from the pitch multiplier. We do not need to normalize the average scaling value, because it is already between $0$ and $1$. Afterwards, we follow the same procedure as above, with one difference; instead of subtracting the new pitch multiplier from $2$ we add it to $1$. This is necessary because now the biggest value of the size slider is $1$ -since above this it counts as a scale-up- and we still want the reversed value for the slider, so we subtract the subtracted value, making it a plus ($+$). If no scaling took place nothing happens.
+In the second case, the value from the pitch multiplier is subtracted. The average scaling value does not need to be normalized, because it is already between $0$ and $1$. Afterwards, the same procedure is followed as above, with one difference; instead of subtracting the new pitch multiplier from $2$ it is added to $1$. This is necessary because now the biggest value of the size slider is $1$ - since above this it counts as a scale-up - and the reversed value for the slider is wanted, so the subtracted value is subtracted, turning it into a plus value ($+$). If no scaling takes place nothing happens.
 
 The whole scaling procedure is shown below:
 
@@ -302,17 +302,17 @@ ELSE IF average scale < 1 (scale-down) THEN
 END IF
 \end{lstlisting}\label{code:scale}
 
-The tool, also, includes a function called \textit{``ScaleRealTime''}, which can be called inside the game when a scaling takes place, for the pitch of the sound to scale respectively. However, the scaling of the pitch will change gradually and if the GameObject is moving during this change, undesirable sounds may occur. The difference from the previous function, which is called only in the beginning, is the condition in the \textit{if statement}. The real time scaling function needs a previous scale float value as input, to compare with the new one.
+The tool, also, includes a function called \textit{ScaleRealTime}, which can be called inside the game when a scaling takes place, for the pitch of the sound to scale respectively. However, the scaling of the pitch will change gradually and if the \textit{GameObject} is moving during this change, undesirable sounds may occur. The difference from the previous function, which is called only in the beginning, is the condition of the \textit{if} statement. The real time scaling function needs a previous scale float value as input to compare it with the new one.
 
 \subsection{Excitation of Impact Sounds}\label{sec:coll_enter}
 Impact sounds are excited whenever the tool detects a collision of an object with something else. The collision could be either with the ground, another object from the tool or just an object in the scene. The program identifies when two Unity\textsuperscript{\textregistered} collider components attached to two different objects touch each other.
 
-\paragraph{OnCollisionEnter function}
+\paragraph{OnCollisionEnter Function}
 \hfill \break
 
 \textit{OnCollisionEnter} \cite{bib:unity_doc} is a Unity\textsuperscript{\textregistered}'s built-in function, which gets called when an object enters a collision.
 
-The first thing that happens when a collision takes place, is to identify what kind of object is the one that collided with something, and which part of the object collided. Hence, a function is called which detects the type of the object using the \textit{tag manager}. The tag manager holds all available tags. Tags are used to group similar game objects and make them retrievable from scripts. After the type of object is identified, the object perimeter variable (used for rolling sounds) is assigned to its corresponding value. Then, the modal data (frequencies and amplitudes) that correspond to this type of object are assigned to the variable used from the algorithm.
+The first thing that happens when a collision takes place, is to identify what kind of object is the one that collided with something, and which part of the object collided. Hence, a function is called which detects the type of the object using the \textit{Tag manager}. The tag manager holds all available tags. Tags are used to group similar game objects and make them retrievable from scripts. After the type of object is identified, the object perimeter variable (used for rolling sounds) is assigned to its corresponding value. Then, the modal data (frequencies and amplitudes) that correspond to this type of object are assigned to the variable used from the algorithm.
 
 Moreover, the algorithm calculates the kinetic energy of the whole collision, using the equation \ref{eq:kinetic_energy} \cite{crowell2003conservation}: 
 
@@ -322,7 +322,7 @@ K = \frac{1}{2} m u^2,
 
 \noindent where $m$ is the mass of the object under test and $u$ the magnitude of the relative velocity between the two colliding objects. In Unity\textsuperscript{\textregistered} the latter can be calculated using the command: \textit{Collision.relativeVelocity.magnitude} \cite{bib:unity_doc}. The kinetic energy corresponds to the collision force magnitude and we use it to determine the output sound amplitude depending on whether the collision was strong or weak.
 
-Another parameter that the algorithm takes into account is whether an object collides with another modal object or not. By modal object we mean the object, that our tool provides, which comes with modal synthesis sounds. In case a collision with another modal object occurs, the collision force magnitude is modified depending on the materials of both colliding objects. More specifically, an average between the two normalized quality factor values is calculated, it is then multiplied by the collision force magnitude and added to the initial collision force magnitude. This is done because the material of an object and thus its ``hardness'' (as seen in \cite{giordano2003material}) affects the ``loudness'' of the produced sound as shown through experimentation in \cite{freed1990auditory}. As a result when two hard materials like glass or metal collide with each other, they produce a much more intense sound than when a hard material collides with a softer one like plastic or wood.  
+Another parameter that the algorithm takes into account is whether an object collides with another modal object or not; modal object meaning one of the predefined objects provided with the tool which comes with its modal synthesis data. In case a collision with another modal object occurs, the collision force magnitude is modified depending on the materials of both colliding objects. More specifically, an average between the two normalized quality factor values is calculated, it is then multiplied by the collision force magnitude and added to the initial collision force magnitude. This is done because the material of an object and thus its ``hardness'' (as seen in \cite{giordano2003material}) affects the ``loudness'' of the produced sound as shown through experimentation in \cite{freed1990auditory}. As a result when two hard materials like glass or metal collide with each other, they produce a much more intense sound than when a hard material collides with a softer one like plastic or wood.  
 
 \begin{equation}
 new\ CFM = CFM + CFM*\left( \frac{\frac{Qfactor_1}{5000} + \frac{Qfactor_2}{5000}}{2} \right)
@@ -332,7 +332,7 @@ new\ CFM = CFM + CFM*\left( \frac{\frac{Qfactor_1}{5000} + \frac{Qfactor_2}{5000
 %\Todo{see if it is necessary to describe the 3 different DACs here or just in the patch }
 
 \subsection{Excitation of Rolling and Scratching Sounds}
-\paragraph{OnCollisionStay function}
+\paragraph{OnCollisionStay Function}
 \hfill \break
 
 Unity\textsuperscript{\textregistered}'s built-in function \textit{OnCollisionStay} \cite{bib:unity_doc} is called once per frame as long as two rigidbodies are touching. Inside this function the program decides whether rolling or scratching takes place and calculates the corresponding velocity which stops the sound when it goes down to zero. The magnitude of this velocity is computed using the velocity vector of the object's \textit{Rigidbody} (\textit{rigibody.velocity.magnitude}). Unity\textsuperscript{\textregistered}'s rigidbody is ``the way of controlling an object's position through physics simulation'' as noted in Unity\textsuperscript{\textregistered}'s documentation API \cite{bib:unity_doc}.
@@ -341,7 +341,7 @@ The decision of whether an object is rolling or sliding along a surface is made 
 \begin{equation}\label{eq:angVelMagn}
 \omega_{magnitude} = \sqrt{\omega_x^2+\omega_y^2+\omega_z^2}
 \end{equation}
-where $\omega_x = \frac{\theta_x}{t}, \omega_y = \frac{\theta_y}{t}, \omega_z = \frac{\theta_z}{t}$ and $\theta_x, \theta_y, \theta_z$ the angular displacement of the $x, y, z$ axis respectively and $t$ the amount of time this displacement lasted. In Unity\textsuperscript{\textregistered} it is referred to as (\textit{rigidbody.angularVelocity.magnitude}) \cite{bib:unity_doc}. More specifically, when the angular velocity magnitude is over $1$, it means that the object is rolling, otherwise it is not and providing that the linear velocity is non-zero, it means that the object is sliding on the surface. Magnitude of $1$ for the angular velocity was chosen as threshold, from trial and error tests in the Unity\textsuperscript{\textregistered} editor, because a vector of $x, y, z = (0.0, 0.0, 0.0)$ for the three dimensions of the angular velocity, gives a magnitude value slightly bigger than zero.
+where $\omega_x = \frac{\theta_x}{t}, \omega_y = \frac{\theta_y}{t}, \omega_z = \frac{\theta_z}{t}$ and $\theta_x, \theta_y, \theta_z$ the angular displacement of the $x, y, z$ axis respectively and $t$ the amount of time this displacement lasted. In Unity\textsuperscript{\textregistered} it is referred to as (\textit{rigidbody.angularVelocity.magnitude}) \cite{bib:unity_doc}. More specifically, when the angular velocity magnitude is above $1$, it means that the object is rolling, otherwise it is not and providing that the linear velocity is non-zero, it means that the object is sliding on the surface. Magnitude of $1$ for the angular velocity was chosen as the threshold from trial and error tests in the Unity\textsuperscript{\textregistered} editor, because a vector of $x, y, z = (0.0, 0.0, 0.0)$ for the three dimensions of the angular velocity, gives a magnitude value slightly bigger than zero.
 
 %\Todo{why 1 is the border? maybe because (0.0,0.0,0.0) angular velocity gives 0.smth in magnitude}
 
