@@ -123,25 +123,53 @@ Overall, most of the calculations happen at the start of the application, leavin
 
 The following analysis could have been incorporated also in \ref{par:synthvsrec} as it deals with comparing synthetic sounds with recordings. Here, more precisely, the audio \gls{CPU} usage is commented. The audio profiler of a wine bottle rolling down some slopes and impacting them making use of recordings can be seen on figure \ref{fig:recordprofiler}. Comparing it to figures \ref{fig:fbprofiler} and \ref{fig:sinprofiler} which correspond to the profiler for filter-based and sinusoidal sounds respectively, it can be said that these two latter methods are slightly more \gls{CPU} demanding regarding audio as the \textit{Total Audio CPU} curve presents higher values. However if the overall \gls{CPU} usage profiler is observed it can be seen that there are no big differences with the recordings. It can be stated then that procedural audio is not a problem for \gls{CPU} usage compared to recordings.
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=\textwidth]{winebottle_rec_profiling_5.PNG}
-      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using recordings.}
-      \label{fig:recordprofiler}
-\end{figure}
+%\begin{figure}[H]
+%  \centering
+%    \includegraphics[width=\textwidth]{winebottle_rec_profiling_5.PNG}
+%      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using recordings.}
+%      \label{fig:recordprofiler}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%    \includegraphics[width=\textwidth]{winebottle_fb_profiling_5.PNG}
+%      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using the filter-based method.}
+%      \label{fig:fbprofiler}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%    \includegraphics[width=\textwidth]{winebottle_sin_profiling_5.PNG}
+%      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using the sinusoidal method.}
+%      \label{fig:sinprofiler}
+%\end{figure}
 
 \begin{figure}[H]
-  \centering
-    \includegraphics[width=\textwidth]{winebottle_fb_profiling_5.PNG}
-      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using the filter-based method.}
-      \label{fig:fbprofiler}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=\textwidth]{winebottle_sin_profiling_5.PNG}
-      \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes using the sinusoidal method.}
-      \label{fig:sinprofiler}
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+    \centering
+        \includegraphics[width=0.85\textwidth]{winebottle_rec_profiling_r.PNG}
+        \caption{CPU demands when using recordings.}
+        \label{fig:recordprofiler}
+    \end{subfigure}
+\par\bigskip % force a bit of vertical whitespace
+    \begin{subfigure}[b]{\textwidth}
+    \centering
+        \includegraphics[width=0.85\textwidth]{winebottle_fb_profiling_r.PNG}
+        \caption{CPU demands of the filter-based method.}
+        \label{fig:fbprofiler}
+    \end{subfigure}
+\par\bigskip % force a bit of vertical whitespace
+%\end{figure}
+%\begin{figure}[H]
+%\ContinuedFloat
+    \begin{subfigure}[b]{\textwidth}
+    \centering
+        \includegraphics[width=0.85\textwidth]{winebottle_sin_profiling_r.PNG}
+        \caption{CPU demands of the sinusoidal method.}
+        \label{fig:sinprofiler}
+    \end{subfigure}
+    \caption{The audio profiler view of Unity\textsuperscript{\textregistered} editor when a wine bottle rolls and impacts some slopes.}\label{fig:method_profiler}
 \end{figure}
 
 
@@ -179,5 +207,3 @@ To improve the realism of the sound produced by a vibrating object in a virtual 
 Another improvement that could be done is the early spatialization of the sound, in the synthesis process. More specifically, instead of dividing the process into two steps, namely the synthesis of the monophonic sound and then the spatialization, another option would be to do it at the same time as seen in \cite{verron2010synthese}, using the location of the object and listener. This approach can be accomplished by cascading the band-pass filters of the filter-based method with spatial filters and it would save calculation power for sounds that are very far away from the listener. The concept of dynamic level of audio detail is interesting for the creation of sounds that would present a variable cost as stated by Farnell \cite{farnell2010designing}. Similarly to the compression of audio, like with the MP3 format, less resources would be used as the sounding object moves further from the listener. 
 
 Furthermore, some future work regarding sound propagation in rooms and occlusion produced by the environment could be done. Some papers have studied the sounds produced by objects that break into smaller pieces which could be another direction to explore \cite{zheng2010rigid}.
-
-

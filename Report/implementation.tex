@@ -39,15 +39,13 @@ Eleven objects of everyday life made of five different materials (plastic, wood,
 \section{Modal Data}
 The modes detector algorithm described in section \ref{sec:chuck} was used to extract the modal data - frequencies and their corresponding amplitudes - from the recordings. Figure \ref{fig:bottle_data} shows the data extracted for the wine bottle object. Each graph corresponds to one of the ``sound areas'' it was divided into.
 
-
-Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data (one for each different vertex) it can be seen in figure \ref{fig:bottle_data} that this does not happen in practice. There are different reasons why this could be. During the measurement process certain factors such as the force applied when hitting the object or the way it is hold could affect the resulting sound. Holding the object prevents a free vibration behavior which could lead to the cancellation or significant reduction of some of the resonant modes' gains. In addition, the sound produced by the wooden stick when striking could interfere with the one of the object under study. Another factor could be related to the anisotropic material properties of the objects. As far as the audio algorithm is concerned there could probably be some improvement in the \gls{DSP} calculations to obtain more accurate results. Additionally, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, would require a large frequency vector. This would take up a lot of memory space, without improving significantly the result.
-
-
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.9\textwidth]{winebottle.png}
       \caption{The frequencies and their corresponding peaks for each area of the wine bottle object.}\label{fig:bottle_data}
 \end{figure}
+
+Although, theoretically, each object can be modeled using one vector of frequencies and multiple vectors of amplitude data (one for each different vertex) it can be seen in figure \ref{fig:bottle_data} that this does not happen in practice. There are different reasons why this could be. During the measurement process certain factors such as the force applied when hitting the object or the way it is hold could affect the resulting sound. Holding the object prevents a free vibration behavior which could lead to the cancellation or significant reduction of some of the resonant modes' gains. In addition, the sound produced by the wooden stick when striking could interfere with the one of the object under study. Another factor could be related to the anisotropic material properties of the objects. As far as the audio algorithm is concerned there could probably be some improvement in the \gls{DSP} calculations to obtain more accurate results. Additionally, to include all the resonant frequencies of one object, instead of the ones with the strongest peaks per area, would require a large frequency vector. This would take up a lot of memory space, without improving significantly the result.
 
 Nevertheless, it can be noted that most of the frequencies are set just over 2 kHz and close to 4 kHz for different parts of the wine bottle although the bottom one presents some variations, probably due to the thickness of the glass in that specific area.
 
@@ -349,8 +347,8 @@ where $\omega_x = \frac{\theta_x}{t}, \omega_y = \frac{\theta_y}{t}, \omega_z = 
 
 \subsection{Pseudo-code of the Procedure }
 
-\begin{lstlisting}[caption={Code of the whole procedure},label={lst:all_code},language=C, escapechar=@]
-CALL ScaleEverythingWithObject (described in code snippet @\ref{lst:scale}@)
+\begin{lstlisting}[caption={Pseudo-code of the tool's procedure inside Unity\textsuperscript{\textregistered}},label={lst:all_code},language=C, escapechar=@]
+CALL ScaleEverythingWithObject (described in listing @\ref{lst:scale}@)
 IF collision detected THEN
 	RECEIVE object tag from tag manager
 	SET object perimeter
